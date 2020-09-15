@@ -49,7 +49,7 @@ const TrafficSource = (() => {
 
     const getData = () => {
         const data = cookie.value
-        Object.keys(data).map(key => {
+        Object.keys(data).forEach(key => {
             data[key] = (data[key] || '').replace(/[^a-zA-Z0-9\s-._]/gi, '').substring(0, 100)
         })
         return data
