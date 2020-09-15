@@ -15,7 +15,9 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "translate:download": "crowdin download -b crowdin",
+    "translate:extract": "cd scripts && node extract-translations.js && cd ..",
+    "translate:upload": "crowdin upload sources -b crowdin"
   },
   "dependencies": {
     "babel-plugin-styled-components": "^1.11.1",
