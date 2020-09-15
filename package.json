@@ -19,10 +19,16 @@
   },
   "dependencies": {
     "babel-plugin-styled-components": "^1.11.1",
+    "commander": "^6.1.0",
+    "crc-32": "^1.2.0",
     "gatsby": "^2.24.57",
     "gatsby-plugin-styled-components": "^3.3.10",
+    "i18next": "^19.7.0",
+    "i18next-browser-languagedetector": "^6.0.1",
+    "js-cookie": "^2.2.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-i18next": "^11.7.2",
     "styled-components": "^5.2.0"
   },
   "devDependencies": {
