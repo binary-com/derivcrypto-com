@@ -1,5 +1,6 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
+import { WrapPagesWithLocaleContext } from 'components/localization'
 import { StateProvider } from 'store'
 import { GlobalStyle, theme } from 'themes'
 
@@ -13,3 +14,5 @@ export const wrapRootElement = ({ element }) => {
         </StateProvider>
     )
 }
+
+export const wrapPageElement = WrapPagesWithLocaleContext

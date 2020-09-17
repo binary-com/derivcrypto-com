@@ -15,11 +15,12 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "translate:download": "crowdin download -b crowdin",
+    "translate:download": "crowdin download -b crowdin && crowdin download -b crowdin -l ach",
     "translate:extract": "cd scripts && node extract-translations.js && cd ..",
     "translate:upload": "crowdin upload sources -b crowdin"
   },
   "dependencies": {
+    "@svgr/webpack": "^5.4.0",
     "babel-plugin-styled-components": "^1.11.1",
     "commander": "^6.1.0",
     "crc-32": "^1.2.0",

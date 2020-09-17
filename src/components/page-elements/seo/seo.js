@@ -1,8 +1,8 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
-import language_config from '../../../i18n-config'
 import { LocaleContext, localize } from 'components/localization'
+import language_config from 'components/localization/language-config'
 import Logo from 'images/png/common/logo.png'
 
 export const SEO = ({ description, title, no_index }) => {

@@ -1,4 +1,4 @@
-const language_config = require(`./i18n-config.js`)
+const language_config = require(`./src/components/localization/language-config.js`)
 
 module.exports = {
     siteMetadata: {
