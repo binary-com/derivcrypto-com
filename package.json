@@ -47,6 +47,7 @@
   },
   "devDependencies": {
     "eslint-config-react-app": "^5.2.1",
+    "gatsby-plugin-eslint": "^2.0.8",
     "gatsby-plugin-stylelint": "^3.2.0",
     "husky": "^4.3.0",
     "lint-staged": "^10.3.0",

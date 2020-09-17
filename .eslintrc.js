@@ -5,6 +5,7 @@ module.exports = {
     extends: `react-app`,
     rules: {
         camelcase: 0,
+        'array-callback-return': 'off',
         'no-console': [
             'error',
             {
