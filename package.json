@@ -10,11 +10,12 @@
   ],
   "scripts": {
     "build": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build --log-pages",
-    "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,json}\" \"*.js\"",
-    "start": "npm run develop",
-    "serve": "gatsby serve",
     "clean": "gatsby clean",
+    "develop": "gatsby develop",
+    "eslint": "DEBUG=eslint:cli-engine eslint 'src/**/*.js' --fix",
+    "format": "prettier --write \"**/*.{js,json}\" \"*.js\"",
+      "serve": "gatsby serve",
+    "start": "npm run develop",
     "translate:download": "crowdin download -b crowdin && crowdin download -b crowdin -l ach",
     "translate:extract": "cd scripts && node extract-translations.js && cd ..",
     "translate:upload": "crowdin upload sources -b crowdin"

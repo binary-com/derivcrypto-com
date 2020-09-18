@@ -66,7 +66,7 @@ module.exports = {
                 background_color: '#0e0e0e',
                 theme_color: '#ff444f',
                 display: 'standalone',
-                icon: './favicons/favicon-512x512.png',
+                icon: './favicons/derivcrypto-fav-icon.png',
             },
         },
         {

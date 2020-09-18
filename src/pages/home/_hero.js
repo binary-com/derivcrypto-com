@@ -31,7 +31,7 @@ export const Hero = () => {
                     )}
                 </Text>
                 <Image data={data.hero} alt="platform devices" width="100%" height="181px" />
-                <Input />
+                <Input placeholder={localize('Your email')} />
                 <StyledButton primary>{localize('Get started')}</StyledButton>
                 <Flex>
                     <Text as="p" size="s">
