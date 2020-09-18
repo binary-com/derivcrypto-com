@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { space, layout } from 'styled-system'
 import { device } from 'themes'
 
 export const Container = styled.div`
@@ -20,6 +21,9 @@ export const Container = styled.div`
     @media ${device.desktop} {
         max-width: 1140px;
     }
+
+    ${space}
+    ${layout}
 `
 
 export const SectionContainer = styled.div`

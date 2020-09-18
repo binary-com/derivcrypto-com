@@ -1,3 +1,5 @@
+import { size } from './device'
+
 export const theme = {
     font: {
         xs: '12px',
@@ -21,5 +23,11 @@ export const theme = {
         text_secondary: '#9ebbd7',
         text_colored_background: '#ffffff',
         text_less_prominent: '#999999',
+    },
+    breakpoints: {
+        sm: `${size.mobile}px`,
+        md: `${size.tablet}px`,
+        lg: `${size.laptop}px`,
+        xl: `${size.desktop}px`,
     },
 }

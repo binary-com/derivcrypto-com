@@ -1,5 +1,6 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
+import { space, color, layout } from 'styled-system'
 
 const createElement = React.createElement
 
@@ -31,6 +32,9 @@ export const Text = styled(({ as = 'p', size = 'm', children, ...props }) =>
         return '16px'
     }};
     line-height: 1.5;
+    ${space}
+    ${color}
+    ${layout}
 `
 
 export const WhiteText = styled(Text)`
