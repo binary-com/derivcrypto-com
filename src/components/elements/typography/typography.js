@@ -32,3 +32,7 @@ export const Text = styled(({ as = 'p', size = 'm', children, ...props }) =>
     }};
     line-height: 1.5;
 `
+
+export const WhiteText = styled(Text)`
+    color: ${({ theme }) => theme.color.text_colored_background};
+`
