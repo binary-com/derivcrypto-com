@@ -1,9 +1,17 @@
 import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
-import { StyledButton, StyledSectionContainer } from './_home-style'
-import { Container, Flex } from 'components/elements/container'
-import { Input } from 'components/elements/input'
-import { Text } from 'components/elements'
+import {
+    StyledButton,
+    StyledSectionContainer,
+    StyledInput,
+    StyledText,
+    StyledFollow,
+    LogoWrapper,
+    Header,
+} from './_home-style'
+import { Container } from 'components/elements/container'
+//import { Input } from 'components/elements/input'
+import { WhiteText } from 'components/elements'
 import { Image } from 'components/elements/image'
 import { localize } from 'components/localization'
 import FacebookLogo from 'images/svg/home/facebook.svg'
@@ -22,24 +30,29 @@ export const Hero = () => {
     return (
         <StyledSectionContainer>
             <Container>
-                <Text as="h1" size="3xl">
+                <Header as="h1" size="3xl">
                     {localize('Deriv with Crypto')}
-                </Text>
-                <Text as="p" size="l">
+                </Header>
+                <StyledText as="p" size="l">
                     {localize(
                         'Trade forex, commodities, cryptocurrencies, synthetic and stock indices - commission-free and directly from your crypto wallets.',
                     )}
-                </Text>
+                </StyledText>
                 <Image data={data.hero} alt="platform devices" width="100%" height="181px" />
-                <Input placeholder={localize('Your email')} />
+                <StyledInput placeholder={localize('Your email')} />
                 <StyledButton primary>{localize('Get started')}</StyledButton>
-                <Flex>
-                    <Text as="p" size="s">
+                <StyledFollow>
+                    <WhiteText as="p" size="s">
                         {localize('Or sign in with')}
-                    </Text>
-                    <img src={GoogleLogo} alt="Google" />
-                    <img src={FacebookLogo} alt="Facebook" />
-                </Flex>
+                    </WhiteText>
+
+                    <LogoWrapper>
+                        <img src={GoogleLogo} alt="Google" />
+                    </LogoWrapper>
+                    <LogoWrapper>
+                        <img src={FacebookLogo} alt="Facebook" />
+                    </LogoWrapper>
+                </StyledFollow>
             </Container>
         </StyledSectionContainer>
     )

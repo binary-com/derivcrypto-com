@@ -1,4 +1,5 @@
-import styled, { space, color, layout, border, background, position } from '@style'
+import { space, color, layout, border, background, position } from 'styled-system'
+import styled from 'styled-components'
 
 export const Box = styled.div`
     ${space}
