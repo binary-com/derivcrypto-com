@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Text } from 'components/elements/typography'
+import { Text } from 'components/elements'
 
 export const InputStyle = styled.input`
     width: 100%;
