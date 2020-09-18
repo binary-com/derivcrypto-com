@@ -11,8 +11,7 @@ export const StyledButton = styled(Button)`
 
 export const StyledSectionContainer = styled(SectionContainer)`
     background-color: black;
-
-    /* margin-top: -38px; */
+    margin-top: -64px;
 `
 
 export const StyledInput = styled(Input)`
@@ -33,5 +32,5 @@ export const LogoWrapper = styled(Flex)`
 `
 
 export const Header = styled(WhiteText)`
-    padding-top: 38px;
+    padding-top: 104px;
 `
