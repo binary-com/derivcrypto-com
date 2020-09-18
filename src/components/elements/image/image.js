@@ -1,6 +1,6 @@
 import React from 'react'
 import Img from 'gatsby-image'
-import { ImageWrapper } from './style'
+import { ImageWrapper } from './image-style'
 
 export const Image = ({ data, alt, width, height }) => {
     if (data) {

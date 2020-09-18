@@ -1,5 +1,5 @@
 import React from 'react'
-import { InputStyle, ErrorText } from './style'
+import { InputStyle, ErrorText } from './input-style'
 import { VFlex } from 'components/elements'
 
 export const Input = ({ error, ...props }) => {

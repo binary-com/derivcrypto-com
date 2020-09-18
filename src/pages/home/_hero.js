@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
-import { StyledButton, StyledSectionContainer } from './_styles'
+import { StyledButton, StyledSectionContainer } from './_home-style'
 import { Container, Flex } from 'components/elements/container'
 import { Input } from 'components/elements/input'
 import { Text } from 'components/elements'
