@@ -11,8 +11,9 @@ export const theme = {
         '3xl': '36px',
         '4xl': '48px',
         '5xl': '64px',
+        '6xl': '72px',
     },
-    spacing: ['4px', '8px', '12px', '16px', '24px', '40px', '80px'],
+    space: [0, '4px', '8px', '12px', '16px', '24px', '40px', '80px'],
     color: {
         background_default: '#ffffff',
         background_section: '#f8fafc',
