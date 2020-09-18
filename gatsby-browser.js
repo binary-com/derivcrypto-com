@@ -38,7 +38,7 @@ export const onInitialClientRender = () => {
             const jipt = document.createElement('script')
             jipt.type = 'text/javascript'
             jipt.text = `
-                var _jipt = []; _jipt.push(['project', 'deriv-com']);
+                var _jipt = []; _jipt.push(['project', 'deriv-crypto']);
                 var crowdin = document.createElement("script");
                 crowdin.setAttribute('src', '//cdn.crowdin.com/jipt/jipt.js');
                 document.head.appendChild(crowdin);
