@@ -9,6 +9,11 @@ export const CenterFlex = styled(Flex)`
     justify-content: center;
 `
 
-export const VerticalFlex = styled(Flex)`
+export const VFlex = styled(Flex)`
     flex-direction: column;
+`
+
+export const CenterVFlex = styled(VFlex)`
+    align-items: center;
+    justify-content: center;
 `

@@ -1,5 +1,6 @@
 import React from 'react'
-import { localize, Localize, WithIntl } from 'components/localization'
+import { Hero } from './home/_hero'
+import { localize, WithIntl } from 'components/localization'
 import { Layout, SEO } from 'components/page-elements'
 
 const Home = () => {
@@ -11,10 +12,7 @@ const Home = () => {
                     'Trade forex, commodities, cryptocurrencies, synthetic and stock indices - commission-free and directly from your crypto wallets.',
                 )}
             />
-            <p>{localize('Deriv with Crypto')}</p>
-            <p>
-                <Localize translate_text="Trade forex, commodities, cryptocurrencies, synthetic and stock indices - commission-free and directly from your crypto wallets." />
-            </p>
+            <Hero />
         </Layout>
     )
 }
