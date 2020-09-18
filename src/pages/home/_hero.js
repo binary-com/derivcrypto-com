@@ -1,7 +1,6 @@
 import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import {
-    StyledButton,
     StyledSectionContainer,
     StyledInput,
     StyledText,
@@ -10,8 +9,7 @@ import {
     Header,
 } from './_home-style'
 import { Container } from 'components/elements/container'
-//import { Input } from 'components/elements/input'
-import { WhiteText } from 'components/elements'
+import { WhiteText, Button } from 'components/elements'
 import { Image } from 'components/elements/image'
 import { localize } from 'components/localization'
 import FacebookLogo from 'images/svg/home/facebook.svg'
@@ -38,9 +36,11 @@ export const Hero = () => {
                         'Trade forex, commodities, cryptocurrencies, synthetic and stock indices - commission-free and directly from your crypto wallets.',
                     )}
                 </StyledText>
-                <Image data={data.hero} alt="platform devices" width="100%" height="181px" />
+                <Image data={data.hero} alt="platform devices" width="100%" height="161px" />
                 <StyledInput placeholder={localize('Your email')} />
-                <StyledButton primary>{localize('Get started')}</StyledButton>
+                <Button primary width={1} mt={2} mb={3}>
+                    {localize('Get started')}
+                </Button>
                 <StyledFollow>
                     <WhiteText as="p" size="s">
                         {localize('Or sign in with')}
