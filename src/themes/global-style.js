@@ -11,11 +11,11 @@ export const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
         font-family: 'IBM Plex Sans', sans-serif;
         font-size: 16px;
-        color: ${({ theme }) => theme.color.text_primary};
+        color: ${({ theme }) => theme.colors.text_primary};
     }
     body {
         line-height: 1.5;
         letter-spacing: 0;
-        background: ${({ theme }) => theme.color.background_default};
+        background: ${({ theme }) => theme.colors.background_default};
     }
 `

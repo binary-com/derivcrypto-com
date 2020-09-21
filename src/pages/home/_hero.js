@@ -10,7 +10,6 @@ import {
     Header,
 } from './_home-style'
 import { Container } from 'components/elements/container'
-//import { Input } from 'components/elements/input'
 import { WhiteText } from 'components/elements'
 import { Image } from 'components/elements/image'
 import { localize } from 'components/localization'
@@ -19,7 +18,7 @@ import GoogleLogo from 'images/svg/home/google.svg'
 
 const query = graphql`
     query {
-        hero: file(relativePath: { eq: "home/hero_image.png" }) {
+        hero: file(relativePath: { eq: "home/hero-image.png" }) {
             ...fadeIn
         }
     }
@@ -30,10 +29,10 @@ export const Hero = () => {
     return (
         <StyledSectionContainer>
             <Container>
-                <Header as="h1" size="3xl">
+                <Header as="h1" fontSize="3xl">
                     {localize('Deriv with Crypto')}
                 </Header>
-                <StyledText as="p" size="l">
+                <StyledText as="p" fontSize="lg">
                     {localize(
                         'Trade forex, commodities, cryptocurrencies, synthetic and stock indices - commission-free and directly from your crypto wallets.',
                     )}

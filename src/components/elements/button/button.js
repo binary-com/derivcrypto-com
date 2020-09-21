@@ -10,22 +10,25 @@ const SharedButtonStyle = css`
     ${props => {
         if (props.primary)
             return css`
-                color: ${({ theme }) => theme.color.text_primary};
-                background: ${({ theme }) => theme.color.primary};
+                color: ${({ theme }) => theme.colors.text_primary};
+                background: ${({ theme }) => theme.colors.primary};
+
+                &:hover {
+                    color: ;
+                }
             `
         if (props.secondary)
             return css`
-                background: ${({ theme }) => theme.color.secondary};
-                color: ${({ theme }) => theme.color.text_colored_background};
+                background: ${({ theme }) => theme.colors.secondary};
+                color: ${({ theme }) => theme.colors.text_colored_background};
                 border: none;
             `
     }}
 
-    &:hover,
     &:focus,
     &:active {
         outline: none;
-        box-shadow: 0 0 0 3px rgba(235, 21, 140, 0.08);
+        box-shadow: 0 0 3pt 2pt ${({ theme }) => theme.colors.secondary};
     }
 `
 

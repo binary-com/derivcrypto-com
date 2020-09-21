@@ -4,7 +4,7 @@ import { Button, Container } from 'components/elements'
 export const StyledNav = styled.nav`
     padding: 13px 0;
     display: flex;
-    background-color: ${({ theme }) => theme.color.background_section};
+    background-color: ${({ theme }) => theme.colors.background_section};
 `
 export const StyledButton = styled(Button)`
     display: flex;

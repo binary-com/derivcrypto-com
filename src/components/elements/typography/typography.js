@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-import { space, color, layout } from 'styled-system'
+import { typography, space, color, layout } from 'styled-system'
 
 const createElement = React.createElement
 
@@ -15,13 +15,6 @@ export const Text = styled(({ as = 'p', size = 'm', children, ...props }) =>
         }
     }};
     font-size: ${props => {
-        if (props.size === 'xs') return '12px'
-        if (props.size === 's') return '14px'
-        if (props.size === 'm') return '16px'
-        if (props.size === 'l') return '20px'
-        if (props.size === 'xl') return '24px'
-        if (props.size === '2xl') return '32px'
-        if (props.size === '3xl') return '40px'
         if (props.as === 'p') return '16px'
         if (props.as === 'h1') return '64px'
         if (props.as === 'h2') return '32px'
@@ -35,8 +28,9 @@ export const Text = styled(({ as = 'p', size = 'm', children, ...props }) =>
     ${space}
     ${color}
     ${layout}
+    ${typography}
 `
 
 export const WhiteText = styled(Text)`
-    color: ${({ theme }) => theme.color.text_colored_background};
+    color: ${({ theme }) => theme.colors.text_colored_background};
 `

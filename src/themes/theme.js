@@ -1,7 +1,7 @@
 import { size } from './device'
 
 export const theme = {
-    font: {
+    fontSizes: {
         xs: '12px',
         s: '14px',
         m: '16px',
@@ -13,8 +13,7 @@ export const theme = {
         '5xl': '64px',
         '6xl': '72px',
     },
-    space: [0, '4px', '8px', '12px', '16px', '24px', '40px', '80px'],
-    color: {
+    colors: {
         background_default: '#ffffff',
         background_section: '#f8fafc',
         error: '#ff4449',
@@ -25,6 +24,7 @@ export const theme = {
         text_colored_background: '#ffffff',
         text_less_prominent: '#999999',
     },
+    space: [0, '4px', '8px', '12px', '16px', '24px', '40px', '80px'],
     breakpoints: {
         sm: `${size.mobile}px`,
         md: `${size.tablet}px`,
