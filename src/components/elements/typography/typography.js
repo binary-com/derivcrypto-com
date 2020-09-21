@@ -14,15 +14,16 @@ export const Text = styled(({ as = 'p', size = 'm', children, ...props }) =>
             `
         }
     }};
-    font-size: ${props => {
-        if (props.as === 'p') return '16px'
-        if (props.as === 'h1') return '64px'
-        if (props.as === 'h2') return '32px'
-        if (props.as === 'h3') return '24px'
-        if (props.as === 'h4') return '16px'
-        if (props.as === 'h5') return '14px'
+    font-size: ${({ as, theme }) => {
+        if (as === 'p') return theme.fontSizes.m
+        if (as === 'h1') return theme.fontSizes['6xl']
+        if (as === 'h2') return theme.fontSizes['3xl']
+        if (as === 'h3') return theme.fontSizes.xl
+        if (as === 'h4') return theme.fontSizes.m
+        if (as === 'h5') return theme.fontSizes.s
+        if (as === 'h6') return theme.fontSizes.xs
 
-        return '16px'
+        return theme.fontSizes.m
     }};
     line-height: 1.5;
     ${space}
