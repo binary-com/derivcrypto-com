@@ -1,5 +1,6 @@
 import styled from 'styled-components'
-import { Input, WhiteText, SectionContainer, Button, Flex } from 'components/elements'
+import { Input, WhiteText, SectionContainer, Button, Flex, Image } from 'components/elements'
+import { device } from 'themes/device'
 
 export const StyledButton = styled(Button)`
     display: flex;
@@ -33,4 +34,15 @@ export const LogoWrapper = styled(Flex)`
 
 export const Header = styled(WhiteText)`
     padding-top: 104px;
+`
+
+export const StyledImage = styled(Image)`
+    @media ${device.mobileS} {
+        width: 329px;
+        height: 181px;
+    }
+    @media ${device.mobile} {
+        width: 510px;
+        height: 278px;
+    }
 `

@@ -2,7 +2,7 @@ import React from 'react'
 import { ThemeProvider } from 'styled-components'
 import { WrapPagesWithLocaleContext } from 'components/localization'
 import { StateProvider } from 'store'
-import { GlobalStyle, theme } from 'themes'
+import { GlobalStyle, theme, MediaContextProvider } from 'themes'
 import { isBrowser } from 'common/utility'
 import { isProduction } from 'websocket/config'
 import { LocalStore } from 'common/storage'
@@ -14,7 +14,7 @@ export const wrapRootElement = ({ element }) => {
         <StateProvider>
             <ThemeProvider theme={theme}>
                 <GlobalStyle />
-                {element}
+                <MediaContextProvider>{element}</MediaContextProvider>
             </ThemeProvider>
         </StateProvider>
     )

@@ -7,10 +7,10 @@ import {
     StyledFollow,
     LogoWrapper,
     Header,
+    StyledImage,
 } from './_home-style'
-import { Container } from 'components/elements/container'
-import { WhiteText, Button } from 'components/elements'
-import { Image } from 'components/elements/image'
+import { Media } from 'themes'
+import { WhiteText, Button, Container } from 'components/elements'
 import { localize } from 'components/localization'
 import FacebookLogo from 'images/svg/home/facebook.svg'
 import GoogleLogo from 'images/svg/home/google.svg'
@@ -36,9 +36,17 @@ export const Hero = () => {
                         'Trade forex, commodities, cryptocurrencies, synthetic and stock indices - commission-free and directly from your crypto wallets.',
                     )}
                 </StyledText>
-                <Image data={data.hero} alt="platform devices" width="100%" height="161px" />
+                <Media lessThan="tablet">
+                    <StyledImage
+                        data={data.hero}
+                        alt="platform devices"
+                        width="288px"
+                        height="161px"
+                    />
+                </Media>
+
                 <StyledInput placeholder={localize('Your email')} />
-                <Button primary width={1} mt={2} mb={3}>
+                <Button primary width={1} mt="xs" mb="m">
                     {localize('Get started')}
                 </Button>
                 <StyledFollow>

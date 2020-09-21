@@ -2,6 +2,7 @@ import React from 'react'
 import { Helmet } from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 import { LocaleContext, localize } from 'components/localization'
+import { mediaStyle } from 'themes'
 import language_config from 'components/localization/language-config'
 import Logo from 'images/png/common/logo.png'
 
@@ -50,7 +51,7 @@ export const SEO = ({ description, title, no_index }) => {
             htmlAttributes={{
                 lang,
             }}
-            title={title}
+            title={title + ' - Derivcrypto'}
             defer={false}
             meta={[
                 {
@@ -154,6 +155,7 @@ export const SEO = ({ description, title, no_index }) => {
                     )
                 }
             })}
+            <style type="text/css">{`${mediaStyle}`}</style>
         </Helmet>
     )
 }
