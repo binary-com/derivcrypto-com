@@ -1,6 +1,9 @@
 import styled, { css } from 'styled-components'
+import { space, layout } from 'styled-system'
 
 const SharedButtonStyle = css`
+    ${space}
+    ${layout}
     border-radius: 6px;
     padding: 10px 16px;
     font-size: 16px;
@@ -12,10 +15,7 @@ const SharedButtonStyle = css`
             return css`
                 color: ${({ theme }) => theme.colors.text_primary};
                 background: ${({ theme }) => theme.colors.primary};
-
-                &:hover {
-                    color: ;
-                }
+                border: none;
             `
         if (props.secondary)
             return css`

@@ -1,5 +1,6 @@
 import React from 'react'
-import { StyledNav, StyledButton, CryptoIcon, StyledContainer } from './nav-style'
+import { StyledNav, CryptoIcon, StyledContainer } from './nav-style'
+import { Button } from 'components/elements'
 import { localize } from 'components/localization'
 import CryptoLogo from 'images/svg/nav/crypto-logo.svg'
 
@@ -8,7 +9,7 @@ export const Nav = () => {
         <StyledNav>
             <StyledContainer>
                 <CryptoIcon src={CryptoLogo} alt="Deriv Crypto Logo" />
-                <StyledButton primary>{localize('Login')}</StyledButton>
+                <Button primary>{localize('Login')}</Button>
             </StyledContainer>
         </StyledNav>
     )
