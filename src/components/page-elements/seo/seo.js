@@ -51,7 +51,7 @@ export const SEO = ({ description, title, no_index }) => {
             htmlAttributes={{
                 lang,
             }}
-            title={title + ' - Derivcrypto'}
+            title={`${title} - Derivcrypto`}
             defer={false}
             meta={[
                 {
