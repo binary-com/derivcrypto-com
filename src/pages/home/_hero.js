@@ -8,9 +8,7 @@ import {
     LogoWrapper,
     Header,
 } from './_home-style'
-import { Container } from 'components/elements/container'
-import { WhiteText, Button } from 'components/elements'
-import { Image } from 'components/elements/image'
+import { Container, WhiteText, Button, Image } from 'components/elements'
 import { localize } from 'components/localization'
 import FacebookLogo from 'images/svg/home/facebook.svg'
 import GoogleLogo from 'images/svg/home/google.svg'
