@@ -7,15 +7,17 @@ import {
     StyledFollow,
     LogoWrapper,
     Header,
+    StyledImage,
 } from './_home-style'
-import { Container, WhiteText, Button, Image } from 'components/elements'
+import { Media } from 'themes'
+import { WhiteText, Button, Container } from 'components/elements'
 import { localize } from 'components/localization'
 import FacebookLogo from 'images/svg/home/facebook.svg'
 import GoogleLogo from 'images/svg/home/google.svg'
 
 const query = graphql`
     query {
-        hero: file(relativePath: { eq: "home/hero_image.png" }) {
+        hero: file(relativePath: { eq: "home/hero-image.png" }) {
             ...fadeIn
         }
     }
@@ -26,17 +28,25 @@ export const Hero = () => {
     return (
         <StyledSectionContainer>
             <Container>
-                <Header as="h1" size="3xl">
+                <Header as="h1" fontSize="3xl">
                     {localize('Deriv with Crypto')}
                 </Header>
-                <StyledText as="p" size="l">
+                <StyledText as="p" fontSize="lg">
                     {localize(
                         'Trade forex, commodities, cryptocurrencies, synthetic and stock indices - commission-free and directly from your crypto wallets.',
                     )}
                 </StyledText>
-                <Image data={data.hero} alt="platform devices" width="100%" height="161px" />
+                <Media lessThan="tablet">
+                    <StyledImage
+                        data={data.hero}
+                        alt="platform devices"
+                        width="288px"
+                        height="161px"
+                    />
+                </Media>
+
                 <StyledInput placeholder={localize('Your email')} />
-                <Button primary width={1} mt={2} mb={3}>
+                <Button primary width={1} mt="xs" mb="m">
                     {localize('Get started')}
                 </Button>
                 <StyledFollow>

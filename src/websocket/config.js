@@ -6,7 +6,7 @@ const domain_config = {
         app_id: 1407,
     },
     staging: {
-        hostname: 'dev.derivcrypto.com',
+        hostname: 'staging.derivcrypto.com',
         app_id: 2586,
     },
     test: {
