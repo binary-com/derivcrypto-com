@@ -46,3 +46,10 @@ export const StyledImage = styled(Image)`
         height: 278px;
     }
 `
+
+export const PartitionContainer = styled(SectionContainer)`
+    margin: unset;
+    padding: 40px 0 0;
+    padding-top: ${props => (props.no_padding_top ? '0' : '40px')};
+    background-color: ${props => (props.greybackground ? '#f8fafc' : 'unset')};
+`
