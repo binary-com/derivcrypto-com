@@ -1,5 +1,16 @@
+import React from 'react'
 import styled from 'styled-components'
-import { Input, WhiteText, SectionContainer, Button, Flex, Image } from 'components/elements'
+//import css from '@styled-system/css'
+import {
+    Input,
+    WhiteText,
+    SectionContainer,
+    Container,
+    Button,
+    Flex,
+    Image,
+    Text,
+} from 'components/elements'
 import { device } from 'themes/device'
 
 export const StyledButton = styled(Button)`
@@ -46,3 +57,53 @@ export const StyledImage = styled(Image)`
         height: 278px;
     }
 `
+
+export const PartitionContainer = styled(SectionContainer)`
+    margin: unset;
+    padding: 40px 0 0;
+    padding-top: ${props => (props.no_padding_top ? '0' : '40px')};
+    background-color: ${props => (props.greybackground ? '#f8fafc' : 'unset')};
+`
+
+export const TextWrapper = styled.div`
+    @media ${device.tablet} {
+        max-width: 384px;
+        margin: auto;
+        margin-left: unset;
+    }
+`
+
+export const ContentWrapper = styled(Container)`
+    @media ${device.tablet} {
+        max-width: 720px;
+        display: flex;
+    }
+    @media ${device.desktopL} {
+        max-width: 1020px;
+        height: 688px;
+    }
+`
+export const HighLightsImage = styled(Image)`
+    margin: auto;
+`
+
+export const HighlightsHeader = ({ children }) => {
+    return (
+        <Text
+            fontSize={{ _: 'xl', xxl: '4xl' }}
+            mb="m"
+            as="h3"
+            textAlign={{ _: 'center', md: 'left' }}
+        >
+            {children}
+        </Text>
+    )
+}
+
+export const HighlightsContent = ({ children }) => {
+    return (
+        <Text fontSize={{ _: 'm', xxl: 'xl' }} m="auto" textAlign="justify">
+            {children}
+        </Text>
+    )
+}

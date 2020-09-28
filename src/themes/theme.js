@@ -42,5 +42,6 @@ export const theme = {
         md: `${size.tablet}px`,
         lg: `${size.laptop}px`,
         xl: `${size.desktop}px`,
+        xxl: `${size.desktopL}px`,
     },
 }
