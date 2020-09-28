@@ -1,8 +1,15 @@
 import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
-import { PartitionContainer, TextWrapper, ContentWrapper, HighLightsImage } from './_home-style'
+import {
+    PartitionContainer,
+    TextWrapper,
+    ContentWrapper,
+    HighLightsImage,
+    HighlightsHeader,
+    HighlightsContent,
+} from './_home-style'
 import { localize } from 'components/localization'
-import { SectionContainer, Text } from 'components/elements'
+import { SectionContainer } from 'components/elements'
 
 const query = graphql`
     query {
@@ -25,19 +32,12 @@ export const Highlights = () => {
             <PartitionContainer no_padding_top>
                 <ContentWrapper>
                     <TextWrapper>
-                        <Text
-                            fontSize={{ _: 'xl', xxl: '4xl' }}
-                            mb="m"
-                            as="h3"
-                            textAlign={{ _: 'center', xxl: 'left' }}
-                        >
-                            {localize('Anywhere, anytime')}
-                        </Text>
-                        <Text fontSize={{ _: 'm', xxl: 'xl' }} m="auto" textAlign="justify">
+                        <HighlightsHeader>{localize('Anywhere, anytime')}</HighlightsHeader>
+                        <HighlightsContent>
                             {localize(
                                 'Get on-board hassle-free, trade, and transfer funds to and from your trading account in the fewest taps on your mobile, or clicks on your computer.',
                             )}
-                        </Text>
+                        </HighlightsContent>
                     </TextWrapper>
                     <HighLightsImage
                         data={data.anytime}
@@ -50,19 +50,12 @@ export const Highlights = () => {
             <PartitionContainer greybackground>
                 <ContentWrapper>
                     <TextWrapper>
-                        <Text
-                            fontSize={{ _: 'xl', xxl: '4xl' }}
-                            mb="m"
-                            as="h3"
-                            textAlign={{ _: 'center', xxl: 'left' }}
-                        >
-                            {localize('Crypto wallets included')}
-                        </Text>
-                        <Text fontSize={{ _: 'm', xxl: 'xl' }} m="auto" textAlign="justify">
+                        <HighlightsHeader>{localize('Crypto wallets included')}</HighlightsHeader>
+                        <HighlightsContent>
                             {localize(
-                                'Get on-board hassle-free, trade, and transfer funds to and from your trading account in the fewest taps on your mobile, or clicks on your computer.',
+                                'Frictionless access to BTC, ETH and ERC-20 tokens. Fund your trading account and cash out instantly, whenever you like.',
                             )}
-                        </Text>
+                        </HighlightsContent>
                     </TextWrapper>
                     <HighLightsImage
                         margin="auto"
@@ -76,26 +69,19 @@ export const Highlights = () => {
             <PartitionContainer>
                 <ContentWrapper>
                     <TextWrapper>
-                        <Text
-                            fontSize={{ _: 'xl', xxl: '4xl' }}
-                            mb="m"
-                            as="h3"
-                            textAlign={{ _: 'center', xxl: 'left' }}
-                        >
-                            {localize('No minimum deposit')}
-                        </Text>
-                        <Text fontSize={{ _: 'm', xxl: 'xl' }} m="auto" textAlign="justify">
+                        <HighlightsHeader>{localize('No minimum deposit')}</HighlightsHeader>
+                        <HighlightsContent>
                             {localize(
                                 'With no minimum deposit and low stake amounts, anyone can start trading from anywhere.',
                             )}
-                        </Text>
+                        </HighlightsContent>
                     </TextWrapper>
                     <HighLightsImage
                         margin="auto"
                         data={data.deposit}
                         alt="platform devices"
-                        width={{ _: '276px', xxl: '528px' }}
-                        height={{ _: '164px', xxl: '314px' }}
+                        width={{ _: '276px', xxl: '480px' }}
+                        height={{ _: '164px', xxl: '240px' }}
                     />
                 </ContentWrapper>
             </PartitionContainer>

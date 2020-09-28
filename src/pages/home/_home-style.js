@@ -1,4 +1,6 @@
+import React from 'react'
 import styled from 'styled-components'
+//import css from '@styled-system/css'
 import {
     Input,
     WhiteText,
@@ -7,6 +9,7 @@ import {
     Button,
     Flex,
     Image,
+    Text,
 } from 'components/elements'
 import { device } from 'themes/device'
 
@@ -76,10 +79,31 @@ export const ContentWrapper = styled(Container)`
         display: flex;
     }
     @media ${device.desktopL} {
-        max-width: 967px;
+        max-width: 1020px;
         height: 688px;
     }
 `
 export const HighLightsImage = styled(Image)`
     margin: auto;
 `
+
+export const HighlightsHeader = ({ children }) => {
+    return (
+        <Text
+            fontSize={{ _: 'xl', xxl: '4xl' }}
+            mb="m"
+            as="h3"
+            textAlign={{ _: 'center', md: 'left' }}
+        >
+            {children}
+        </Text>
+    )
+}
+
+export const HighlightsContent = ({ children }) => {
+    return (
+        <Text fontSize={{ _: 'm', xxl: 'xl' }} m="auto" textAlign="justify">
+            {children}
+        </Text>
+    )
+}
