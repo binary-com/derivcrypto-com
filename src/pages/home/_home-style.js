@@ -1,6 +1,4 @@
-import React from 'react'
 import styled from 'styled-components'
-//import css from '@styled-system/css'
 import {
     Input,
     WhiteText,
@@ -86,24 +84,34 @@ export const ContentWrapper = styled(Container)`
 export const HighLightsImage = styled(Image)`
     margin: auto;
 `
+export const TradeBenefitsImage = styled(Image)`
+    margin: auto;
+`
 
-export const HighlightsHeader = ({ children }) => {
-    return (
-        <Text
-            fontSize={{ _: 'xl', xxl: '4xl' }}
-            mb="m"
-            as="h3"
-            textAlign={{ _: 'center', md: 'left' }}
-        >
-            {children}
-        </Text>
-    )
-}
+export const HighlightsHeader = styled(Text)`
+    font-size: ${({ theme }) => theme.fontSizes.xl};
+    margin-bottom: ${({ theme }) => theme.space.m};
+    text-align: center;
+    @media ${device.laptopL} {
+        font-size: ${({ theme }) => theme.fontSizes['4xl']};
+    }
+    @media ${device.tablet} {
+        text-align: left;
+    }
+`
+export const HighlightsContent = styled(Text)`
+    font-size: ${({ theme }) => theme.fontSizes.xl};
+    margin: auto;
+    text-align: justify;
+    @media ${device.laptopL} {
+        font-size: ${({ theme }) => theme.fontSizes['xl']};
+    }
+`
 
-export const HighlightsContent = ({ children }) => {
-    return (
-        <Text fontSize={{ _: 'm', xxl: 'xl' }} m="auto" textAlign="justify">
-            {children}
-        </Text>
-    )
-}
+export const TradeBenefitsImg = styled.div`
+    display: grid;
+    grid-template-columns: 300px;
+    grid-gap: 13px;
+    justify-content: center;
+    margin-top: 25px;
+`
