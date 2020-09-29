@@ -92,26 +92,54 @@ export const HighlightsHeader = styled(Text)`
     font-size: ${({ theme }) => theme.fontSizes.xl};
     margin-bottom: ${({ theme }) => theme.space.m};
     text-align: center;
-    @media ${device.laptopL} {
-        font-size: ${({ theme }) => theme.fontSizes['4xl']};
-    }
+
     @media ${device.tablet} {
         text-align: left;
+    }
+    @media ${device.desktopL} {
+        font-size: ${({ theme }) => theme.fontSizes['4xl']};
     }
 `
 export const HighlightsContent = styled(Text)`
     font-size: ${({ theme }) => theme.fontSizes.xl};
     margin: auto;
     text-align: justify;
-    @media ${device.laptopL} {
+    @media ${device.desktopL} {
         font-size: ${({ theme }) => theme.fontSizes['xl']};
     }
 `
 
-export const TradeBenefitsImg = styled.div`
+export const TradeBenefitsImgMobile = styled.div`
     display: grid;
-    grid-template-columns: 300px;
+    grid-template-columns: repeat(1, 300px);
     grid-gap: 13px;
     justify-content: center;
     margin-top: 25px;
+
+    @media ${device.mobile} {
+        grid-template-columns: repeat(2, 250px);
+    }
+    @media ${device.tablet} {
+        grid-template-columns: repeat(2, 300px);
+    }
+    @media ${device.desktop} {
+        display: none;
+    }
+`
+export const TradeBenefitsImgDesktop = styled.div`
+    display: none;
+    grid-template-columns: repeat(1, 300px);
+    grid-gap: 13px;
+    justify-content: center;
+    margin-top: 25px;
+
+    @media ${device.desktop} {
+        display: grid;
+        grid-template-columns: repeat(2, 300px);
+    }
+`
+
+export const CardWrapper = styled.div`
+    box-sizing: border-box;
+    box-shadow: 0 16px 20px 0 rgba(0, 0, 0, 0.05), 0 0 20px 0 rgba(0, 0, 0, 0.05);
 `
