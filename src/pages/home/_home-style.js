@@ -8,6 +8,7 @@ import {
     Flex,
     Image,
     Text,
+    Background,
 } from 'components/elements'
 import { device } from 'themes/device'
 
@@ -81,9 +82,11 @@ export const ContentWrapper = styled(Container)`
         height: 688px;
     }
 `
+
 export const HighLightsImage = styled(Image)`
     margin: auto;
 `
+
 export const TradeBenefitsImage = styled(Image)`
     margin: auto;
 `
@@ -100,8 +103,9 @@ export const HighlightsHeader = styled(Text)`
         font-size: ${({ theme }) => theme.fontSizes['4xl']};
     }
 `
+
 export const HighlightsContent = styled(Text)`
-    font-size: ${({ theme }) => theme.fontSizes.xl};
+    font-size: ${({ theme }) => theme.fontSizes.m};
     margin: auto;
     text-align: justify;
     @media ${device.desktopL} {
@@ -116,30 +120,64 @@ export const TradeBenefitsImgMobile = styled.div`
     justify-content: center;
     margin-top: 25px;
 
-    @media ${device.mobile} {
-        grid-template-columns: repeat(2, 250px);
-    }
     @media ${device.tablet} {
         grid-template-columns: repeat(2, 300px);
     }
-    @media ${device.desktop} {
+    @media ${device.laptop} {
+        grid-template-columns: repeat(3, 300px);
+    }
+    @media ${device.desktopL} {
         display: none;
     }
 `
+
 export const TradeBenefitsImgDesktop = styled.div`
     display: none;
-    grid-template-columns: repeat(1, 300px);
-    grid-gap: 13px;
+    grid-template-columns: repeat(5, 240px);
+    grid-gap: 32px;
     justify-content: center;
     margin-top: 25px;
 
-    @media ${device.desktop} {
+    @media ${device.desktopL} {
         display: grid;
-        grid-template-columns: repeat(2, 300px);
     }
+`
+
+export const CardHeader = styled(WhiteText)`
+    padding: 10px 0 0 18px;
+    margin-bottom: -5px;
+    font-weight: bold;
+    font-size: ${({ theme }) => theme.fontSizes['3xl']};
+`
+
+export const CardContent = styled(WhiteText)`
+    margin-left: 19px;
+    font-weight: 100;
+    font-size: ${({ theme }) => theme.fontSizes['m']};
 `
 
 export const CardWrapper = styled.div`
     box-sizing: border-box;
     box-shadow: 0 16px 20px 0 rgba(0, 0, 0, 0.05), 0 0 20px 0 rgba(0, 0, 0, 0.05);
+
+    @media ${device.desktopL} {
+        ${CardHeader} {
+            text-align: center;
+            padding-left: unset;
+        }
+        ${CardContent} {
+            margin-left: unset;
+            text-align: center;
+        }
+    }
+`
+
+export const StyledBackground = styled(Background)`
+    height: 136px;
+    width: 300px;
+
+    @media ${device.desktopL} {
+        height: 280px;
+        width: 240px;
+    }
 `

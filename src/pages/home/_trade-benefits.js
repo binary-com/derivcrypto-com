@@ -1,7 +1,14 @@
 import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
-import { TradeBenefitsImgMobile, TradeBenefitsImgDesktop, CardWrapper } from './_home-style'
-import { Text, SectionContainer, Image, Background } from 'components/elements'
+import {
+    TradeBenefitsImgMobile,
+    TradeBenefitsImgDesktop,
+    CardWrapper,
+    CardHeader,
+    CardContent,
+    StyledBackground,
+} from './_home-style'
+import { Text, SectionContainer } from 'components/elements'
 import { localize } from 'components/localization'
 
 const query = graphql`
@@ -41,32 +48,73 @@ const query = graphql`
 const Card = ({ header, content, image }) => {
     return (
         <CardWrapper>
-            <Background data={image}>
-                <Text>{localize(header)}</Text>
-                <Text>{localize(content)}</Text>
-            </Background>
+            <StyledBackground data={image}>
+                <CardHeader>{header}</CardHeader>
+                <CardContent>{content}</CardContent>
+            </StyledBackground>
         </CardWrapper>
     )
 }
+
 export const TradeBenefits = () => {
     const data = useStaticQuery(query)
     return (
         <SectionContainer>
-            <Text as="h3" textAlign="center">
+            <Text as="h3" textAlign="center" fontSize={{ _: 'xl', xxl: '4xl' }}>
                 {localize('Trade the way you want')}
             </Text>
             <TradeBenefitsImgMobile>
-                <Image data={data.markets_mb} alt="platform_devices"></Image>
-                <Image data={data.ta_mb} alt="platform_devices"></Image>
-                <Image data={data.td_mb} alt="platform_devices"></Image>
-                <Image data={data.ct_mb} alt="platform_devices"></Image>
-                <Image data={data.it_mb} alt="platform_devices"></Image>
+                <Card
+                    image={data.markets_mb}
+                    content={localize('Markets')}
+                    header={localize('4')}
+                ></Card>
+                <Card
+                    image={data.ta_mb}
+                    content={localize('Tradeable assets')}
+                    header={localize('100+')}
+                ></Card>
+                <Card
+                    image={data.td_mb}
+                    content={localize('Trade duration')}
+                    header={localize('1s-365d')}
+                ></Card>
+                <Card
+                    image={data.ct_mb}
+                    content={localize('Chart types')}
+                    header={localize('3')}
+                ></Card>
+                <Card
+                    image={data.it_mb}
+                    content={localize('Indicators tools')}
+                    header={localize('100+')}
+                ></Card>
             </TradeBenefitsImgMobile>
             <TradeBenefitsImgDesktop>
                 <Card
-                    image={data.markets_mb}
-                    content="This is content"
-                    header="This is header"
+                    image={data.markets_dt}
+                    content={localize('Markets')}
+                    header={localize('4')}
+                ></Card>
+                <Card
+                    image={data.ta_dt}
+                    content={localize('Tradeable assets')}
+                    header={localize('100+')}
+                ></Card>
+                <Card
+                    image={data.td_dt}
+                    content={localize('Trade duration')}
+                    header={localize('1s-365d')}
+                ></Card>
+                <Card
+                    image={data.ct_dt}
+                    content={localize('Chart types')}
+                    header={localize('3')}
+                ></Card>
+                <Card
+                    image={data.it_dt}
+                    content={localize('Indicators tools')}
+                    header={localize('100+')}
                 ></Card>
             </TradeBenefitsImgDesktop>
         </SectionContainer>
