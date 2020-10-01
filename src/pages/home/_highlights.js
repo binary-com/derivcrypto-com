@@ -32,7 +32,7 @@ export const Highlights = () => {
             <PartitionContainer no_padding_top>
                 <ContentWrapper>
                     <TextWrapper>
-                        <HighlightsHeader>{localize('Anywhere, anytime')}</HighlightsHeader>
+                        <HighlightsHeader as="h3">{localize('Anywhere, anytime')}</HighlightsHeader>
                         <HighlightsContent>
                             {localize(
                                 'Get on-board hassle-free, trade, and transfer funds to and from your trading account in the fewest taps on your mobile, or clicks on your computer.',
@@ -50,7 +50,9 @@ export const Highlights = () => {
             <PartitionContainer greybackground>
                 <ContentWrapper>
                     <TextWrapper>
-                        <HighlightsHeader>{localize('Crypto wallets included')}</HighlightsHeader>
+                        <HighlightsHeader as="h3">
+                            {localize('Crypto wallets included')}
+                        </HighlightsHeader>
                         <HighlightsContent>
                             {localize(
                                 'Frictionless access to BTC, ETH and ERC-20 tokens. Fund your trading account and cash out instantly, whenever you like.',
@@ -69,7 +71,9 @@ export const Highlights = () => {
             <PartitionContainer>
                 <ContentWrapper>
                     <TextWrapper>
-                        <HighlightsHeader>{localize('No minimum deposit')}</HighlightsHeader>
+                        <HighlightsHeader as="h3">
+                            {localize('No minimum deposit')}
+                        </HighlightsHeader>
                         <HighlightsContent>
                             {localize(
                                 'With no minimum deposit and low stake amounts, anyone can start trading from anywhere.',

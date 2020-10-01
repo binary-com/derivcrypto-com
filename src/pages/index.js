@@ -1,6 +1,7 @@
 import React from 'react'
 import { Hero } from './home/_hero'
 import { Highlights } from './home/_highlights'
+import { TradeBenefits } from './home/_trade-benefits'
 import { localize, WithIntl } from 'components/localization'
 import { Layout, SEO } from 'components/page-elements'
 
@@ -15,6 +16,7 @@ const Home = () => {
             />
             <Hero />
             <Highlights />
+            <TradeBenefits />
         </Layout>
     )
 }
