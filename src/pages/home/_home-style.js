@@ -84,6 +84,7 @@ export const ContentWrapper = styled(Container)`
 export const HighLightsImage = styled(Image)`
     margin: auto;
 `
+
 export const TradeBenefitsImage = styled(Image)`
     margin: auto;
 `
@@ -100,6 +101,7 @@ export const HighlightsHeader = styled(Text)`
         font-size: ${({ theme }) => theme.fontSizes['4xl']};
     }
 `
+
 export const HighlightsContent = styled(Text)`
     font-size: ${({ theme }) => theme.fontSizes.xl};
     margin: auto;
