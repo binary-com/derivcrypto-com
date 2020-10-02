@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import BackgroundImage from 'gatsby-background-image'
 
 const StyledBackground = styled(BackgroundImage)`
-    background-color: black;
+    background-color: white;
 `
 
 export const Background = ({ children, data, style, ...props }) => {
