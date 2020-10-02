@@ -4,7 +4,7 @@ import { Highlights } from './home/_highlights'
 import { TradeBenefits } from './home/_trade-benefits'
 import { Reviews } from './home/_reviews'
 import { localize, WithIntl } from 'components/localization'
-import { Layout, SEO } from 'components/page-elements'
+import { Layout, SEO, Footer } from 'components/page-elements'
 
 const Home = () => {
     return (
@@ -19,6 +19,7 @@ const Home = () => {
             <Highlights />
             <TradeBenefits />
             <Reviews />
+            <Footer />
         </Layout>
     )
 }
