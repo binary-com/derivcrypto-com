@@ -13,13 +13,13 @@ import { SectionContainer } from 'components/elements'
 
 const query = graphql`
     query {
-        anytime: file(relativePath: { eq: "home/anytime-anywhere.png" }) {
+        anytime: file(relativePath: { eq: "home/anytime-anywhere.jpg" }) {
             ...fadeIn
         }
-        crypto: file(relativePath: { eq: "home/crypto-wallets.png" }) {
+        crypto: file(relativePath: { eq: "home/crypto-wallets.jpg" }) {
             ...fadeIn
         }
-        deposit: file(relativePath: { eq: "home/minimum-deposit.png" }) {
+        deposit: file(relativePath: { eq: "home/minimum-deposit.jpg" }) {
             ...fadeIn
         }
     }
