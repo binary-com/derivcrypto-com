@@ -22,23 +22,27 @@ export const StyledButton = styled(Button)`
 
 export const StyledInput = styled(Input)`
     margin-top: 40px;
+    @media ${device.desktop} {
+        margin-top: 0;
+    }
+`
+
+export const HeroContainer = styled(Container)`
+    padding-top: 80px;
+    padding-bottom: 43px;
+
+    @media ${device.desktop} {
+        padding-top: 180px;
+        padding-bottom: 120px;
+    }
 `
 
 export const StyledText = styled(WhiteText)`
     margin: 16px auto 40px;
 `
 
-export const StyledFollow = styled(Flex)`
-    padding-bottom: 46px;
-    align-items: center;
-`
-
 export const LogoWrapper = styled(Flex)`
     margin-left: 8px;
-`
-
-export const Header = styled(WhiteText)`
-    padding-top: 104px;
 `
 
 export const StyledImage = styled(Image)`
