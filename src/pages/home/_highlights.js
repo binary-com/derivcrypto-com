@@ -44,7 +44,7 @@ export const Highlights = () => {
                             data={data.anytime}
                             alt="anytime"
                             width={{ _: '300px', xxl: '588px' }}
-                            height={{ _: '342px', xxl: '671px' }}
+                            height={{ _: '342px', xxl: '100%' }}
                         />
                     </div>
                 </ContentWrapper>
