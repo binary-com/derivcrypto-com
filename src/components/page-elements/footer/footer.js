@@ -8,7 +8,6 @@ import {
     StyledFooterImage,
     HighlightFooterButton,
     HighlightFooter,
-    StyledFooterContainer,
     StyledFlexWrapper,
     StyledFooterText,
     StyledTermsMargin,
@@ -35,7 +34,7 @@ const query = graphql`
 export const Footer = () => {
     const data = useStaticQuery(query)
     return (
-        <StyledFooterContainer>
+        <footer>
             <Background data={data.background}>
                 <PartitionContainer>
                     <StyledFooterContent>
@@ -74,6 +73,6 @@ export const Footer = () => {
                     </StyledFlexWrapper>
                 </StyledFlexWrapper>
             </Box>
-        </StyledFooterContainer>
+        </footer>
     )
 }

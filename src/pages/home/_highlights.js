@@ -28,7 +28,7 @@ const query = graphql`
 export const Highlights = () => {
     const data = useStaticQuery(query)
     return (
-        <SectionContainer>
+        <SectionContainer backgroundColor="background_default">
             <PartitionContainer no_padding_top>
                 <ContentWrapper>
                     <TextWrapper>
