@@ -1,9 +1,10 @@
 import React from 'react'
+import { Formik, Form, Field } from 'formik'
 import { graphql, useStaticQuery } from 'gatsby'
 import { StyledInput, StyledText, LogoWrapper, StyledImage, HeroContainer } from './_home-style'
 import { Media } from 'themes'
 import { WhiteText, Button, Background, Flex, Image, Text } from 'components/elements'
-import { localize } from 'components/localization'
+import { localize, Localize } from 'components/localization'
 import FacebookLogo from 'images/svg/home/facebook.svg'
 import GoogleLogo from 'images/svg/home/google.svg'
 
@@ -20,6 +21,23 @@ const query = graphql`
 
 export const Hero = () => {
     const data = useStaticQuery(query)
+
+    const handleValidation = values => {
+        const errors = {}
+        const email_regex = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,63}$/
+
+        if (!values.email) {
+            errors.email = <Localize translate_text="Email is required" />
+        } else if (!email_regex.test(values.email)) {
+            errors.email = <Localize translate_text="Invalid email address" />
+        }
+
+        return errors
+    }
+
+    const handleSubmit = () => {
+        // noop
+    }
     return (
         <Background data={data['background']}>
             <HeroContainer>
@@ -56,14 +74,33 @@ export const Hero = () => {
                                 height="161px"
                             />
                         </Media>
+                        <Formik
+                            initialValues={{ email: '' }}
+                            validate={handleValidation}
+                            onSubmit={handleSubmit}
+                        >
+                            {({ errors, touched }) => (
+                                <Form>
+                                    <Field name="email">
+                                        {({ field }) => (
+                                            <StyledInput
+                                                error={touched.email && errors.email}
+                                                placeholder={localize('Your email')}
+                                                {...field}
+                                            />
+                                        )}
+                                    </Field>
 
-                        <StyledInput placeholder={localize('Your email')} />
-                        <Button primary width={1} mt="xs" mb="m">
-                            {localize('Get started')}
-                        </Button>
+                                    <Button type="submit" primary width={1} mt="xs" mb="m">
+                                        {localize('Get started')}
+                                    </Button>
+                                </Form>
+                            )}
+                        </Formik>
+
                         <Flex alignItems="center">
                             <WhiteText as="p" size="s">
-                                {localize('Or sign in with')}
+                                {localize('Or sign up with')}
                             </WhiteText>
 
                             <LogoWrapper>
