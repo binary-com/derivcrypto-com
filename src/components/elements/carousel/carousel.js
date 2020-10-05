@@ -1,10 +1,13 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { useEmblaCarousel } from 'embla-carousel/react'
-import { StyledButton, ButtonWrapper } from './carousel-style'
+import { ReviewsButton, MarketsButton, ButtonWrapper } from './carousel-style'
 
-const DotButton = ({ selected, onClick }) => (
-    <StyledButton selected={selected} type="button" onClick={onClick} />
-)
+const DotButton = ({ selected, onClick, isMarkets }) =>
+    isMarkets ? (
+        <MarketsButton selected={selected} type="button" onClick={onClick} />
+    ) : (
+        <ReviewsButton selected={selected} type="button" onClick={onClick} />
+    )
 
 const viewportCss = {
     overflow: 'hidden',
@@ -17,7 +20,7 @@ const slideCss = {
     minWidth: '100%',
 }
 
-export const Carousel = ({ children, options }) => {
+export const Carousel = ({ children, options, isMarkets }) => {
     const [emblaRef, embla] = useEmblaCarousel(options)
     const [selectedIndex, setSelectedIndex] = useState(0)
     const [scrollSnaps, setScrollSnaps] = useState([])
@@ -41,7 +44,7 @@ export const Carousel = ({ children, options }) => {
             <div style={viewportCss} ref={emblaRef}>
                 <div style={containerCss}>
                     {children.map((child, idx) => (
-                        <div key={idx} style={slideCss}>
+                        <div key={idx} style={isMarkets ? null : slideCss}>
                             {child}
                         </div>
                     ))}
@@ -53,6 +56,7 @@ export const Carousel = ({ children, options }) => {
                         key={index}
                         selected={index === selectedIndex}
                         onClick={() => scrollTo(index)}
+                        isMarkets={isMarkets}
                     />
                 ))}
             </ButtonWrapper>
