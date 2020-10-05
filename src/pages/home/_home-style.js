@@ -20,11 +20,6 @@ export const StyledButton = styled(Button)`
     justify-content: center;
 `
 
-export const StyledSectionContainer = styled(SectionContainer)`
-    background-color: black;
-    margin-top: -64px;
-`
-
 export const StyledInput = styled(Input)`
     margin-top: 40px;
 `
@@ -180,4 +175,8 @@ export const StyledBackground = styled(Background)`
         height: 280px;
         width: 240px;
     }
+`
+
+export const CenterText = styled(Text)`
+    text-align: center;
 `

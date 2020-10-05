@@ -1,7 +1,6 @@
 import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import {
-    StyledSectionContainer,
     StyledInput,
     StyledText,
     StyledFollow,
@@ -10,7 +9,7 @@ import {
     StyledImage,
 } from './_home-style'
 import { Media } from 'themes'
-import { WhiteText, Button, Container } from 'components/elements'
+import { WhiteText, Button, Container, Background } from 'components/elements'
 import { localize } from 'components/localization'
 import FacebookLogo from 'images/svg/home/facebook.svg'
 import GoogleLogo from 'images/svg/home/google.svg'
@@ -20,13 +19,16 @@ const query = graphql`
         hero: file(relativePath: { eq: "home/hero-image.png" }) {
             ...fadeIn
         }
+        background: file(relativePath: { eq: "home/hero-background.png" }) {
+            ...fadeIn
+        }
     }
 `
 
 export const Hero = () => {
     const data = useStaticQuery(query)
     return (
-        <StyledSectionContainer>
+        <Background data={data['background']}>
             <Container>
                 <Header as="h1" fontSize="3xl">
                     {localize('Deriv with Crypto')}
@@ -62,6 +64,6 @@ export const Hero = () => {
                     </LogoWrapper>
                 </StyledFollow>
             </Container>
-        </StyledSectionContainer>
+        </Background>
     )
 }

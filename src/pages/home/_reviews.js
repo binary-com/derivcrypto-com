@@ -1,5 +1,6 @@
 import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
+import { CenterText } from './_home-style'
 import {
     Flex,
     VFlex,
@@ -22,9 +23,9 @@ const query = graphql`
 const Card = ({ name, quote, location, image }) => {
     return (
         <VFlex width={280} m="auto">
-            <Text fontWeight="bold" textAlign="center" fontSize={'m'} mb={'5xl'}>
+            <CenterText fontWeight="bold" fontSize={'m'} mb={'5xl'}>
                 "{quote}"
-            </Text>
+            </CenterText>
             <Flex m="auto">
                 <Image data={image} alt="jose" width="48px" height="48px" />
                 <VFlex ml={'xs'}>
@@ -68,8 +69,8 @@ export const Reviews = () => {
                     {localize('More than a million traders from around the globe have trusted us.')}
                 </Text>
                 <Carousel options={{ loop: true }}>
-                    {clients.map(client => (
-                        <Carousel.Item>
+                    {clients.map((client, idx) => (
+                        <Carousel.Item key={idx}>
                             <Card
                                 key={client.name}
                                 quote={client.quote}

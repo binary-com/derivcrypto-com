@@ -2,9 +2,14 @@ import styled from 'styled-components'
 import { Container } from 'components/elements'
 
 export const StyledNav = styled.nav`
-    padding: 13px 0;
     display: flex;
-    background-color: ${({ theme }) => theme.colors.background_section};
+    background: ${({ has_scrolled, theme }) =>
+        has_scrolled ? theme.colors.background_dark : 'transparent'};
+    position: fixed;
+    width: 100%;
+    padding: 16px 0;
+    z-index: 100;
+    transition: background 0.25s;
 `
 
 export const CryptoIcon = styled.img`
