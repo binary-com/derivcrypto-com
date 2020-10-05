@@ -63,7 +63,7 @@ export const Reviews = () => {
     const clients = [fernando, fernandi]
 
     return (
-        <SectionContainer>
+        <SectionContainer backgroundColor="background_default">
             <Container>
                 <Text
                     m="auto"

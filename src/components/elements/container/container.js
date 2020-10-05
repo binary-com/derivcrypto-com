@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { space, layout } from 'styled-system'
+import { space, layout, color } from 'styled-system'
 import { device } from 'themes'
 
 export const Container = styled.div`
@@ -26,8 +26,10 @@ export const Container = styled.div`
 
     ${space}
     ${layout}
+    ${color}
 `
 
 export const SectionContainer = styled.div`
-    margin: 40px 0;
+    padding: 40px 0;
+    ${color}
 `

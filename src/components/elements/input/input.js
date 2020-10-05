@@ -6,7 +6,7 @@ export const Input = ({ error, className, ...props }) => {
     return (
         <VFlex className={className}>
             <InputStyle {...props} />
-            {error && <ErrorText>{error}</ErrorText>}
+            {error && <ErrorText fontSize="s">{error}</ErrorText>}
         </VFlex>
     )
 }
