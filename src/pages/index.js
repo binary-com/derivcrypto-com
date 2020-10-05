@@ -3,6 +3,7 @@ import { Hero } from './home/_hero'
 import { Highlights } from './home/_highlights'
 import { TradeBenefits } from './home/_trade-benefits'
 import { Reviews } from './home/_reviews'
+import { TradingPlatformsTypes } from './home/_trading-platforms-types'
 import { localize, WithIntl } from 'components/localization'
 import { Layout, SEO, Footer } from 'components/page-elements'
 
@@ -18,6 +19,7 @@ const Home = () => {
             <Hero />
             <Highlights />
             <TradeBenefits />
+            <TradingPlatformsTypes />
             <Reviews />
             <Footer />
         </Layout>
