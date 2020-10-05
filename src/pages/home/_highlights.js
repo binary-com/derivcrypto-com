@@ -16,7 +16,7 @@ const query = graphql`
         anytime: file(relativePath: { eq: "home/anytime-anywhere.jpg" }) {
             ...fadeIn
         }
-        crypto: file(relativePath: { eq: "home/crypto-wallets.jpg" }) {
+        crypto: file(relativePath: { eq: "home/crypto-wallets.png" }) {
             ...fadeIn
         }
         deposit: file(relativePath: { eq: "home/minimum-deposit.jpg" }) {
