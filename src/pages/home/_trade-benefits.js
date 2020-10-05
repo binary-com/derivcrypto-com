@@ -59,7 +59,7 @@ const Card = ({ header, content, image }) => {
 export const TradeBenefits = () => {
     const data = useStaticQuery(query)
     return (
-        <SectionContainer>
+        <SectionContainer backgroundColor="background_default">
             <Text as="h3" textAlign="center" fontSize={{ _: 'xl', xxl: '4xl' }}>
                 {localize('Trade the way you want')}
             </Text>

@@ -10,10 +10,6 @@ import {
 } from 'components/elements'
 import { device } from 'themes/device'
 
-export const StyledFooterContainer = styled(SectionContainer)`
-    margin-bottom: 0;
-`
-
 export const StyledFlexWrapper = styled.div`
     display: flex;
     align-content: center;
