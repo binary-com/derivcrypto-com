@@ -39,12 +39,14 @@ export const Highlights = () => {
                             )}
                         </HighlightsContent>
                     </TextWrapper>
-                    <HighLightsImage
-                        data={data.anytime}
-                        alt="platform devices"
-                        width={{ _: '300px', xxl: '588px' }}
-                        height={{ _: '374px', xxl: '690px' }}
-                    />
+                    <div>
+                        <HighLightsImage
+                            data={data.anytime}
+                            alt="anytime"
+                            width={{ _: '300px', xxl: '588px' }}
+                            height={{ _: '342px', xxl: '671px' }}
+                        />
+                    </div>
                 </ContentWrapper>
             </PartitionContainer>
             <PartitionContainer greybackground>
@@ -62,9 +64,9 @@ export const Highlights = () => {
                     <HighLightsImage
                         margin="auto"
                         data={data.crypto}
-                        alt="platform devices"
+                        alt="platform device"
                         width={{ _: '292px', xxl: '528px' }}
-                        height={{ _: '288px', xxl: '528px' }}
+                        height={{ _: '292px', xxl: '528px' }}
                     />
                 </ContentWrapper>
             </PartitionContainer>
@@ -85,7 +87,7 @@ export const Highlights = () => {
                         data={data.deposit}
                         alt="platform devices"
                         width={{ _: '276px', xxl: '480px' }}
-                        height={{ _: '164px', xxl: '240px' }}
+                        height={{ _: '164px', xxl: '285px' }}
                     />
                 </ContentWrapper>
             </PartitionContainer>
