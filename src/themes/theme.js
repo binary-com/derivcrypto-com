@@ -16,6 +16,7 @@ export const theme = {
     colors: {
         background_default: '#ffffff',
         background_section: '#f8fafc',
+        background_dark: '#0e0e0e',
         error: '#ff4449',
         primary: '#ffc71b',
         secondary: '#2a537a',
@@ -42,5 +43,6 @@ export const theme = {
         md: `${size.tablet}px`,
         lg: `${size.laptop}px`,
         xl: `${size.desktop}px`,
+        xxl: `${size.desktopL}px`,
     },
 }

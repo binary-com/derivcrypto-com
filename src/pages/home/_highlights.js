@@ -1,0 +1,94 @@
+import React from 'react'
+import { graphql, useStaticQuery } from 'gatsby'
+import {
+    PartitionContainer,
+    TextWrapper,
+    ContentWrapper,
+    HighLightsImage,
+    HighlightsHeader,
+    HighlightsContent,
+} from './_home-style'
+import { localize } from 'components/localization'
+import { SectionContainer } from 'components/elements'
+
+const query = graphql`
+    query {
+        anytime: file(relativePath: { eq: "home/anytime-anywhere.png" }) {
+            ...fadeIn
+        }
+        crypto: file(relativePath: { eq: "home/crypto-wallets.png" }) {
+            ...fadeIn
+        }
+        deposit: file(relativePath: { eq: "home/minimum-deposit.png" }) {
+            ...fadeIn
+        }
+    }
+`
+
+export const Highlights = () => {
+    const data = useStaticQuery(query)
+    return (
+        <SectionContainer>
+            <PartitionContainer no_padding_top>
+                <ContentWrapper>
+                    <TextWrapper>
+                        <HighlightsHeader as="h3">{localize('Anywhere, anytime')}</HighlightsHeader>
+                        <HighlightsContent>
+                            {localize(
+                                'Get on-board hassle-free, trade, and transfer funds to and from your trading account in the fewest taps on your mobile, or clicks on your computer.',
+                            )}
+                        </HighlightsContent>
+                    </TextWrapper>
+                    <HighLightsImage
+                        data={data.anytime}
+                        alt="platform devices"
+                        width={{ _: '300px', xxl: '588px' }}
+                        height={{ _: '374px', xxl: '690px' }}
+                    />
+                </ContentWrapper>
+            </PartitionContainer>
+            <PartitionContainer greybackground>
+                <ContentWrapper>
+                    <TextWrapper>
+                        <HighlightsHeader as="h3">
+                            {localize('Crypto wallets included')}
+                        </HighlightsHeader>
+                        <HighlightsContent>
+                            {localize(
+                                'Frictionless access to BTC, ETH and ERC-20 tokens. Fund your trading account and cash out instantly, whenever you like.',
+                            )}
+                        </HighlightsContent>
+                    </TextWrapper>
+                    <HighLightsImage
+                        margin="auto"
+                        data={data.crypto}
+                        alt="platform devices"
+                        width={{ _: '292px', xxl: '528px' }}
+                        height={{ _: '288px', xxl: '528px' }}
+                    />
+                </ContentWrapper>
+            </PartitionContainer>
+            <PartitionContainer>
+                <ContentWrapper>
+                    <TextWrapper>
+                        <HighlightsHeader as="h3">
+                            {localize('No minimum deposit')}
+                        </HighlightsHeader>
+                        <HighlightsContent>
+                            {localize(
+                                'With no minimum deposit and low stake amounts, anyone can start trading from anywhere.',
+                            )}
+                        </HighlightsContent>
+                    </TextWrapper>
+                    <HighLightsImage
+                        margin="auto"
+                        data={data.deposit}
+                        alt="platform devices"
+                        width={{ _: '276px', xxl: '480px' }}
+                        height={{ _: '164px', xxl: '240px' }}
+                    />
+                </ContentWrapper>
+            </PartitionContainer>
+        </SectionContainer>
+    )
+}

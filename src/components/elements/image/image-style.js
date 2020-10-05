@@ -1,8 +1,9 @@
 import styled from 'styled-components'
+import { layout, space } from 'styled-system'
 
 export const ImageWrapper = styled.div`
-    width: ${props => (props.width ? props.width : '100%')};
-    height: ${props => props.height};
+    ${layout}
+    ${space}
 
     & .gatsby-image-wrapper {
         width: 100%;
