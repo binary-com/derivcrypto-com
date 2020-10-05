@@ -16,7 +16,7 @@ export const Nav = () => {
                 setHasScrolled(is_show)
             }
         }
-        document.addEventListener('scroll', handleScroll)
+        document.addEventListener('scroll', handleScroll, { passive: true })
 
         return () => {
             document.removeEventListener('scroll', handleScroll)
@@ -27,7 +27,9 @@ export const Nav = () => {
         <StyledNav has_scrolled={has_scrolled}>
             <StyledContainer>
                 <CryptoIcon src={CryptoLogo} alt="Deriv Crypto Logo" />
-                <Button primary>{localize('Login')}</Button>
+                <Button primary aria-label="login button">
+                    {localize('Login')}
+                </Button>
             </StyledContainer>
         </StyledNav>
     )

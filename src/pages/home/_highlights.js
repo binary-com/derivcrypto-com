@@ -32,7 +32,7 @@ export const Highlights = () => {
             <PartitionContainer no_padding_top>
                 <ContentWrapper>
                     <TextWrapper>
-                        <HighlightsHeader as="h3">{localize('Anywhere, anytime')}</HighlightsHeader>
+                        <HighlightsHeader as="h2">{localize('Anywhere, anytime')}</HighlightsHeader>
                         <HighlightsContent>
                             {localize(
                                 'Get on-board hassle-free, trade, and transfer funds to and from your trading account in the fewest taps on your mobile, or clicks on your computer.',
@@ -50,7 +50,7 @@ export const Highlights = () => {
             <PartitionContainer greybackground>
                 <ContentWrapper>
                     <TextWrapper>
-                        <HighlightsHeader as="h3">
+                        <HighlightsHeader as="h2">
                             {localize('Crypto wallets included')}
                         </HighlightsHeader>
                         <HighlightsContent>

@@ -1,11 +1,12 @@
 import React from 'react'
-import { InputStyle, ErrorText } from './input-style'
+import { InputStyle, ErrorText, Label } from './input-style'
 import { VFlex } from 'components/elements'
 
-export const Input = ({ error, className, ...props }) => {
+export const Input = ({ error, className, name, ...props }) => {
     return (
         <VFlex className={className}>
-            <InputStyle {...props} />
+            <Label htmlFor="email">{name}</Label>
+            <InputStyle name={name} {...props} />
             {error && <ErrorText fontSize="s">{error}</ErrorText>}
         </VFlex>
     )

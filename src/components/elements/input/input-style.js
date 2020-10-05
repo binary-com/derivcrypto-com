@@ -23,3 +23,7 @@ export const ErrorText = styled(Text)`
     color: ${({ theme }) => theme.colors.error};
     margin-top: 8px;
 `
+
+export const Label = styled.label`
+    display: none;
+`

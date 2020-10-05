@@ -84,6 +84,7 @@ export const Hero = () => {
                                     <Field name="email">
                                         {({ field }) => (
                                             <StyledInput
+                                                id="email"
                                                 error={touched.email && errors.email}
                                                 placeholder={localize('Your email')}
                                                 {...field}

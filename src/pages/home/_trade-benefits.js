@@ -60,7 +60,7 @@ export const TradeBenefits = () => {
     const data = useStaticQuery(query)
     return (
         <SectionContainer backgroundColor="background_default">
-            <Text as="h3" textAlign="center" fontSize={{ _: 'xl', xxl: '4xl' }}>
+            <Text as="h2" textAlign="center" fontSize={{ _: 'xl', xxl: '4xl' }}>
                 {localize('Trade the way you want')}
             </Text>
             <TradeBenefitsImgMobile>
