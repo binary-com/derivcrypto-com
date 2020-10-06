@@ -2,6 +2,7 @@ import React from 'react'
 import { Hero } from './home/_hero'
 import { Highlights } from './home/_highlights'
 import { TradeBenefits } from './home/_trade-benefits'
+import { TradeMarkets } from './home/_trade-markets'
 import { Reviews } from './home/_reviews'
 import { localize, WithIntl } from 'components/localization'
 import { Layout, SEO, Footer } from 'components/page-elements'
@@ -18,6 +19,7 @@ const Home = () => {
             <Hero />
             <Highlights />
             <TradeBenefits />
+            <TradeMarkets />
             <Reviews />
             <Footer />
         </Layout>

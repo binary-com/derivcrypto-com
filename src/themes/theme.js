@@ -17,6 +17,8 @@ export const theme = {
         background_default: '#ffffff',
         background_section: '#f8fafc',
         background_dark: '#0e0e0e',
+        background_grey: 'e5e5e5',
+        background_dark_grey: '#999999',
         error: '#ff4449',
         primary: '#ffc71b',
         secondary: '#2a537a',
