@@ -1,10 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { GlobalStyle } from 'themes'
 
 export const LocaleContext = React.createContext()
 
 export const LocaleContextWrapper = ({ children, pageContext: { locale, pathname } }) => {
-    return <LocaleContext.Provider value={{ locale, pathname }}>{children}</LocaleContext.Provider>
+    return (
+        <LocaleContext.Provider value={{ locale, pathname }}>
+            <GlobalStyle />
+            {children}
+        </LocaleContext.Provider>
+    )
 }
 
 LocaleContextWrapper.propTypes = {

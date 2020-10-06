@@ -1,15 +1,10 @@
 import React from 'react'
-import styled from 'styled-components'
 import BackgroundImage from 'gatsby-background-image'
 
-const StyledBackground = styled(BackgroundImage)`
-    background-color: white;
-`
-
-export const Background = ({ children, data, style, ...props }) => {
+export const Background = ({ children, data, ...props }) => {
     return (
-        <StyledBackground Tag="div" style={style} fluid={data.childImageSharp.fluid} {...props}>
+        <BackgroundImage Tag="div" fluid={data.childImageSharp.fluid} {...props}>
             {children}
-        </StyledBackground>
+        </BackgroundImage>
     )
 }
