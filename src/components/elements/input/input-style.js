@@ -25,5 +25,5 @@ export const ErrorText = styled(Text)`
 `
 
 export const Label = styled.label`
-    color: ${({ theme }) => theme.colors.primary};
+    display: none;
 `
