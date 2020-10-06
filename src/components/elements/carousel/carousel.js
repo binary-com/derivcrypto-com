@@ -14,22 +14,22 @@ import PrevButtonImage from 'images/svg/carousel/arrow-left.svg'
 import NextButtonImage from 'images/svg/carousel/arrow-right.svg'
 
 export const PrevButton = ({ enabled, onClick }) => (
-    <StyledPrevButton onClick={onClick} disabled={!enabled}>
+    <StyledPrevButton onClick={onClick} disabled={!enabled} aria-label="previous button">
         <img src={PrevButtonImage} alt="Google" />
     </StyledPrevButton>
 )
 
 export const NextButton = ({ enabled, onClick }) => (
-    <StyledNextButton onClick={onClick} disabled={!enabled}>
+    <StyledNextButton onClick={onClick} disabled={!enabled} aria-label="next button">
         <img src={NextButtonImage} alt="Google" />
     </StyledNextButton>
 )
 
 const DotButton = ({ selected, onClick, isMarkets }) =>
     isMarkets ? (
-        <StyledDots selected={selected} type="button" onClick={onClick} primary />
+        <StyledDots selected={selected} type="button" onClick={onClick} primary aria-label="dots" />
     ) : (
-        <StyledDots selected={selected} type="button" onClick={onClick} />
+        <StyledDots selected={selected} type="button" onClick={onClick} aria-label="dots" />
     )
 
 export const Carousel = ({ children, options, isMarkets }) => {

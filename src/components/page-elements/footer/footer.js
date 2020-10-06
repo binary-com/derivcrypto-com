@@ -39,11 +39,11 @@ export const Footer = () => {
                 <PartitionContainer>
                     <StyledFooterContent>
                         <TextWrapper>
-                            <HighlightFooter as="h3">
+                            <HighlightFooter as="h2">
                                 {localize('Start trading on Deriv Crypto today!')}
                             </HighlightFooter>
                             <HighlightsHeader>
-                                <HighlightFooterButton secondary>
+                                <HighlightFooterButton secondary aria-label="Get trading">
                                     {localize('Get trading')}
                                 </HighlightFooterButton>
                             </HighlightsHeader>

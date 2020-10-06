@@ -13,13 +13,13 @@ import { SectionContainer } from 'components/elements'
 
 const query = graphql`
     query {
-        anytime: file(relativePath: { eq: "home/anytime-anywhere.png" }) {
+        anytime: file(relativePath: { eq: "home/anytime-anywhere.jpg" }) {
             ...fadeIn
         }
         crypto: file(relativePath: { eq: "home/crypto-wallets.png" }) {
             ...fadeIn
         }
-        deposit: file(relativePath: { eq: "home/minimum-deposit.png" }) {
+        deposit: file(relativePath: { eq: "home/minimum-deposit.jpg" }) {
             ...fadeIn
         }
     }
@@ -32,7 +32,7 @@ export const Highlights = () => {
             <PartitionContainer no_padding_top>
                 <ContentWrapper>
                     <TextWrapper>
-                        <HighlightsHeader as="h3">{localize('Anywhere, anytime')}</HighlightsHeader>
+                        <HighlightsHeader as="h2">{localize('Anywhere, anytime')}</HighlightsHeader>
                         <HighlightsContent>
                             {localize(
                                 'Get on-board hassle-free, trade, and transfer funds to and from your trading account in the fewest taps on your mobile, or clicks on your computer.',
@@ -41,16 +41,16 @@ export const Highlights = () => {
                     </TextWrapper>
                     <HighLightsImage
                         data={data.anytime}
-                        alt="platform devices"
+                        alt="anytime"
                         width={{ _: '300px', xxl: '588px' }}
-                        height={{ _: '374px', xxl: '690px' }}
+                        height={{ _: '100%', xxl: '100%' }}
                     />
                 </ContentWrapper>
             </PartitionContainer>
             <PartitionContainer greybackground>
                 <ContentWrapper>
                     <TextWrapper>
-                        <HighlightsHeader as="h3">
+                        <HighlightsHeader as="h2">
                             {localize('Crypto wallets included')}
                         </HighlightsHeader>
                         <HighlightsContent>
@@ -62,9 +62,9 @@ export const Highlights = () => {
                     <HighLightsImage
                         margin="auto"
                         data={data.crypto}
-                        alt="platform devices"
+                        alt="platform device"
                         width={{ _: '292px', xxl: '528px' }}
-                        height={{ _: '288px', xxl: '528px' }}
+                        height={{ _: '100%', xxl: '528px' }}
                     />
                 </ContentWrapper>
             </PartitionContainer>
@@ -85,7 +85,7 @@ export const Highlights = () => {
                         data={data.deposit}
                         alt="platform devices"
                         width={{ _: '276px', xxl: '480px' }}
-                        height={{ _: '164px', xxl: '240px' }}
+                        height={{ _: '100%', xxl: '285px' }}
                     />
                 </ContentWrapper>
             </PartitionContainer>

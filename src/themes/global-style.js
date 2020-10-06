@@ -14,6 +14,7 @@ export const GlobalStyle = createGlobalStyle`
     html {
         font-size: 16px;
         color: ${({ theme }) => theme.colors.text_primary};
+        box-sizing: border-box;
     }
     body {
         font-family: 'IBM Plex Sans', sans-serif;
