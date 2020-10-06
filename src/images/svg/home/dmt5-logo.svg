@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewBox="0 0 64 64">
+    <defs>
+        <filter id="pcr06lwuga" width="256.2%" height="256.2%" x="-78.1%" y="-62.5%" filterUnits="objectBoundingBox">
+            <feOffset dy="10" in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="15"/>
+            <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0.929411765 0 0 0 0 0.929411765 0 0 0 0 0.929411765 0 0 0 1 0"/>
+        </filter>
+        <circle id="6o7irhkeib" cx="32" cy="32" r="32"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g transform="translate(-16 -3274) translate(0 3158) translate(16 116)">
+                        <use fill="#000" filter="url(#pcr06lwuga)" xlink:href="#6o7irhkeib"/>
+                        <use fill="#FFF" xlink:href="#6o7irhkeib"/>
+                    </g>
+                    <g>
+                        <path fill="#85ACB0" d="M23.636 0c3.013 0 5.455 2.442 5.455 5.455v18.181c0 3.013-2.442 5.455-5.455 5.455H5.455C2.442 29.09 0 26.649 0 23.636V5.455C0 2.442 2.442 0 5.455 0h18.181z" transform="translate(-16 -3274) translate(0 3158) translate(16 116) translate(17.455 17.455)"/>
+                        <path fill="#FFF" fill-rule="nonzero" d="M16.886 9.768l-2.072-4.15c-.051-.101-.155-.165-.269-.165-.113 0-.217.064-.268.165l-2.059 4.118 2.327 4.7 2.341-4.668zM11.714 12.755l1.336 2.7-.2.39-.91 1.819H9.265l1.445-2.887 1.005-2.009v-.013zm0-2L9.895 14.39 7.8 18.58h4.682l1.154-2.35.414-.776-2.332-4.714-.004.014zM17.04 19.445l2.083 4.191h4.213c.11.004.214-.052.27-.147.056-.095.055-.213-.001-.307l-1.878-3.737h-4.686zM17.386 12.777l.996 1.987 1.445 2.886h-2.672l-1.1-2.195 1.331-2.669v-.009zm0-1.995l-2.331 4.673 1.54 3.109h4.682l-2.095-4.205-1.818-3.586.022.009zM12.05 19.445H7.364l-1.878 3.76c-.056.094-.057.212-.001.307s.16.151.27.147h4.2l2.095-4.214zM15.482 20.345l1.19 2.382H12.41l1.2-2.395h1.873v.013zm.559-.922h-2.986l-2.096 4.213h7.164l-2.082-4.19v-.023z" transform="translate(-16 -3274) translate(0 3158) translate(16 116) translate(17.455 17.455)"/>
+                        <path d="M0 0H29.091V29.091H0z" transform="translate(-16 -3274) translate(0 3158) translate(16 116) translate(17.455 17.455)"/>
+                        <path d="M0 0H29.091V29.091H0z" transform="translate(-16 -3274) translate(0 3158) translate(16 116) translate(17.455 17.455)"/>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
