@@ -23,7 +23,7 @@ const query = graphql`
         }
         background: file(relativePath: { eq: "home/hero-background.png" }) {
             childImageSharp {
-                fluid(maxWidth: 1920, srcSetBreakpoints: [320, 576, 1280]) {
+                fluid(maxWidth: 2880, srcSetBreakpoints: [320, 1280, 1440]) {
                     ...GatsbyImageSharpFluid_withWebp_noBase64
                     originalName
                 }
