@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { useEmblaCarousel } from 'embla-carousel/react'
 import {
-    StyledDots,
     DotsWrapper,
+    StyledDots,
     StyledPrevButton,
     StyledNextButton,
     ViewPort,
@@ -10,7 +10,6 @@ import {
     Container,
     Slide,
 } from './carousel-style'
-//import { Image } from 'components/elements'
 import PrevButtonImage from 'images/svg/carousel/arrow-left.svg'
 import NextButtonImage from 'images/svg/carousel/arrow-right.svg'
 
@@ -26,11 +25,14 @@ export const NextButton = ({ enabled, onClick }) => (
     </StyledNextButton>
 )
 
-const DotButton = ({ selected, onClick }) => (
-    <StyledDots selected={selected} type="button" onClick={onClick} />
-)
+const DotButton = ({ selected, onClick, isMarkets }) =>
+    isMarkets ? (
+        <StyledDots selected={selected} type="button" onClick={onClick} primary />
+    ) : (
+        <StyledDots selected={selected} type="button" onClick={onClick} />
+    )
 
-export const Carousel = ({ children, options }) => {
+export const Carousel = ({ children, options, isMarkets }) => {
     const [emblaRef, embla] = useEmblaCarousel(options)
     const [selectedIndex, setSelectedIndex] = useState(0)
     const [scrollSnaps, setScrollSnaps] = useState([])
@@ -60,9 +62,13 @@ export const Carousel = ({ children, options }) => {
             <ViewPortWrapper>
                 <ViewPort ref={emblaRef}>
                     <Container>
-                        {children.map((child, idx) => (
-                            <Slide key={idx}>{child}</Slide>
-                        ))}
+                        {children.map((child, idx) =>
+                            isMarkets ? (
+                                <div key={idx}>{child}</div>
+                            ) : (
+                                <Slide key={idx}>{child}</Slide>
+                            ),
+                        )}
                     </Container>
                 </ViewPort>
                 <PrevButton onClick={scrollPrev} enabled={prevBtnEnabled} />
@@ -74,6 +80,7 @@ export const Carousel = ({ children, options }) => {
                         key={index}
                         selected={index === selectedIndex}
                         onClick={() => scrollTo(index)}
+                        isMarkets={isMarkets}
                     />
                 ))}
             </DotsWrapper>

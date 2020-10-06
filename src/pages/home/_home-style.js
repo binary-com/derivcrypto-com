@@ -181,6 +181,69 @@ export const StyledBackground = styled(Background)`
     }
 `
 
+export const MarketsPartitionContainer = styled(PartitionContainer)`
+    padding: 40px 0;
+    background: linear-gradient(207deg, #0e0e0e 139%, #3a3a3a -59%);
+
+    @media ${device.desktop} {
+        padding: 160px 0;
+    }
+`
+
+export const CardContainer = styled.div`
+    box-sizing: border-box;
+    background-color: #ffffff;
+    box-shadow: 20px 20px 30px 0 rgba(0, 0, 0, 0.16);
+    border-radius: 8px;
+    width: 282px;
+    height: 180px;
+    margin-top: 24px;
+    margin-right: 16px;
+`
+
+export const StyledLogo = styled(Flex)`
+    margin-top: 15px;
+    margin-left: 15px;
+`
+
+export const TradeMarkets = styled.div`
+    justify-content: center;
+
+    ${CardHeader} {
+        font-size: ${({ theme }) => theme.fontSizes['xl']};
+        color: #333333;
+        margin-left: -9px;
+        margin-top: 3px;
+    }
+    ${CardContent} {
+        margin-top: 8px;
+        color: #333333;
+    }
+`
+
+export const TradeMarketsMobile = styled(TradeMarkets)`
+    display: flex;
+    grid-gap: 16px;
+    align-items: center;
+    margin-top: 25px;
+    overflow: hidden;
+
+    @media ${device.desktop} {
+        display: none;
+    }
+`
+
+export const TradeMarketsDesktop = styled(TradeMarkets)`
+    display: none;
+    grid-template-columns: repeat(4, 282px);
+    grid-gap: 24px;
+    margin-top: 40px;
+
+    @media ${device.desktop} {
+        display: grid;
+    }
+`
+
 export const CenterText = styled(Text)`
     text-align: center;
 `
