@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { Flex } from 'components/elements'
 import { device } from 'themes'
 
@@ -9,14 +9,19 @@ export const StyledDots = styled.button`
     padding: 3px;
     outline: 0;
     cursor: pointer;
-`
+    background-color: ${({ theme }) => theme.colors.background_grey};
+    ${props => {
+        if (props.selected) {
+            if (props.primary)
+                return css`
+                    background-color: ${({ theme }) => theme.colors.primary};
+                `
 
-export const ReviewsButton = styled(StyledDots)`
-    background-color: ${props => (props.selected ? '#999999' : '#e5e5e5')};
-`
-
-export const MarketsButton = styled(StyledDots)`
-    background-color: ${props => (props.selected ? '#ffc71b' : '#e5e5e5')};
+            return css`
+                background-color: ${({ theme }) => theme.colors.background_dark_grey};
+            `
+        }
+    }}
 `
 
 export const DotsWrapper = styled(Flex)`

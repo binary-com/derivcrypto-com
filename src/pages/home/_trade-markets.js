@@ -9,7 +9,7 @@ import {
     TradeMarketsMobile,
 } from './_home-style'
 import { Flex, SectionContainer, Carousel, WhiteText } from 'components/elements'
-import { localize } from 'components/localization'
+import { Localize, localize } from 'components/localization'
 import CommoditiesLogo from 'images/svg/home/commodities.svg'
 import ForexLogo from 'images/svg/home/forex.svg'
 import SyntheticIndicesLogo from 'images/svg/home/synthetic-indices.svg'
@@ -31,26 +31,34 @@ const Card = ({ title, content, image }) => {
 
 export const TradeMarkets = () => {
     const forex = {
-        title: 'Forex',
-        content: 'Trade the world’s largest financial market with popular and exotic forex pairs.',
+        title: <Localize translate_text="Forex" />,
+        content: (
+            <Localize translate_text="Trade the world’s largest financial market with popular and exotic forex pairs." />
+        ),
         image: ForexLogo,
     }
 
     const syntheticIndices = {
-        title: 'Synthetic indices',
-        content: 'Trade synthetic markets that simulate real-world market movements.',
+        title: <Localize translate_text="Synthetic indices" />,
+        content: (
+            <Localize translate_text="Trade synthetic markets that simulate real-world market movements." />
+        ),
         image: SyntheticIndicesLogo,
     }
 
     const commodities = {
-        title: 'Commodities',
-        content: 'Trade natural resources that are central to the world’s economy.',
+        title: <Localize translate_text="Commodities" />,
+        content: (
+            <Localize translate_text="Trade natural resources that are central to the world’s economy." />
+        ),
         image: CommoditiesLogo,
     }
 
     const stockIndices = {
-        title: 'Stock indices',
-        content: 'Trade on border market trends and diversify your risk.',
+        title: <Localize translate_text="Stock indices" />,
+        content: (
+            <Localize translate_text="Trade on border market trends and diversify your risk." />
+        ),
         image: StockIndicesLogo,
     }
 

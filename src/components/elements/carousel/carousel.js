@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { useEmblaCarousel } from 'embla-carousel/react'
-import { ReviewsButton, MarketsButton } from './carousel-style'
 import {
     DotsWrapper,
+    StyledDots,
     StyledPrevButton,
     StyledNextButton,
     ViewPort,
@@ -27,9 +27,9 @@ export const NextButton = ({ enabled, onClick }) => (
 
 const DotButton = ({ selected, onClick, isMarkets }) =>
     isMarkets ? (
-        <MarketsButton selected={selected} type="button" onClick={onClick} />
+        <StyledDots selected={selected} type="button" onClick={onClick} primary />
     ) : (
-        <ReviewsButton selected={selected} type="button" onClick={onClick} />
+        <StyledDots selected={selected} type="button" onClick={onClick} />
     )
 
 export const Carousel = ({ children, options, isMarkets }) => {
