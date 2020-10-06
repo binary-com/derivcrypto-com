@@ -76,7 +76,7 @@ export const Hero = () => {
                             <Media lessThan="desktop">
                                 <StyledImage
                                     data={data.hero}
-                                    alt="platform devices"
+                                    alt="platform devices mobile"
                                     width="288px"
                                     height="161px"
                                 />
@@ -124,7 +124,7 @@ export const Hero = () => {
                         <Media greaterThanOrEqual="desktop">
                             <Image
                                 data={data.hero}
-                                alt="platform devices"
+                                alt="platform devices desktop"
                                 width="688px"
                                 height="382px"
                             />
