@@ -21,14 +21,6 @@ const query = graphql`
         hero: file(relativePath: { eq: "home/hero-image.png" }) {
             ...fadeIn
         }
-        background: file(relativePath: { eq: "home/hero-background.png" }) {
-            childImageSharp {
-                fluid(maxWidth: 2880, srcSetBreakpoints: [320, 1280, 1440]) {
-                    ...GatsbyImageSharpFluid_withWebp_noBase64
-                    originalName
-                }
-            }
-        }
     }
 `
 
@@ -53,7 +45,7 @@ export const Hero = () => {
         // noop
     }
     return (
-        <HeroBackground data={data['background']}>
+        <HeroBackground>
             <HeroContainer>
                 <Flex alignItems="center">
                     <Flex
