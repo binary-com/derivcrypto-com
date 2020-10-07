@@ -1,16 +1,9 @@
 import React from 'react'
 import { Formik, Form, Field } from 'formik'
 import { graphql, useStaticQuery } from 'gatsby'
-import {
-    StyledInput,
-    StyledText,
-    LogoWrapper,
-    StyledImage,
-    HeroContainer,
-    HeroBackground,
-} from './_home-style'
+import { StyledInput, StyledText, LogoWrapper, StyledImage, HeroContainer } from './_home-style'
 import { Media } from 'themes'
-import { WhiteText, Button, Flex, Image, Text } from 'components/elements'
+import { WhiteText, Button, Flex, Image, Text, Background } from 'components/elements'
 import { localize, Localize } from 'components/localization'
 import { useMounted } from 'hooks'
 import FacebookLogo from 'images/svg/home/facebook.svg'
@@ -18,6 +11,9 @@ import GoogleLogo from 'images/svg/home/google.svg'
 
 const query = graphql`
     query {
+        hero_background: file(relativePath: { eq: "home/hero-background.png" }) {
+            ...fadeIn
+        }
         hero_desktop: file(relativePath: { eq: "home/desktop/hero-image.png" }) {
             ...desktopFadeIn
         }
@@ -45,7 +41,7 @@ export const Hero = () => {
     }
 
     return (
-        <HeroBackground>
+        <Background data={data['hero_background']}>
             <HeroContainer>
                 <Flex alignItems="center">
                     <Flex
@@ -128,6 +124,6 @@ export const Hero = () => {
                     </div>
                 </Flex>
             </HeroContainer>
-        </HeroBackground>
+        </Background>
     )
 }

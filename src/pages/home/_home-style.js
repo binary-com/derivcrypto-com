@@ -247,7 +247,3 @@ export const TradeMarketsDesktop = styled(TradeMarkets)`
 export const CenterText = styled(Text)`
     text-align: center;
 `
-
-export const HeroBackground = styled.section`
-    background: linear-gradient(207deg, #0e0e0e 139%, #3a3a3a -59%);
-`
