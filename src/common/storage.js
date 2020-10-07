@@ -187,22 +187,16 @@ CookieStorage.prototype = {
     },
 }
 
-let SessionStore, LocalStore
+let LocalStore
 
 if (isBrowser()) {
     if (isStorageSupported(window.localStorage)) {
         LocalStore = new Store(window.localStorage)
     }
-    if (isStorageSupported(window.sessionStorage)) {
-        SessionStore = new Store(window.sessionStorage)
-    }
 
     if (!LocalStore) {
         LocalStore = new InScriptStore()
     }
-    if (!SessionStore) {
-        SessionStore = new InScriptStore()
-    }
 }
 
-export { CookieStorage, isStorageSupported, LocalStore, SessionStore, State }
+export { CookieStorage, isStorageSupported, LocalStore, State }

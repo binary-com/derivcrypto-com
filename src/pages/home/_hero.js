@@ -18,8 +18,11 @@ import GoogleLogo from 'images/svg/home/google.svg'
 
 const query = graphql`
     query {
-        hero: file(relativePath: { eq: "home/hero-image.png" }) {
-            ...fadeIn
+        hero_desktop: file(relativePath: { eq: "home/desktop/hero-image.png" }) {
+            ...desktopFadeIn
+        }
+        hero_mobile: file(relativePath: { eq: "home/mobile/hero-image.png" }) {
+            ...mobileFadeIn
         }
     }
 `
@@ -41,9 +44,6 @@ export const Hero = () => {
         return errors
     }
 
-    const handleSubmit = () => {
-        // noop
-    }
     return (
         <HeroBackground>
             <HeroContainer>
@@ -75,18 +75,14 @@ export const Hero = () => {
                         {is_mounted && (
                             <Media lessThan="desktop">
                                 <StyledImage
-                                    data={data.hero}
+                                    data={data['hero_mobile']}
                                     alt="platform devices mobile"
                                     width="288px"
                                     height="161px"
                                 />
                             </Media>
                         )}
-                        <Formik
-                            initialValues={{ email: '' }}
-                            validate={handleValidation}
-                            onSubmit={handleSubmit}
-                        >
+                        <Formik initialValues={{ email: '' }} validate={handleValidation}>
                             {({ errors, touched }) => (
                                 <Form>
                                     <Field name="email">
@@ -123,7 +119,7 @@ export const Hero = () => {
                     <div>
                         <Media greaterThanOrEqual="desktop">
                             <Image
-                                data={data.hero}
+                                data={data['hero_desktop']}
                                 alt="platform devices desktop"
                                 width="688px"
                                 height="382px"
