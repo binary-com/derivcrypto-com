@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /404/
+Disallow: /ach/
+Sitemap: https://derivcrypto.com/sitemap.xml
+Host: https://derivcrypto.com
