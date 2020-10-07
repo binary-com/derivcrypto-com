@@ -12,8 +12,6 @@ const toISOFormat = date => {
     return ''
 }
 
-const toHashFormat = string => string.replace(/\s+/g, '-').toLowerCase() // change space to dash then lowercase all
-
 const isBrowser = () => typeof window !== 'undefined'
 
 const isEmptyObject = obj => {
@@ -24,13 +22,6 @@ const isEmptyObject = obj => {
         })
     }
     return is_empty
-}
-
-const scrollTop = () => {
-    if (isBrowser()) {
-        document.body.scrollTop = 0
-        document.documentElement.scrollTop = 0
-    }
 }
 
 const cloneObject = obj =>
@@ -77,8 +68,6 @@ export {
     getLocationHash,
     PromiseClass,
     sanitize,
-    scrollTop,
     sentenceCase,
     toISOFormat,
-    toHashFormat,
 }

@@ -1,29 +1,44 @@
 import styled from 'styled-components'
 import { Text } from 'components/elements'
 
-export const InputStyle = styled.input`
-    width: 100%;
+export const FormGroup = styled.div`
     border: 1px solid ${({ theme }) => theme.colors.background_default};
     border-radius: 4px;
-    padding: 12px;
-    font-size: ${({ theme }) => theme.fontSizes.s};
 
-    &:hover,
-    &:focus,
-    &:active {
+    &:focus-within {
         border-color: ${({ theme }) => theme.colors.primary};
-        outline: none;
-    }
-    &::placeholder {
-        color: ${({ theme }) => theme.colors.text_less_prominent};
     }
 `
 
 export const ErrorText = styled(Text)`
     color: ${({ theme }) => theme.colors.error};
     margin-top: 8px;
+    font-size: ${({ theme }) => theme.fontSizes.xs};
 `
 
-export const Label = styled.label`
-    display: none;
+export const StyledInput = styled.input`
+    appearance: none;
+    border: none;
+    outline: none;
+    padding: 12px;
+    display: block;
+    width: 100%;
+    font-size: ${({ theme }) => theme.fontSizes.m};
+
+    &:not(:placeholder-shown) ~ span {
+        opacity: 1;
+        font-size: ${({ theme }) => theme.fontSizes.xs};
+        background-color: ${({ background, theme }) =>
+            background ?? theme.colors.background_default};
+        color: ${({ theme }) => theme.colors.text_less_prominent};
+        padding: 2px 4px;
+        margin: -58px 0 0 16px;
+    }
+`
+
+export const Legend = styled.span`
+    position: absolute;
+    margin-top: -60px;
+    opacity: 0;
+    transition: all 0.2s ease-in-out;
 `

@@ -41,7 +41,7 @@ export const Highlights = () => {
                     </TextWrapper>
                     <HighLightsImage
                         data={data.anytime}
-                        alt="anytime"
+                        alt="highlights anytime"
                         width={{ _: '300px', xxl: '588px' }}
                         height={{ _: '100%', xxl: '100%' }}
                     />
@@ -62,7 +62,7 @@ export const Highlights = () => {
                     <HighLightsImage
                         margin="auto"
                         data={data.crypto}
-                        alt="platform device"
+                        alt="crypto wallet"
                         width={{ _: '292px', xxl: '528px' }}
                         height={{ _: '100%', xxl: '528px' }}
                     />
@@ -83,7 +83,7 @@ export const Highlights = () => {
                     <HighLightsImage
                         margin="auto"
                         data={data.deposit}
-                        alt="platform devices"
+                        alt="deposit"
                         width={{ _: '276px', xxl: '480px' }}
                         height={{ _: '100%', xxl: '285px' }}
                     />

@@ -247,7 +247,3 @@ export const TradeMarketsDesktop = styled(TradeMarkets)`
 export const CenterText = styled(Text)`
     text-align: center;
 `
-
-export const HeroBackground = styled(Background)`
-    background: ${({ theme }) => theme.colors.background_dark};
-`

@@ -1,13 +1,16 @@
 import React from 'react'
-import { InputStyle, ErrorText, Label } from './input-style'
-import { VFlex } from 'components/elements'
+import { FormGroup, StyledInput, Legend, ErrorText } from './input-style'
 
-export const Input = ({ error, className, id, ...props }) => {
+export const Input = ({ error, className, placeholder, ...props }) => {
     return (
-        <VFlex className={className}>
-            <Label htmlFor={id}>{id}</Label>
-            <InputStyle id={id} {...props} />
-            {error && <ErrorText fontSize="s">{error}</ErrorText>}
-        </VFlex>
+        <>
+            <FormGroup className={className}>
+                <label class="legend-top">
+                    <StyledInput type="text" placeholder={placeholder} {...props} />
+                    <Legend>{placeholder}</Legend>
+                </label>
+            </FormGroup>
+            {error && <ErrorText>{error}</ErrorText>}
+        </>
     )
 }

@@ -21,3 +21,25 @@ export const fadeIn = graphql`
         }
     }
 `
+
+export const desktopFadeIn = graphql`
+    fragment desktopFadeIn on File {
+        childImageSharp {
+            fluid(maxWidth: 800, srcSetBreakpoints: [1280]) {
+                ...GatsbyImageSharpFluid_withWebp_noBase64
+                originalName
+            }
+        }
+    }
+`
+
+export const mobileFadeIn = graphql`
+    fragment mobileFadeIn on File {
+        childImageSharp {
+            fluid(maxWidth: 800, srcSetBreakpoints: [300]) {
+                ...GatsbyImageSharpFluid_withWebp_noBase64
+                originalName
+            }
+        }
+    }
+`
