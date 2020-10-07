@@ -116,7 +116,7 @@ commands:
       - run:
           name: Building docker image
           command: |
-            docker build -t ${DOCKHUB_ORGANISATION}/deriv-com:${CIRCLE_SHA1} -t ${DOCKHUB_ORGANISATION}/deriv-com:<< parameters.docker_image_tag >> .
+            docker build -t ${DOCKHUB_ORGANISATION}/derivcrypto-com:${CIRCLE_SHA1} -t ${DOCKHUB_ORGANISATION}/derivcrypto-com:<< parameters.docker_image_tag >> .
 
   docker_push:
     description: 'Push image to docker hub'
@@ -133,27 +133,30 @@ commands:
       k8s_svc_name:
         type: string
         default: 'staging-derivcrypto-com'
-    steps:
-      - k8s/install-kubectl
-      - run:
-          name: Deploying to k8s cluster for service << parameters.k8s_svc_name >>
-          command: |
-            echo $CA_CRT | base64 --decode > ca.crt
-            kubectl --server=${KUBE_SERVER} --certificate-authority=ca.crt --token=$SERVICEACCOUNT_TOKEN set image deployment/<< parameters.k8s_svc_name >> << parameters.k8s_svc_name >>=${DOCKHUB_ORGANISATION}/derivcrypto-com:${CIRCLE_TAG}
-
-  k8s_deploy_staging:
-    description: 'Deploy to k8s cluster'
-    parameters:
-      k8s_svc_name:
+      k8s_image_name:
         type: string
-        default: 'staging-deriv-com'
+        default: 'derivcrypto-com'
     steps:
       - k8s/install-kubectl
       - run:
-          name: Deploying to k8s cluster for service << parameters.k8s_svc_name >>
+          name: Deploying to k8s cluster for service deriv-app
           command: |
-            echo $CA_CRT | base64 --decode > ca.crt
-            kubectl --server=${KUBE_SERVER} --certificate-authority=ca.crt --token=$SERVICEACCOUNT_TOKEN set image deployment/<< parameters.k8s_svc_name >> << parameters.k8s_svc_name >>=${DOCKHUB_ORGANISATION}/deriv-com:${CIRCLE_SHA1}
+            TAG=${CIRCLE_TAG:-$CIRCLE_SHA1}
+            for SERVER_ID in {1..5}
+              do
+                KUBE_SERVER_REF="KUBE_SERVER_$SERVER_ID"
+                SERVICEACCOUNT_TOKEN_REF="SERVICEACCOUNT_TOKEN_$SERVER_ID"
+                CA_CRT_REF="CA_CRT_$SERVER_ID"
+                if [ ! -z "${!KUBE_SERVER_REF}" ]
+                then
+                  echo "Deploying to cluster $SERVER_ID"
+                  CA_CRT="${!CA_CRT_REF}"
+                  KUBE_SERVER="${!KUBE_SERVER_REF}"
+                  SERVICEACCOUNT_TOKEN="${!SERVICEACCOUNT_TOKEN_REF}"
+                  echo $CA_CRT | base64 --decode > ca.crt
+                  kubectl --server=${KUBE_SERVER} --certificate-authority=ca.crt --token=$SERVICEACCOUNT_TOKEN set image deployment/<< parameters.k8s_svc_name >> << parameters.k8s_svc_name >>=${DOCKHUB_ORGANISATION}/<< parameters.k8s_image_name >>:${TAG}
+                fi
+              done
 
 jobs:
   test:
@@ -181,7 +184,9 @@ jobs:
           target_branch: 'staging'
       - docker_build_staging
       - docker_push
-      - k8s_deploy_staging
+      - k8s_deploy:
+          k8s_svc_name: staging-derivcrypto-com
+          k8s_image_name: derivcrypto-com
       - notify_slack
 
   release_production:
@@ -200,7 +205,8 @@ jobs:
           docker_image_tag: latest
       - docker_push
       - k8s_deploy:
-          k8s_svc_name: 'production-derivcrypto-com'
+          k8s_svc_name: production-derivcrypto-com
+          k8s_image_name: derivcrypto-com
       - notify_slack
 
 workflows:
