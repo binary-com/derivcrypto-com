@@ -23,7 +23,7 @@ export const fadeIn = graphql`
 `
 
 export const desktopFadeIn = graphql`
-    fragment fadeIn on File {
+    fragment desktopFadeIn on File {
         childImageSharp {
             fluid(maxWidth: 800, srcSetBreakpoints: [1280]) {
                 ...GatsbyImageSharpFluid_withWebp_noBase64
@@ -33,8 +33,8 @@ export const desktopFadeIn = graphql`
     }
 `
 
-export const mobilFadeIn = graphql`
-    fragment fadeIn on File {
+export const mobileFadeIn = graphql`
+    fragment mobileFadeIn on File {
         childImageSharp {
             fluid(maxWidth: 800, srcSetBreakpoints: [300]) {
                 ...GatsbyImageSharpFluid_withWebp_noBase64
