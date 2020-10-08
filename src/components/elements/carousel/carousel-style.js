@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Flex } from 'components/elements'
+import { Flex, Text, VFlex } from 'components/elements'
 import { device } from 'themes'
 
 export const StyledDots = styled.button`
@@ -18,6 +18,19 @@ export const DotsWrapper = styled(Flex)`
 
     @media ${device.tablet} {
         display: none;
+    }
+`
+
+export const SecondaryDotsWrapper = styled(DotsWrapper)`
+    display: none;
+
+    @media ${device.tablet} {
+        display: inherit;
+        margin-top: -18px;
+    }
+
+    @media ${device.laptop} {
+        margin-left: 80px;
     }
 `
 
@@ -65,4 +78,28 @@ export const StyledNextButton = styled(StyledPrevButton)`
     @media ${device.desktopL} {
         right: -12px;
     }
+`
+
+export const CardContent = styled(Text)`
+    display: none;
+
+    @media ${device.tablet} {
+        display: inherit;
+    }
+`
+
+export const BottomCard = styled(VFlex)`
+    width: 100px;
+    height: 74px;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-top: ${props => (props.selected ? '1px solid #ffc71b' : 'none')};
+`
+
+export const LearnMore = styled.a`
+    color: #3c77ae;
+    font-size: 8px;
+    text-decoration: none;
+    margin-top: 8px;
 `

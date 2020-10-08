@@ -31,19 +31,34 @@ const query = graphql`
 
 const SlideContent = ({ icon, header, description, btntext, image }) => {
     return (
-        <VFlex alignItems={'start'}>
-            <img src={icon} alt="" />
-            <Text mt={'m'} mb={'m'} fontSize={{ _: 'xl' }} fontWeight={'bold'}>
-                {header}
-            </Text>
-            <Text mb={'m'}>{description}</Text>
-            <Button mb={'m'} primary>
-                {btntext}
-            </Button>
-            <Flex height={221} margin={'auto'}>
-                <ShadowImage data={image} width={271} height={166} margin={'auto'}></ShadowImage>
+        <Flex
+            width={{ lg: 800, xl: 1000 }}
+            height={{ md: 265, xl: 310 }}
+            flexDirection={{ _: 'column', md: 'row' }}
+            alignItems={'start'}
+            margin={{ lg: 'auto' }}
+        >
+            <VFlex width={{ md: 287, xl: 359, xxl: 432 }} alignItems={'start'}>
+                <img src={icon} alt="" />
+                <Text mt={'m'} mb={'m'} fontSize={{ _: 'xl', xxl: '2xl' }} fontWeight={'bold'}>
+                    {header}
+                </Text>
+                <Text fontSize={{ xl: 'lg', xxl: 'xl' }} mb={'m'}>
+                    {description}
+                </Text>
+                <Button mb={'m'} primary>
+                    {btntext}
+                </Button>
+            </VFlex>
+            <Flex height={{ _: 195, md: 215, xl: 287 }} margin={'auto'}>
+                <ShadowImage
+                    data={image}
+                    width={{ _: 271, md: 352, xl: 444 }}
+                    height={{ _: 166, md: 215, xl: 272 }}
+                    margin={'auto'}
+                ></ShadowImage>
             </Flex>
-        </VFlex>
+        </Flex>
     )
 }
 
@@ -76,15 +91,47 @@ export const TradingPlatformsTypes = () => {
         image: data.dbot,
     }
 
+    const marginslide = {
+        header: localize('Margin'),
+        content: localize(
+            'Trade with leverage and low spreads for better returns on successful trades.',
+        ),
+    }
+
+    const optionslide = {
+        header: localize('Options'),
+        content: localize('Earn fixed payouts by predicting an asset’s price movement.'),
+    }
+
+    const multiplierslide = {
+        header: localize('Multipliers'),
+        content: localize('Combine the upside of margin trading with the simplicity of options.'),
+    }
+
+    const activecardindex = [
+        [0, 1],
+        [1, 2],
+        [2, 0],
+    ]
     const slides = [dtrader, dmt5, dbot]
+    const tradecards = [marginslide, optionslide, multiplierslide]
 
     return (
         <SectionContainer backgroundColor={'background_section'}>
             <Container>
-                <Text mb={'m'} fontSize={{ _: 'xl' }} textAlign={'center'} fontWeight={'bold'}>
+                <Text
+                    mb={'m'}
+                    fontSize={{ _: 'xl', xxl: '4xl' }}
+                    textAlign={'center'}
+                    fontWeight={'bold'}
+                >
                     {localize('Trading platforms and trade types')}
                 </Text>
-                <Carousel>
+                <Carousel
+                    activecardindexes={activecardindex}
+                    bottomcardsdata={tradecards}
+                    secondary
+                >
                     {slides.map((slide, idx) => (
                         <Carousel.Item key={idx}>
                             <SlideContent

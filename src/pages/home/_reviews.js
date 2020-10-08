@@ -42,6 +42,8 @@ const Card = ({ name, quote, location, image }) => {
 export const Reviews = () => {
     const data = useStaticQuery(query)
 
+    const datas = ['first', 'second', 'third']
+
     const fernando = {
         name: 'Fernando Aguilar',
         location: <Localize translate_text="Bolivia" />,
@@ -74,7 +76,7 @@ export const Reviews = () => {
                 >
                     {localize('More than a million traders from around the globe have trusted us.')}
                 </Text>
-                <Carousel options={{ loop: true }}>
+                <Carousel data={datas} primary options={{ loop: true }}>
                     {clients.map((client, idx) => (
                         <Carousel.Item key={idx}>
                             <Card

@@ -3,14 +3,19 @@ import { useEmblaCarousel } from 'embla-carousel/react'
 import {
     StyledDots,
     DotsWrapper,
+    SecondaryDotsWrapper,
     StyledPrevButton,
     StyledNextButton,
     ViewPort,
     ViewPortWrapper,
     Container,
     Slide,
+    CardContent,
+    BottomCard,
+    LearnMore,
 } from './carousel-style'
-//import { Image } from 'components/elements'
+import { Flex, Text } from 'components/elements'
+import { localize } from 'components/localization'
 import PrevButtonImage from 'images/svg/carousel/arrow-left.svg'
 import NextButtonImage from 'images/svg/carousel/arrow-right.svg'
 
@@ -30,7 +35,14 @@ const DotButton = ({ selected, onClick }) => (
     <StyledDots selected={selected} type="button" onClick={onClick} />
 )
 
-export const Carousel = ({ children, options }) => {
+export const Carousel = ({
+    children,
+    options,
+    primary,
+    secondary,
+    bottomcardsdata,
+    activecardindexes,
+}) => {
     const [emblaRef, embla] = useEmblaCarousel(options)
     const [selectedIndex, setSelectedIndex] = useState(0)
     const [scrollSnaps, setScrollSnaps] = useState([])
@@ -57,26 +69,73 @@ export const Carousel = ({ children, options }) => {
 
     return (
         <div>
-            <ViewPortWrapper>
-                <ViewPort ref={emblaRef}>
-                    <Container>
-                        {children.map((child, idx) => (
-                            <Slide key={idx}>{child}</Slide>
+            {primary && (
+                <div>
+                    <ViewPortWrapper>
+                        <ViewPort ref={emblaRef}>
+                            <Container>
+                                {children.map((child, idx) => (
+                                    <Slide key={idx}>{child}</Slide>
+                                ))}
+                            </Container>
+                        </ViewPort>
+                        <PrevButton onClick={scrollPrev} enabled={prevBtnEnabled} />
+                        <NextButton onClick={scrollNext} enabled={nextBtnEnabled} />
+                    </ViewPortWrapper>
+                    <DotsWrapper>
+                        {scrollSnaps.map((_, index) => (
+                            <DotButton
+                                key={index}
+                                selected={index === selectedIndex}
+                                onClick={() => scrollTo(index)}
+                            />
                         ))}
-                    </Container>
-                </ViewPort>
-                <PrevButton onClick={scrollPrev} enabled={prevBtnEnabled} />
-                <NextButton onClick={scrollNext} enabled={nextBtnEnabled} />
-            </ViewPortWrapper>
-            <DotsWrapper>
-                {scrollSnaps.map((_, index) => (
-                    <DotButton
-                        key={index}
-                        selected={index === selectedIndex}
-                        onClick={() => scrollTo(index)}
-                    />
-                ))}
-            </DotsWrapper>
+                    </DotsWrapper>
+                </div>
+            )}
+            {secondary && (
+                <div>
+                    <div>
+                        <ViewPortWrapper>
+                            <ViewPort ref={emblaRef}>
+                                <Container>
+                                    {children.map((child, idx) => (
+                                        <Slide key={idx}>{child}</Slide>
+                                    ))}
+                                </Container>
+                            </ViewPort>
+                        </ViewPortWrapper>
+                        <SecondaryDotsWrapper>
+                            {scrollSnaps.map((_, index) => (
+                                <DotButton
+                                    key={index}
+                                    selected={index === selectedIndex}
+                                    onClick={() => scrollTo(index)}
+                                />
+                            ))}
+                        </SecondaryDotsWrapper>
+                    </div>
+                    <div>
+                        <Flex>
+                            {bottomcardsdata &&
+                                bottomcardsdata.map((data, index) => (
+                                    <BottomCard
+                                        selected={activecardindexes[selectedIndex].includes(index)}
+                                    >
+                                        <Text fontSize={{ _: 'm' }} fontWeight={'bold'}>
+                                            {data.header}
+                                        </Text>
+                                        <CardContent>{data.content}</CardContent>
+
+                                        <LearnMore href="https://deriv.com">
+                                            {localize('Learn more >')}
+                                        </LearnMore>
+                                    </BottomCard>
+                                ))}
+                        </Flex>
+                    </div>
+                </div>
+            )}
         </div>
     )
 }
