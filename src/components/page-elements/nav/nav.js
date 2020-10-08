@@ -6,7 +6,7 @@ import { localize } from 'components/localization'
 import CryptoLogo from 'images/svg/nav/crypto-logo.svg'
 
 export const Nav = () => {
-    const [has_scrolled, setHasScrolled] = React.useState(true)
+    const [has_scrolled, setHasScrolled] = React.useState(false)
     const navRef = React.useRef()
     const minimum_scroll_height = 50
     const handleScroll = () => {

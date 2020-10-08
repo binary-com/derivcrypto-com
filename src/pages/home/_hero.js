@@ -1,16 +1,9 @@
 import React from 'react'
 import { Formik, Form, Field } from 'formik'
 import { graphql, useStaticQuery } from 'gatsby'
-import {
-    StyledInput,
-    StyledText,
-    LogoWrapper,
-    StyledImage,
-    HeroContainer,
-    HeroBackground,
-} from './_home-style'
+import { StyledInput, StyledText, LogoWrapper, StyledImage, HeroContainer } from './_home-style'
 import { Media } from 'themes'
-import { WhiteText, Button, Flex, Image, Text } from 'components/elements'
+import { WhiteText, Button, Flex, Image, Text, Background } from 'components/elements'
 import { localize, Localize } from 'components/localization'
 import { useMounted } from 'hooks'
 import FacebookLogo from 'images/svg/home/facebook.svg'
@@ -18,16 +11,14 @@ import GoogleLogo from 'images/svg/home/google.svg'
 
 const query = graphql`
     query {
-        hero: file(relativePath: { eq: "home/hero-image.png" }) {
+        hero_background: file(relativePath: { eq: "home/hero-background.png" }) {
             ...fadeIn
         }
-        background: file(relativePath: { eq: "home/hero-background.png" }) {
-            childImageSharp {
-                fluid(maxWidth: 2880, srcSetBreakpoints: [320, 1280, 1440]) {
-                    ...GatsbyImageSharpFluid_withWebp_noBase64
-                    originalName
-                }
-            }
+        hero_desktop: file(relativePath: { eq: "home/desktop/hero-image.png" }) {
+            ...desktopFadeIn
+        }
+        hero_mobile: file(relativePath: { eq: "home/mobile/hero-image.png" }) {
+            ...mobileFadeIn
         }
     }
 `
@@ -49,11 +40,8 @@ export const Hero = () => {
         return errors
     }
 
-    const handleSubmit = () => {
-        // noop
-    }
     return (
-        <HeroBackground data={data['background']}>
+        <Background data={data['hero_background']}>
             <HeroContainer>
                 <Flex alignItems="center">
                     <Flex
@@ -83,18 +71,14 @@ export const Hero = () => {
                         {is_mounted && (
                             <Media lessThan="desktop">
                                 <StyledImage
-                                    data={data.hero}
-                                    alt="platform devices"
+                                    data={data['hero_mobile']}
+                                    alt="platform devices mobile"
                                     width="288px"
                                     height="161px"
                                 />
                             </Media>
                         )}
-                        <Formik
-                            initialValues={{ email: '' }}
-                            validate={handleValidation}
-                            onSubmit={handleSubmit}
-                        >
+                        <Formik initialValues={{ email: '' }} validate={handleValidation}>
                             {({ errors, touched }) => (
                                 <Form>
                                     <Field name="email">
@@ -131,8 +115,8 @@ export const Hero = () => {
                     <div>
                         <Media greaterThanOrEqual="desktop">
                             <Image
-                                data={data.hero}
-                                alt="platform devices"
+                                data={data['hero_desktop']}
+                                alt="platform devices desktop"
                                 width="688px"
                                 height="382px"
                             />
@@ -140,6 +124,6 @@ export const Hero = () => {
                     </div>
                 </Flex>
             </HeroContainer>
-        </HeroBackground>
+        </Background>
     )
 }
