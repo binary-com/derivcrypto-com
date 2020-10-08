@@ -1,5 +1,6 @@
 import React from 'react'
 import { StyledNav, CryptoIcon, StyledContainer } from './nav-style'
+import Login from 'common/login'
 import { Button } from 'components/elements'
 import { localize } from 'components/localization'
 import CryptoLogo from 'images/svg/nav/crypto-logo.svg'
@@ -23,11 +24,15 @@ export const Nav = () => {
         }
     }, [])
 
+    const handleLogin = () => {
+        Login.redirectToLogin()
+    }
+
     return (
         <StyledNav has_scrolled={has_scrolled}>
             <StyledContainer>
                 <CryptoIcon src={CryptoLogo} alt="Deriv Crypto Logo" />
-                <Button primary aria-label="login button">
+                <Button onClick={handleLogin} primary aria-label="login button">
                     {localize('Login')}
                 </Button>
             </StyledContainer>
