@@ -26,6 +26,7 @@ export const Text = styled(({ as = 'p', size = 'm', children, ...props }) =>
         return theme.fontSizes.m
     }};
     line-height: 1.5;
+    text-align: ${({ text_align }) => text_align};
     ${space}
     ${color}
     ${layout}

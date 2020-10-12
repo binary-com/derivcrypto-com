@@ -1,10 +1,14 @@
 import React from 'react'
 import { Formik, Form, Field } from 'formik'
 import { graphql, useStaticQuery } from 'gatsby'
+import Cookies from 'js-cookie'
 import { StyledInput, StyledText, LogoWrapper, StyledImage, HeroContainer } from './_home-style'
 import { Media } from 'themes'
 import { WhiteText, Button, Flex, Image, Text, Background } from 'components/elements'
 import { localize, Localize } from 'components/localization'
+import { BinarySocketBase } from 'websocket/socket_base'
+import TrafficSource from 'common/traffic-source'
+import { CookieStorage, LocalStore } from 'common/storage'
 import { useMounted } from 'hooks'
 import FacebookLogo from 'images/svg/home/facebook.svg'
 import GoogleLogo from 'images/svg/home/google.svg'
@@ -38,6 +42,57 @@ export const Hero = () => {
         }
 
         return errors
+    }
+
+    const getVerifyEmailRequest = email => {
+        const utm_data = TrafficSource.getData()
+        const affiliate_token = Cookies.getJSON('affiliate_tracking')
+        const signup_device_cookie = new CookieStorage('signup_device')
+        const signup_device = signup_device_cookie.get('signup_device')
+        const date_first_contact_cookie = new CookieStorage('date_first_contact')
+        const date_first_contact = date_first_contact_cookie.get('date_first_contact')
+        const gclid = LocalStore.get('gclid')
+
+        return {
+            verify_email: email,
+            type: 'account_opening',
+            url_parameters: {
+                utm_source: TrafficSource.getSource(utm_data),
+                ...(utm_data.utm_campaign && {
+                    utm_medium: utm_data.utm_medium,
+                    utm_campaign: utm_data.utm_campaign,
+                }),
+                ...(affiliate_token && { affiliate_token: affiliate_token }),
+                ...(gclid && { gclid_url: gclid }),
+                ...(signup_device && { signup_device: signup_device }),
+                ...(date_first_contact && {
+                    date_first_contact: date_first_contact,
+                }),
+            },
+        }
+    }
+
+    const handleSubmit = (values, { setSubmitting, setFieldError, resetForm, setStatus }) => {
+        setSubmitting(true)
+        const verify_email_req = getVerifyEmailRequest(values.email)
+        const binary_socket = BinarySocketBase.init()
+
+        binary_socket.onopen = () => {
+            binary_socket.send(JSON.stringify(verify_email_req))
+        }
+        binary_socket.onmessage = msg => {
+            const response = JSON.parse(msg.data)
+            if (response.error) {
+                binary_socket.close()
+                setSubmitting(false)
+                setFieldError('email', response.error.message)
+            }
+
+            setStatus('success')
+            binary_socket.close()
+            setSubmitting(false)
+            resetForm({})
+        }
     }
 
     return (
@@ -78,8 +133,12 @@ export const Hero = () => {
                                 />
                             </Media>
                         )}
-                        <Formik initialValues={{ email: '' }} validate={handleValidation}>
-                            {({ errors, touched }) => (
+                        <Formik
+                            initialValues={{ email: '' }}
+                            validate={handleValidation}
+                            onSubmit={handleSubmit}
+                        >
+                            {({ errors, touched, status, dirty, isSubmitting }) => (
                                 <Form>
                                     <Field name="email">
                                         {({ field }) => (
@@ -92,9 +151,21 @@ export const Hero = () => {
                                         )}
                                     </Field>
 
-                                    <Button type="submit" primary width={1} mt="xs" mb="m">
+                                    <Button
+                                        disabled={!dirty || isSubmitting}
+                                        type="submit"
+                                        primary
+                                        width={1}
+                                        mt="xs"
+                                        mb="m"
+                                    >
                                         {localize('Get started')}
                                     </Button>
+                                    {status === 'success' && (
+                                        <Text size="xs" color="secondary">
+                                            {localize('Success! Please check your email address')}
+                                        </Text>
+                                    )}
                                 </Form>
                             )}
                         </Formik>

@@ -139,7 +139,7 @@ commands:
     steps:
       - k8s/install-kubectl
       - run:
-          name: Deploying to k8s cluster for service deriv-app
+          name: Deploying to k8s cluster for service deriv-crypto
           command: |
             TAG=${CIRCLE_TAG:-$CIRCLE_SHA1}
             for SERVER_ID in {1..5}
