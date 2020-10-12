@@ -3,6 +3,7 @@ import { Formik, Form, Field } from 'formik'
 import { graphql, useStaticQuery } from 'gatsby'
 import { StyledInput, StyledText, LogoWrapper, StyledImage, HeroContainer } from './_home-style'
 import { Media } from 'themes'
+import Login from 'common/login'
 import { WhiteText, Button, Flex, Image, Text, Background } from 'components/elements'
 import { localize, Localize } from 'components/localization'
 import { useMounted } from 'hooks'
@@ -38,6 +39,13 @@ export const Hero = () => {
         }
 
         return errors
+    }
+
+    const handleSocialSignup = e => {
+        e.preventDefault()
+
+        const data_provider = e.currentTarget.getAttribute('data-provider')
+        Login.initOneAll(data_provider)
     }
 
     return (
@@ -104,10 +112,10 @@ export const Hero = () => {
                                 {localize('Or sign up with')}
                             </WhiteText>
 
-                            <LogoWrapper>
+                            <LogoWrapper onClick={handleSocialSignup} data-provider="google">
                                 <img src={GoogleLogo} alt="Google" />
                             </LogoWrapper>
-                            <LogoWrapper>
+                            <LogoWrapper onClick={handleSocialSignup} data-provider="facebook">
                                 <img src={FacebookLogo} alt="Facebook" />
                             </LogoWrapper>
                         </Flex>

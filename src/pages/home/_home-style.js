@@ -42,6 +42,7 @@ export const StyledText = styled(WhiteText)`
 `
 
 export const LogoWrapper = styled(Flex)`
+    cursor: pointer;
     margin-left: 8px;
 `
 
