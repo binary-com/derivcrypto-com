@@ -82,9 +82,16 @@ export const StyledNextButton = styled(StyledPrevButton)`
 
 export const CardContent = styled(Text)`
     display: none;
+    font-size: 14px;
+    text-align: center;
 
     @media ${device.tablet} {
         display: inherit;
+        padding: 8px 11px;
+    }
+
+    @media ${device.laptop} {
+        padding: 8px 32px;
     }
 `
 
@@ -93,8 +100,32 @@ export const BottomCard = styled(VFlex)`
     height: 74px;
     align-items: center;
     justify-content: center;
-    background-color: white;
-    border-top: ${props => (props.selected ? '1px solid #ffc71b' : 'none')};
+    background-color: ${({ theme }) => theme.colors.background_default};
+    border-left: 1px solid rgba(229, 229, 229, 0.8);
+    border-bottom: ${props => (props.selected ? 'unset' : '1px solid rgba(229, 229, 229, 0.8)')};
+    border-top: ${props => (props.selected ? '2px solid' : '1px solid')};
+    border-top-color: ${props =>
+        props.selected ? ({ theme }) => theme.colors.primary : 'rgba(229, 229, 229, 0.8)'};
+    box-shadow: ${props => (props.selected ? '0 32px 26px -24px rgba(0,0,0,0.1)' : 'unset')};
+    transition: border-top-color 0.5s, background-color 0.5s, border-bottom 0.5s, box-shadow 0.5s;
+
+    :nth-last-child(1) {
+        border-right: 1px solid rgba(229, 229, 229, 0.8);
+        box-shadow: ${props => (props.selected ? '18px 18px 28px -8px rgba(0,0,0,0.1)' : 'unset')};
+    }
+    :nth-child(1) {
+        box-shadow: ${props => (props.selected ? '-18px 18px 28px -8px rgba(0,0,0,0.1)' : 'unset')};
+    }
+
+    @media ${device.tablet} {
+        width: 199px;
+        height: 165px;
+    }
+
+    @media ${device.laptop} {
+        width: 208px;
+        height: 243px;
+    }
 `
 
 export const LearnMore = styled.a`
@@ -102,4 +133,8 @@ export const LearnMore = styled.a`
     font-size: 8px;
     text-decoration: none;
     margin-top: 8px;
+    display: ${props => (props.selected ? 'inherit' : 'none')};
+    @media ${device.tablet} {
+        font-size: 12px;
+    }
 `

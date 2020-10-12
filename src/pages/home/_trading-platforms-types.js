@@ -108,11 +108,7 @@ export const TradingPlatformsTypes = () => {
         content: localize('Combine the upside of margin trading with the simplicity of options.'),
     }
 
-    const activecardindex = [
-        [0, 1],
-        [1, 2],
-        [2, 0],
-    ]
+    const activecardindex = [[1, 2], [1], [0]]
     const slides = [dtrader, dmt5, dbot]
     const tradecards = [marginslide, optionslide, multiplierslide]
 

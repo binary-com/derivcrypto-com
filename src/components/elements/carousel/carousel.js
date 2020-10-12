@@ -116,18 +116,23 @@ export const Carousel = ({
                         </SecondaryDotsWrapper>
                     </div>
                     <div>
-                        <Flex>
+                        <Flex justifyContent={'center'} mt={{ md: '5xl' }} ml={{ xl: '25%' }}>
                             {bottomcardsdata &&
                                 bottomcardsdata.map((data, index) => (
                                     <BottomCard
                                         selected={activecardindexes[selectedIndex].includes(index)}
                                     >
-                                        <Text fontSize={{ _: 'm' }} fontWeight={'bold'}>
+                                        <Text fontSize={{ _: 'm', xl: 'xl' }} fontWeight={'bold'}>
                                             {data.header}
                                         </Text>
                                         <CardContent>{data.content}</CardContent>
 
-                                        <LearnMore href="https://deriv.com">
+                                        <LearnMore
+                                            selected={activecardindexes[selectedIndex].includes(
+                                                index,
+                                            )}
+                                            href="https://deriv.com"
+                                        >
                                             {localize('Learn more >')}
                                         </LearnMore>
                                     </BottomCard>

@@ -16,6 +16,7 @@ export const theme = {
     colors: {
         background_default: '#ffffff',
         background_section: '#f8fafc',
+        background_section_light: '#f2f3f4',
         background_dark: '#0e0e0e',
         error: '#ff4449',
         primary: '#ffc71b',
