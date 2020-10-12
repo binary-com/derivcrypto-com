@@ -58,6 +58,21 @@ const sanitize = input => input.replace(/[.*+?^${}()|[\]\\]/g, '')
 
 const sentenceCase = input => input.charAt(0).toUpperCase() + input.slice(1)
 
+const snackbar_options = {
+    position: 'bottom-right',
+    style: {
+        backgroundColor: '#ffc71b',
+        color: '#0e0e0e',
+        fontFamily: 'IBM Plex Sans, sans-serif',
+        fontSize: '16px',
+        textAlign: 'center',
+    },
+    closeStyle: {
+        color: '#0e0e0e',
+        fontSize: '14px',
+    },
+}
+
 export {
     isEmptyObject,
     cloneObject,
@@ -69,5 +84,6 @@ export {
     PromiseClass,
     sanitize,
     sentenceCase,
+    snackbar_options,
     toISOFormat,
 }

@@ -2,6 +2,7 @@ import React from 'react'
 import { Formik, Form, Field } from 'formik'
 import { graphql, useStaticQuery } from 'gatsby'
 import Cookies from 'js-cookie'
+import { useSnackbar } from 'react-simple-snackbar'
 import { StyledInput, StyledText, LogoWrapper, StyledImage, HeroContainer } from './_home-style'
 import { Media } from 'themes'
 import { WhiteText, Button, Flex, Image, Text, Background } from 'components/elements'
@@ -9,6 +10,7 @@ import { localize, Localize } from 'components/localization'
 import { BinarySocketBase } from 'websocket/socket_base'
 import TrafficSource from 'common/traffic-source'
 import { CookieStorage, LocalStore } from 'common/storage'
+import { snackbar_options } from 'common/utility'
 import { useMounted } from 'hooks'
 import FacebookLogo from 'images/svg/home/facebook.svg'
 import GoogleLogo from 'images/svg/home/google.svg'
@@ -30,6 +32,7 @@ const query = graphql`
 export const Hero = () => {
     const data = useStaticQuery(query)
     const [is_mounted] = useMounted()
+    const [openSnackbar] = useSnackbar(snackbar_options)
 
     const handleValidation = values => {
         const errors = {}
@@ -72,7 +75,7 @@ export const Hero = () => {
         }
     }
 
-    const handleSubmit = (values, { setSubmitting, setFieldError, resetForm, setStatus }) => {
+    const handleSubmit = (values, { setSubmitting, setFieldError, resetForm }) => {
         setSubmitting(true)
         const verify_email_req = getVerifyEmailRequest(values.email)
         const binary_socket = BinarySocketBase.init()
@@ -88,10 +91,10 @@ export const Hero = () => {
                 setFieldError('email', response.error.message)
             }
 
-            setStatus('success')
-            binary_socket.close()
-            setSubmitting(false)
             resetForm({})
+            setSubmitting(false)
+            binary_socket.close()
+            openSnackbar('Success! Please check your email address')
         }
     }
 
@@ -150,7 +153,6 @@ export const Hero = () => {
                                             />
                                         )}
                                     </Field>
-
                                     <Button
                                         disabled={!dirty || isSubmitting}
                                         type="submit"
@@ -161,11 +163,6 @@ export const Hero = () => {
                                     >
                                         {localize('Get started')}
                                     </Button>
-                                    {status === 'success' && (
-                                        <Text size="xs" color="secondary">
-                                            {localize('Success! Please check your email address')}
-                                        </Text>
-                                    )}
                                 </Form>
                             )}
                         </Formik>
