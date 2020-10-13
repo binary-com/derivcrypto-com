@@ -8,7 +8,6 @@ import { isProduction, isStaging } from 'websocket/config'
 import { LocalStore } from 'common/storage'
 import { isMobile } from 'common/os-detect'
 import TrafficSource from 'common/traffic-source'
-import 'default-passive-events'
 
 export const wrapRootElement = ({ element }) => {
     return (

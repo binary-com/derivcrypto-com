@@ -70,7 +70,7 @@ export const TradeMarkets = () => {
                     {localize('Markets to trade')}
                 </WhiteText>
                 <TradeMarketsMobile>
-                    <Carousel isMarkets={true} options={{ axis: 'x' }}>
+                    <Carousel primary isMarkets={true} options={{ axis: 'x' }}>
                         {markets.map(market => (
                             <Carousel.Item>
                                 <Card
