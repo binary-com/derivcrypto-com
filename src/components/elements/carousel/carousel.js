@@ -20,14 +20,14 @@ import PrevButtonImage from 'images/svg/carousel/arrow-left.svg'
 import NextButtonImage from 'images/svg/carousel/arrow-right.svg'
 
 export const PrevButton = ({ enabled, onClick }) => (
-    <StyledPrevButton onClick={onClick} disabled={!enabled}>
-        <img src={PrevButtonImage} alt="Google" />
+    <StyledPrevButton onClick={onClick} disabled={!enabled} aria-label="previous button">
+        <img src={PrevButtonImage} alt="Prev Button" />
     </StyledPrevButton>
 )
 
 export const NextButton = ({ enabled, onClick }) => (
-    <StyledNextButton onClick={onClick} disabled={!enabled}>
-        <img src={NextButtonImage} alt="Google" />
+    <StyledNextButton onClick={onClick} disabled={!enabled} aria-label="next button">
+        <img src={NextButtonImage} alt="Next Button" />
     </StyledNextButton>
 )
 
