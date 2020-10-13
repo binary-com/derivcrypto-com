@@ -48,6 +48,7 @@
     "react-dom": "^16.13.1",
     "react-helmet": "^6.1.0",
     "react-i18next": "^11.7.3",
+    "react-simple-snackbar": "^1.1.10",
     "styled-components": "^5.2.0",
     "styled-system": "^5.1.5"
   },

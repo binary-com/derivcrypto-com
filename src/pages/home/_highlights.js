@@ -84,8 +84,8 @@ export const Highlights = () => {
                         margin="auto"
                         data={data.deposit}
                         alt="deposit"
-                        width={{ _: '276px', xxl: '480px' }}
-                        height={{ _: '100%', xxl: '285px' }}
+                        width={{ _: '276px', xxl: '510px' }}
+                        height={{ _: '100%', xxl: '256px' }}
                     />
                 </ContentWrapper>
             </PartitionContainer>

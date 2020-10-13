@@ -144,6 +144,7 @@ const CookieStorage = function (cookie_name, cookie_domain) {
 CookieStorage.prototype = {
     initialize() {
         const cookie_value = Cookies.get(this.cookie_name)
+        this.string_value = cookie_value
         try {
             this.value = cookie_value ? JSON.parse(cookie_value) : {}
         } catch (e) {
@@ -166,6 +167,10 @@ CookieStorage.prototype = {
     get(key) {
         if (!this.initialized) this.initialize()
         return this.value[key]
+    },
+    getValue() {
+        if (!this.initialized) this.initialize()
+        return this.string_value
     },
     set(key, val, options) {
         if (!this.initialized) this.initialize()

@@ -2,7 +2,7 @@ import Cookies from 'js-cookie'
 import { getAppId } from '../websocket/config'
 import { isStorageSupported, LocalStore } from './storage'
 import TrafficSource from './traffic-source'
-import isMobile from './os-detect'
+import { isMobile } from './os-detect'
 import { app_name } from './constants'
 
 const Login = (() => {
