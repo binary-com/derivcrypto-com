@@ -1,7 +1,6 @@
 import React from 'react'
 import { Formik, Form, Field } from 'formik'
 import { graphql, useStaticQuery } from 'gatsby'
-import Cookies from 'js-cookie'
 import { useSnackbar } from 'react-simple-snackbar'
 import { StyledInput, StyledText, LogoWrapper, StyledImage, HeroContainer } from './_home-style'
 import { Media } from 'themes'
@@ -50,7 +49,8 @@ export const Hero = () => {
 
     const getVerifyEmailRequest = email => {
         const utm_data = TrafficSource.getData()
-        const affiliate_token = Cookies.getJSON('affiliate_tracking')
+        const affiliate_cookie = new CookieStorage('affiliate_tracking')
+        const affiliate_token = String(affiliate_cookie.getValue())
         const signup_device_cookie = new CookieStorage('signup_device')
         const signup_device = signup_device_cookie.get('signup_device')
         const date_first_contact_cookie = new CookieStorage('date_first_contact')
@@ -90,6 +90,7 @@ export const Hero = () => {
                 binary_socket.close()
                 setSubmitting(false)
                 setFieldError('email', response.error.message)
+                return
             }
 
             resetForm({})
