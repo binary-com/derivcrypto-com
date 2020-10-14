@@ -18,7 +18,7 @@ module.exports = {
                 skipBlankLines: true,
             },
         ],
-        'no-unused-vars': 'error',
+        'no-unused-vars': ['error', { varsIgnorePattern: 'React' }],
         'no-multiple-empty-lines': [
             'error',
             {
