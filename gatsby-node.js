@@ -40,6 +40,10 @@ exports.onCreateWebpackConfig = ({ actions, getConfig }) => {
     if (config.optimization) config.optimization.minimizer[0].options.parallel = 2
     actions.setWebpackConfig({
         resolve: {
+            alias: {
+                react: 'preact/compat',
+                'react-dom': 'preact/compat',
+            },
             modules: [path.resolve(__dirname, 'src'), 'node_modules'],
         },
     })
