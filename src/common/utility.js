@@ -36,27 +36,15 @@ const getPropertyValue = (obj, k) => {
     // else return clone of object to avoid overwriting data
     return obj ? cloneObject(obj[keys[0]]) : undefined
 }
-const getLocationHash = () =>
-    isBrowser() &&
-    (window.location.hash ? window.location.hash.substring(1).replace(/\/$/, '') : '')
 
 const getLanguage = () => (isBrowser() ? localStorage.getItem('i18n') || 'en' : null)
 
 const getCrowdin = () =>
     isBrowser() ? localStorage.getItem('jipt_language_code_deriv-com') || 'en' : null
 
-class PromiseClass {
-    constructor() {
-        this.promise = new Promise((resolve, reject) => {
-            this.reject = reject
-            this.resolve = resolve
-        })
-    }
-}
+// const sanitize = input => input.replace(/[.*+?^${}()|[\]\\]/g, '')
 
-const sanitize = input => input.replace(/[.*+?^${}()|[\]\\]/g, '')
-
-const sentenceCase = input => input.charAt(0).toUpperCase() + input.slice(1)
+// const sentenceCase = input => input.charAt(0).toUpperCase() + input.slice(1)
 
 const snackbar_options = {
     position: 'bottom-right',
@@ -80,10 +68,8 @@ export {
     getCrowdin,
     getPropertyValue,
     getLanguage,
-    getLocationHash,
-    PromiseClass,
-    sanitize,
-    sentenceCase,
+    // sanitize,
+    // sentenceCase,
     snackbar_options,
     toISOFormat,
 }

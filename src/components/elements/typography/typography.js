@@ -4,7 +4,7 @@ import { typography, space, color, layout } from 'styled-system'
 
 const createElement = React.createElement
 
-export const Text = styled(({ as = 'p', size = 'm', children, ...props }) =>
+export const Text = styled(({ as = 'p', children, ...props }) =>
     createElement(as, props, children),
 )`
     ${props => {
