@@ -86,7 +86,7 @@ export const TradeBenefits = () => {
                 ></Card>
                 <Card
                     image={data.it_mb}
-                    content={localize('Indicators tools')}
+                    content={localize('Indicators and tools')}
                     header={localize('100+')}
                 ></Card>
             </TradeBenefitsImgMobile>
@@ -113,7 +113,7 @@ export const TradeBenefits = () => {
                 ></Card>
                 <Card
                     image={data.it_dt}
-                    content={localize('Indicators tools')}
+                    content={localize('Indicators and tools')}
                     header={localize('100+')}
                 ></Card>
             </TradeBenefitsImgDesktop>
