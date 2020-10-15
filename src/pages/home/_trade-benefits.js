@@ -10,6 +10,7 @@ import {
 } from './_home-style'
 import { Text, SectionContainer } from 'components/elements'
 import { localize } from 'components/localization'
+import { Media } from 'themes'
 
 const query = graphql`
     query {
@@ -63,60 +64,64 @@ export const TradeBenefits = () => {
             <Text as="h2" textAlign="center" fontSize={{ _: 'xl', xxl: '4xl' }}>
                 {localize('Trade the way you want')}
             </Text>
-            <TradeBenefitsImgMobile>
-                <Card
-                    image={data.markets_mb}
-                    content={localize('Markets')}
-                    header={localize('4')}
-                ></Card>
-                <Card
-                    image={data.ta_mb}
-                    content={localize('Tradeable assets')}
-                    header={localize('100+')}
-                ></Card>
-                <Card
-                    image={data.td_mb}
-                    content={localize('Trade duration')}
-                    header={localize('1s-365d')}
-                ></Card>
-                <Card
-                    image={data.ct_mb}
-                    content={localize('Chart types')}
-                    header={localize('3')}
-                ></Card>
-                <Card
-                    image={data.it_mb}
-                    content={localize('Indicators tools')}
-                    header={localize('100+')}
-                ></Card>
-            </TradeBenefitsImgMobile>
-            <TradeBenefitsImgDesktop>
-                <Card
-                    image={data.markets_dt}
-                    content={localize('Markets')}
-                    header={localize('4')}
-                ></Card>
-                <Card
-                    image={data.ta_dt}
-                    content={localize('Tradeable assets')}
-                    header={localize('100+')}
-                ></Card>
-                <Card
-                    image={data.td_dt}
-                    content={localize('Trade duration')}
-                    header={localize('1s-365d')}
-                ></Card>
-                <Card
-                    image={data.ct_dt}
-                    content={localize('Chart types')}
-                    header={localize('3')}
-                ></Card>
-                <Card
-                    image={data.it_dt}
-                    content={localize('Indicators tools')}
-                    header={localize('100+')}
-                ></Card>
-            </TradeBenefitsImgDesktop>
+            <Media lessThan="desktopL">
+                <TradeBenefitsImgMobile>
+                    <Card
+                        image={data.markets_mb}
+                        content={localize('Markets')}
+                        header={localize('4')}
+                    ></Card>
+                    <Card
+                        image={data.ta_mb}
+                        content={localize('Tradeable assets')}
+                        header={localize('100+')}
+                    ></Card>
+                    <Card
+                        image={data.td_mb}
+                        content={localize('Trade duration')}
+                        header={localize('1s-365d')}
+                    ></Card>
+                    <Card
+                        image={data.ct_mb}
+                        content={localize('Chart types')}
+                        header={localize('3')}
+                    ></Card>
+                    <Card
+                        image={data.it_mb}
+                        content={localize('Indicators tools')}
+                        header={localize('100+')}
+                    ></Card>
+                </TradeBenefitsImgMobile>
+            </Media>
+            <Media greaterThanOrEqual="desktopL">
+                <TradeBenefitsImgDesktop>
+                    <Card
+                        image={data.markets_dt}
+                        content={localize('Markets')}
+                        header={localize('4')}
+                    ></Card>
+                    <Card
+                        image={data.ta_dt}
+                        content={localize('Tradeable assets')}
+                        header={localize('100+')}
+                    ></Card>
+                    <Card
+                        image={data.td_dt}
+                        content={localize('Trade duration')}
+                        header={localize('1s-365d')}
+                    ></Card>
+                    <Card
+                        image={data.ct_dt}
+                        content={localize('Chart types')}
+                        header={localize('3')}
+                    ></Card>
+                    <Card
+                        image={data.it_dt}
+                        content={localize('Indicators tools')}
+                        header={localize('100+')}
+                    ></Card>
+                </TradeBenefitsImgDesktop>
+            </Media>
         </SectionContainer>
     )
 }
