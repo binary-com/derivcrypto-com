@@ -5,7 +5,7 @@ export const Input = ({ error, className, placeholder, ...props }) => {
     return (
         <>
             <FormGroup className={className}>
-                <label class="legend-top">
+                <label>
                     <StyledInput type="text" placeholder={placeholder} {...props} />
                     <Legend>{placeholder}</Legend>
                 </label>

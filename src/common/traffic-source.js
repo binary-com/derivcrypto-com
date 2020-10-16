@@ -43,7 +43,7 @@ const TrafficSource = (() => {
             }
         }
 
-        affiliate_cookie.write(token, 365, true, 'none')
+        affiliate_cookie.write(token, 365)
         return true
     }
 

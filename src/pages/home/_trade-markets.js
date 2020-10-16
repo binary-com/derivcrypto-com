@@ -71,8 +71,8 @@ export const TradeMarkets = () => {
                 </WhiteText>
                 <TradeMarketsMobile>
                     <Carousel primary isMarkets={true} options={{ axis: 'x' }}>
-                        {markets.map(market => (
-                            <Carousel.Item>
+                        {markets.map((market, idx) => (
+                            <Carousel.Item key={idx}>
                                 <Card
                                     key={market.title}
                                     title={market.title}

@@ -70,7 +70,7 @@ export const Reviews = () => {
                     width={{ _: 216, md: 'unset' }}
                     fontSize={{ _: 's', lg: 'lg', xxl: 'xl' }}
                     mb={'xl'}
-                    textAlign={'center'}
+                    text_align={'center'}
                 >
                     {localize('More than a million traders from around the globe have trusted us.')}
                 </Text>
