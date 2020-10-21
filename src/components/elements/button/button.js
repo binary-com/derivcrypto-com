@@ -1,3 +1,4 @@
+import { Link } from 'gatsby'
 import styled, { css } from 'styled-components'
 import { space, layout } from 'styled-system'
 
@@ -41,4 +42,9 @@ export const Button = styled.button`
                 opacity: 0.32;
             `
     }}
+`
+
+export const LinkButton = styled(Link)`
+    ${SharedButtonStyle}
+    text-decoration: none;
 `

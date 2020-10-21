@@ -4,8 +4,9 @@ import Login from 'common/login'
 import { Button } from 'components/elements'
 import { localize } from 'components/localization'
 import CryptoLogo from 'images/svg/nav/crypto-logo.svg'
+import DarkCryptoLogo from 'images/svg/nav/dark-crypto-logo.svg'
 
-export const Nav = () => {
+export const Nav = ({ is_dark }) => {
     const [has_scrolled, setHasScrolled] = React.useState(false)
     const navRef = React.useRef()
     const minimum_scroll_height = 50
@@ -31,7 +32,10 @@ export const Nav = () => {
     return (
         <StyledNav has_scrolled={has_scrolled}>
             <StyledContainer>
-                <CryptoIcon src={CryptoLogo} alt="Deriv Crypto Logo" />
+                <CryptoIcon
+                    src={is_dark && !has_scrolled ? DarkCryptoLogo : CryptoLogo}
+                    alt="Deriv Crypto Logo"
+                />
                 <Button onClick={handleLogin} primary aria-label="login button">
                     {localize('Login')}
                 </Button>

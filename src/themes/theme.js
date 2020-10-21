@@ -26,6 +26,7 @@ export const theme = {
         text_secondary: '#9ebbd7',
         text_colored_background: '#ffffff',
         text_less_prominent: '#999999',
+        link_default: '#3c77ae',
     },
     space: {
         '2xs': '4px',
