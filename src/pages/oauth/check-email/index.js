@@ -20,11 +20,9 @@ const CheckEmail = () => {
                 no_index
             />
             <StyledGrid>
-                <Media greaterThanOrEqual="desktop">
-                    <StyledImageLeft>
-                        <img src={CoinIcon} alt="coins icon" />
-                    </StyledImageLeft>
-                </Media>
+                <StyledImageLeft>
+                    <img src={CoinIcon} alt="coins icon" />
+                </StyledImageLeft>
                 <SectionContainer>
                     <GridContainer>
                         <Text
@@ -49,11 +47,6 @@ const CheckEmail = () => {
                     <StyledImageRight>
                         <img src={CoinIcon} alt="coins icon" />
                     </StyledImageRight>
-                </Media>
-                <Media lessThan="desktop">
-                    <StyledImageLeft>
-                        <img src={CoinIcon} alt="coins icon" />
-                    </StyledImageLeft>
                 </Media>
             </StyledGrid>
         </Layout>

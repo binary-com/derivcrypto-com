@@ -7,6 +7,7 @@ export const GridContainer = styled(Container)`
     display: block;
     position: relative;
     width: 328px;
+    grid-area: main;
 
     @media ${device.desktop} {
         width: 588px;
@@ -70,7 +71,9 @@ export const ButtonWrapper = styled.div`
 `
 
 export const StyledGrid = styled(StyledGridContainer)`
+    grid-template-areas: 'main' 'left-image';
     @media ${device.desktop} {
+        grid-template-areas: 'left-image' 'main' 'right-image';
         max-width: 1198px;
     }
 `
@@ -78,12 +81,10 @@ export const StyledGrid = styled(StyledGridContainer)`
 export const StyledImageLeft = styled(StyledLeftImage)`
     float: none;
     position: relative;
-    left: 1rem;
-    bottom: -450px;
+    bottom: -460px;
+    grid-area: left-image;
+    margin: 0 auto;
 
-    @media ${device.mobile} {
-        left: 2.5rem;
-    }
     @media ${device.desktop} {
         float: left;
         left: 0;
@@ -92,5 +93,6 @@ export const StyledImageLeft = styled(StyledLeftImage)`
 `
 
 export const StyledImageRight = styled(StyledRightImage)`
+    grid-area: right-image;
     top: 150px;
 `
