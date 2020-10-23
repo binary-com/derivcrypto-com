@@ -8,14 +8,26 @@ import {
     Carousel,
     SectionContainer,
     Container,
-    Image,
+    NextGenImage,
 } from 'components/elements'
 import { Localize, localize } from 'components/localization'
 
 const query = graphql`
     query {
         jose: file(relativePath: { eq: "home/reviews/jose.png" }) {
-            ...fadeIn
+            childImageSharp {
+                # Specify the image processing specifications right in the query.
+                # Makes it trivial to update as your page's design changes.
+                fixed(width: 48, height: 48) {
+                    fallback: base64
+                    width
+                    height
+                    src
+                    srcSet
+                    srcWebp
+                    srcSetWebp
+                }
+            }
         }
     }
 `
@@ -27,7 +39,7 @@ const Card = ({ name, quote, location, image }) => {
                 {quote}
             </CenterText>
             <Flex m="auto">
-                <Image data={image} alt="jose" width="48px" height="48px" />
+                <NextGenImage data={image} alt="jose" width="48px" height="48px" />
                 <VFlex ml={'xs'}>
                     <Text fontSize={'s'} fontWeight="bold">
                         {name}
