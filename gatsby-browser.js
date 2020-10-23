@@ -2,24 +2,21 @@ import React from 'react'
 import { ThemeProvider } from 'styled-components'
 import SnackbarProvider from 'react-simple-snackbar'
 import { WrapPagesWithLocaleContext } from 'components/localization'
-import { StateProvider } from 'store'
+// import { StateProvider } from 'store'
 import { theme, MediaContextProvider } from 'themes'
 import { isBrowser } from 'common/utility'
 import { isProduction, isStaging } from 'websocket/config'
 import { LocalStore } from 'common/storage'
 import { isMobile } from 'common/os-detect'
 import TrafficSource from 'common/traffic-source'
-import 'default-passive-events'
 
 export const wrapRootElement = ({ element }) => {
     return (
-        <StateProvider>
-            <ThemeProvider theme={theme}>
-                <MediaContextProvider>
-                    <SnackbarProvider>{element}</SnackbarProvider>
-                </MediaContextProvider>
-            </ThemeProvider>
-        </StateProvider>
+        <ThemeProvider theme={theme}>
+            <MediaContextProvider>
+                <SnackbarProvider>{element}</SnackbarProvider>
+            </MediaContextProvider>
+        </ThemeProvider>
     )
 }
 

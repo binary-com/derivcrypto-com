@@ -66,11 +66,11 @@ export const Hero = () => {
                     utm_medium: utm_data.utm_medium,
                     utm_campaign: utm_data.utm_campaign,
                 }),
-                ...(affiliate_token && { affiliate_token: affiliate_token }),
+                ...(affiliate_token && { affiliate_token }),
                 ...(gclid && { gclid_url: gclid }),
-                ...(signup_device && { signup_device: signup_device }),
+                ...(signup_device && { signup_device }),
                 ...(date_first_contact && {
-                    date_first_contact: date_first_contact,
+                    date_first_contact,
                 }),
             },
         }
@@ -149,7 +149,7 @@ export const Hero = () => {
                             validate={handleValidation}
                             onSubmit={handleSubmit}
                         >
-                            {({ errors, touched, status, dirty, isSubmitting }) => (
+                            {({ errors, touched, dirty, isSubmitting }) => (
                                 <Form>
                                     <Field name="email">
                                         {({ field }) => (

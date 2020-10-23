@@ -2,7 +2,7 @@ module.exports = {
     globals: {
         __PATH_PREFIX__: true,
     },
-    extends: `react-app`,
+    extends: `preact`,
     rules: {
         camelcase: 0,
         'array-callback-return': 'off',
@@ -18,7 +18,7 @@ module.exports = {
                 skipBlankLines: true,
             },
         ],
-        'no-unused-vars': 'error',
+        'no-unused-vars': ['error', { varsIgnorePattern: 'React' }],
         'no-multiple-empty-lines': [
             'error',
             {
@@ -40,15 +40,7 @@ module.exports = {
             },
         ],
         'space-unary-ops': 'error',
-        'import/no-useless-path-segments': 'error',
         'import/prefer-default-export': 0,
-        'import/order': [
-            'error',
-            {
-                groups: ['builtin', 'external', 'parent', 'sibling', 'index'],
-                'newlines-between': 'never',
-            },
-        ],
     },
     env: {
         es6: true,

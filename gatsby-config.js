@@ -9,6 +9,7 @@ module.exports = {
         siteUrl: 'https://derivcrypto.com',
     },
     plugins: [
+        `gatsby-plugin-preact`,
         'gatsby-plugin-stylelint',
         'gatsby-plugin-styled-components',
         'gatsby-plugin-react-helmet',

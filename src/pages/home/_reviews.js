@@ -83,7 +83,7 @@ export const Reviews = () => {
                                 name={client.name}
                                 location={client.location}
                                 image={client.image}
-                            ></Card>
+                            />
                         </Carousel.Item>
                     ))}
                 </Carousel>
