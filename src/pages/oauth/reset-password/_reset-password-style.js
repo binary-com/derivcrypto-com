@@ -5,6 +5,7 @@ export const StyledContainer = styled(Container)`
     position: relative;
     top: 24px;
     max-width: 384px;
+    grid-area: main;
 `
 
 export const InputGroup = styled.div`

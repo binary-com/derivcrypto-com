@@ -73,7 +73,7 @@ export const ButtonWrapper = styled.div`
 export const StyledGrid = styled(StyledGridContainer)`
     grid-template-areas: 'main' 'left-image';
     @media ${device.desktop} {
-        grid-template-areas: 'left-image' 'main' 'right-image';
+        grid-template-areas: 'left-image main right-image';
         max-width: 1198px;
     }
 `
