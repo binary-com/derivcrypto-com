@@ -5,7 +5,7 @@ import { useSnackbar } from 'react-simple-snackbar'
 import { StyledInput, StyledText, LogoWrapper, StyledImage, HeroContainer } from './_home-style'
 import { Media } from 'themes'
 import Login from 'common/login'
-import { WhiteText, Button, Flex, Image, Text, Background } from 'components/elements'
+import { WhiteText, Button, Flex, NextGenImage, Text, Background } from 'components/elements'
 import { localize, Localize } from 'components/localization'
 import { BinarySocketBase } from 'websocket/socket_base'
 import TrafficSource from 'common/traffic-source'
@@ -21,7 +21,19 @@ const query = graphql`
             ...fadeIn
         }
         hero_desktop: file(relativePath: { eq: "home/desktop/hero-image.png" }) {
-            ...desktopFadeIn
+            childImageSharp {
+                # Specify the image processing specifications right in the query.
+                # Makes it trivial to update as your page's design changes.
+                fixed(width: 688, height: 382) {
+                    fallback: base64
+                    width
+                    height
+                    src
+                    srcSet
+                    srcWebp
+                    srcSetWebp
+                }
+            }
         }
         hero_mobile: file(relativePath: { eq: "home/mobile/hero-image.png" }) {
             ...mobileFadeIn
@@ -105,6 +117,8 @@ export const Hero = () => {
         const data_provider = e.currentTarget.getAttribute('data-provider')
         Login.initOneAll(data_provider)
     }
+
+    console.log(data['hero_desktop']) // eslint-disable-line
 
     return (
         <Background data={data['hero_background']}>
@@ -190,7 +204,7 @@ export const Hero = () => {
                     </Flex>
                     <div>
                         <Media greaterThanOrEqual="desktop">
-                            <Image
+                            <NextGenImage
                                 data={data['hero_desktop']}
                                 alt="platform devices desktop"
                                 width="688px"
