@@ -14,13 +14,43 @@ import { SectionContainer } from 'components/elements'
 const query = graphql`
     query {
         anytime: file(relativePath: { eq: "home/anytime-anywhere.jpg" }) {
-            ...fadeIn
+            childImageSharp {
+                # Specify the image processing specifications right in the query.
+                # Makes it trivial to update as your page's design changes.
+                fluid {
+                    fallback: base64
+                    src
+                    srcSet
+                    srcWebp
+                    srcSetWebp
+                }
+            }
         }
         crypto: file(relativePath: { eq: "home/crypto-wallets.png" }) {
-            ...fadeIn
+            childImageSharp {
+                # Specify the image processing specifications right in the query.
+                # Makes it trivial to update as your page's design changes.
+                fluid {
+                    fallback: base64
+                    src
+                    srcSet
+                    srcWebp
+                    srcSetWebp
+                }
+            }
         }
         deposit: file(relativePath: { eq: "home/minimum-deposit.jpg" }) {
-            ...fadeIn
+            childImageSharp {
+                # Specify the image processing specifications right in the query.
+                # Makes it trivial to update as your page's design changes.
+                fluid {
+                    fallback: base64
+                    src
+                    srcSet
+                    srcWebp
+                    srcSetWebp
+                }
+            }
         }
     }
 `
@@ -43,7 +73,7 @@ export const Highlights = () => {
                         data={data.anytime}
                         alt="highlights anytime"
                         width={{ _: '300px', xxl: '588px' }}
-                        height={{ _: '100%', xxl: '100%' }}
+                        height={{ _: '310px', xxl: '688px' }}
                     />
                 </ContentWrapper>
             </PartitionContainer>
@@ -64,7 +94,7 @@ export const Highlights = () => {
                         data={data.crypto}
                         alt="crypto wallet"
                         width={{ _: '292px', xxl: '528px' }}
-                        height={{ _: '100%', xxl: '528px' }}
+                        height={{ _: '292px', xxl: '528px' }}
                     />
                 </ContentWrapper>
             </PartitionContainer>
@@ -85,7 +115,7 @@ export const Highlights = () => {
                         data={data.deposit}
                         alt="deposit"
                         width={{ _: '276px', xxl: '510px' }}
-                        height={{ _: '100%', xxl: '256px' }}
+                        height={{ _: '138px', xxl: '256px' }}
                     />
                 </ContentWrapper>
             </PartitionContainer>

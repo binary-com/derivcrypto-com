@@ -84,7 +84,7 @@ export const ContentWrapper = styled(Container)`
     }
 `
 
-export const HighLightsImage = styled(Image)`
+export const HighLightsImage = styled(NextGenImage)`
     margin: auto;
 `
 

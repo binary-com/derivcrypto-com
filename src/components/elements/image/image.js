@@ -26,7 +26,6 @@ export const NextGenImage = ({ data, alt, width, height, className }) => {
     if (data) {
         const data_fluid = data.childImageSharp.fluid
         const data_fixed = data.childImageSharp.fixed
-        console.log(data_fluid) // eslint-disable-line
 
         return (
             <ImageWrapper className={className} width={width} height={height}>
