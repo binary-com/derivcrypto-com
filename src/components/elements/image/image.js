@@ -8,9 +8,6 @@ export const Image = ({ data, alt, width, height, className }) => {
         const data_fluid = data.childImageSharp.fluid
         const data_fixed = data.childImageSharp.fixed
 
-        console.log(data_fluid) // eslint-disable-line
-        console.log(data_fixed) // eslint-disable-line
-
         return (
             <ImageWrapper className={className} width={width} height={height}>
                 <Img
@@ -30,7 +27,6 @@ export const NextGenImage = ({ data, alt, width, height, className }) => {
         const data_fluid = data.childImageSharp.fluid
         const data_fixed = data.childImageSharp.fixed
         console.log(data_fluid) // eslint-disable-line
-        console.log(data_fixed.src) // eslint-disable-line
 
         return (
             <ImageWrapper className={className} width={width} height={height}>

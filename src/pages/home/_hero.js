@@ -36,7 +36,17 @@ const query = graphql`
             }
         }
         hero_mobile: file(relativePath: { eq: "home/mobile/hero-image.png" }) {
-            ...mobileFadeIn
+            childImageSharp {
+                # Specify the image processing specifications right in the query.
+                # Makes it trivial to update as your page's design changes.
+                fluid {
+                    fallback: base64
+                    src
+                    srcSet
+                    srcWebp
+                    srcSetWebp
+                }
+            }
         }
     }
 `
@@ -117,8 +127,6 @@ export const Hero = () => {
         const data_provider = e.currentTarget.getAttribute('data-provider')
         Login.initOneAll(data_provider)
     }
-
-    console.log(data['hero_desktop']) // eslint-disable-line
 
     return (
         <Background data={data['hero_background']}>

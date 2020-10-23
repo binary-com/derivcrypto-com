@@ -9,6 +9,7 @@ import {
     Image,
     Text,
     Background,
+    NextGenImage,
 } from 'components/elements'
 import { device } from 'themes/device'
 
@@ -46,7 +47,7 @@ export const LogoWrapper = styled(Flex)`
     margin-left: 8px;
 `
 
-export const StyledImage = styled(Image)`
+export const StyledImage = styled(NextGenImage)`
     @media ${device.mobileS} {
         width: 329px;
         height: 181px;
