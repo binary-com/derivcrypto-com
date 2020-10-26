@@ -112,6 +112,11 @@ export const TradingPlatformsTypes = () => {
     }
 
     const activecardindex = [[1, 2], [1], [0]]
+    const bottomcard_title = [
+        localize('Available with DTrader'),
+        localize('Available with DMT5'),
+        localize('Available with DBot'),
+    ]
     const slides = [dtrader, dmt5, dbot]
     const tradecards = [margincard, optioncard, multipliercard]
 
@@ -129,6 +134,7 @@ export const TradingPlatformsTypes = () => {
                 <Carousel
                     activecardindexes={activecardindex}
                     bottomcardsdata={tradecards}
+                    bottomcard_title={bottomcard_title}
                     secondary
                 >
                     {slides.map((slide, idx) => (

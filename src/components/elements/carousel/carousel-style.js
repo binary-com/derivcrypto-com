@@ -32,16 +32,18 @@ export const DotsWrapper = styled(Flex)`
     }
 `
 
-export const SecondaryDotsWrapper = styled(DotsWrapper)`
-    display: none;
-
+export const SecondaryDotsWrapper = styled(Flex)`
+    margin-top: 25px;
     @media ${device.tablet} {
-        display: inherit;
         margin-top: -18px;
     }
 
     @media ${device.laptop} {
         margin-left: 80px;
+    }
+
+    @media ${device.desktop} {
+        margin-left: 70px;
     }
 `
 
@@ -112,16 +114,19 @@ export const BottomCard = styled(VFlex)`
     align-items: center;
     justify-content: center;
     background-color: ${({ theme }) => theme.colors.background_default};
-    border-left: 1px solid rgba(229, 229, 229, 0.8);
-    border-bottom: ${props => (props.selected ? 'unset' : '1px solid rgba(229, 229, 229, 0.8)')};
-    border-top: ${props => (props.selected ? '2px solid' : '1px solid')};
+    border-left: 1px solid ${({ theme }) => theme.colors.background_grey};
+    border-bottom: ${props => (props.selected ? 'unset' : '1px solid')};
+    border-bottom-color: ${({ theme }) => theme.colors.background_grey};
+    border-top: ${props => (props.selected ? '2px solid' : '2px solid')};
     border-top-color: ${props =>
-        props.selected ? ({ theme }) => theme.colors.primary : 'rgba(229, 229, 229, 0.8)'};
+        props.selected
+            ? ({ theme }) => theme.colors.primary
+            : ({ theme }) => theme.colors.background_grey};
     box-shadow: ${props => (props.selected ? '0 32px 26px -24px rgba(0,0,0,0.1)' : 'unset')};
     transition: border-top-color 0.5s, background-color 0.5s, border-bottom 0.5s, box-shadow 0.5s;
 
     :nth-last-child(1) {
-        border-right: 1px solid rgba(229, 229, 229, 0.8);
+        border-right: 1px solid ${({ theme }) => theme.colors.background_grey};
         box-shadow: ${props => (props.selected ? '18px 18px 28px -8px rgba(0,0,0,0.1)' : 'unset')};
     }
     :nth-child(1) {
@@ -143,9 +148,10 @@ export const LearnMore = styled.a`
     color: #3c77ae;
     font-size: 8px;
     text-decoration: none;
-    margin-top: 8px;
     display: ${props => (props.selected ? 'inherit' : 'none')};
     @media ${device.tablet} {
         font-size: 12px;
+        margin-top: auto;
+        margin-bottom: 40px;
     }
 `

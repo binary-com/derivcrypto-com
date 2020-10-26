@@ -14,8 +14,9 @@ import {
     BottomCard,
     LearnMore,
 } from './carousel-style'
-import { Flex, Text } from 'components/elements'
+import { VFlex, Flex, Text } from 'components/elements'
 import { localize } from 'components/localization'
+import { Media } from 'themes'
 import PrevButtonImage from 'images/svg/carousel/arrow-left.svg'
 import NextButtonImage from 'images/svg/carousel/arrow-right.svg'
 
@@ -43,6 +44,7 @@ export const Carousel = ({
     options,
     primary,
     secondary,
+    bottomcard_title,
     bottomcardsdata,
     activecardindexes,
     isMarkets,
@@ -114,39 +116,62 @@ export const Carousel = ({
                                 </Container>
                             </ViewPort>
                         </ViewPortWrapper>
-                        <SecondaryDotsWrapper>
-                            {scrollSnaps.map((_, index) => (
-                                <DotButton
-                                    key={index}
-                                    selected={index === selectedIndex}
-                                    onClick={() => scrollTo(index)}
-                                />
-                            ))}
-                        </SecondaryDotsWrapper>
+                        <Media greaterThanOrEqual="tablet">
+                            <SecondaryDotsWrapper>
+                                {scrollSnaps.map((_, index) => (
+                                    <DotButton
+                                        key={index}
+                                        selected={index === selectedIndex}
+                                        onClick={() => scrollTo(index)}
+                                    />
+                                ))}
+                            </SecondaryDotsWrapper>
+                        </Media>
                     </div>
                     <div>
-                        <Flex justifyContent={'center'} mt={{ md: '5xl' }} ml={{ xl: '25%' }}>
-                            {bottomcardsdata &&
-                                bottomcardsdata.map((data, index) => (
-                                    <BottomCard
-                                        selected={activecardindexes[selectedIndex].includes(index)}
-                                    >
-                                        <Text fontSize={{ _: 'm', xl: 'xl' }} fontWeight={'bold'}>
-                                            {data.header}
-                                        </Text>
-                                        <CardContent>{data.content}</CardContent>
-
-                                        <LearnMore
+                        <VFlex>
+                            <Text
+                                fontSize={'s'}
+                                fontWeight={'bold'}
+                                textAlign={'center'}
+                                mt={{ md: '5xl' }}
+                                mb={'m'}
+                                ml={{ xl: '25%' }}
+                            >
+                                {bottomcard_title[selectedIndex]}
+                            </Text>
+                            <Flex justifyContent={'center'} ml={{ xl: '25%' }}>
+                                {bottomcardsdata &&
+                                    bottomcardsdata.map((data, index) => (
+                                        <BottomCard
                                             selected={activecardindexes[selectedIndex].includes(
                                                 index,
                                             )}
-                                            href={data.url}
                                         >
-                                            {localize('Learn more >')}
-                                        </LearnMore>
-                                    </BottomCard>
-                                ))}
-                        </Flex>
+                                            <Text
+                                                fontSize={{ _: 'm', xl: 'xl' }}
+                                                fontWeight={'bold'}
+                                                mt={{ md: '2xl' }}
+                                                mb={{ _: 's', md: 'unset' }}
+                                            >
+                                                {data.header}
+                                            </Text>
+                                            <CardContent mb={{ md: 'auto' }}>
+                                                {data.content}
+                                            </CardContent>
+
+                                            <LearnMore
+                                                selected={activecardindexes[selectedIndex].includes(
+                                                    index,
+                                                )}
+                                                href={data.url}
+                                            >
+                                                {localize('Learn more >')}
+                                            </LearnMore>
+                                        </BottomCard>
+                                    ))}
+                            </Flex>
+                        </VFlex>
                     </div>
                 </div>
             )}
