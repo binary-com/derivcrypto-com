@@ -5,7 +5,7 @@ import { useSnackbar } from 'react-simple-snackbar'
 import { StyledInput, StyledText, LogoWrapper, StyledImage, HeroContainer } from './_home-style'
 import { Media } from 'themes'
 import Login from 'common/login'
-import { WhiteText, Button, Flex, Image, Text, Background } from 'components/elements'
+import { WhiteText, Button, Flex, Text, Background } from 'components/elements'
 import { localize, Localize } from 'components/localization'
 import { BinarySocketBase } from 'websocket/socket_base'
 import TrafficSource from 'common/traffic-source'
@@ -21,10 +21,18 @@ const query = graphql`
             ...fadeIn
         }
         hero_desktop: file(relativePath: { eq: "home/desktop/hero-image.png" }) {
-            ...desktopFadeIn
+            childImageSharp {
+                base64: sizes(base64Width: 1280, quality: 100) {
+                    base64
+                }
+            }
         }
         hero_mobile: file(relativePath: { eq: "home/mobile/hero-image.png" }) {
-            ...mobileFadeIn
+            childImageSharp {
+                base64: sizes(base64Width: 600, quality: 100) {
+                    base64
+                }
+            }
         }
     }
 `
@@ -137,10 +145,8 @@ export const Hero = () => {
                         {is_mounted && (
                             <Media lessThan="desktop">
                                 <StyledImage
-                                    data={data['hero_mobile']}
-                                    alt="platform devices mobile"
-                                    width="288px"
-                                    height="161px"
+                                    src={data.hero_mobile.childImageSharp.base64.base64}
+                                    alt=""
                                 />
                             </Media>
                         )}
@@ -190,11 +196,10 @@ export const Hero = () => {
                     </Flex>
                     <div>
                         <Media greaterThanOrEqual="desktop">
-                            <Image
-                                data={data['hero_desktop']}
-                                alt="platform devices desktop"
+                            <img
+                                src={data.hero_desktop.childImageSharp.base64.base64}
+                                alt=""
                                 width="688px"
-                                height="382px"
                             />
                         </Media>
                     </div>
