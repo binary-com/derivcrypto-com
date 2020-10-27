@@ -109,6 +109,7 @@ export const CardContent = styled(Text)`
 `
 
 export const BottomCard = styled(VFlex)`
+    opacity: ${props => (props.selected ? 1 : 0.3)};
     width: 100px;
     height: 74px;
     align-items: center;
