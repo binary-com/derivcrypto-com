@@ -32,8 +32,8 @@ export const NextButton = ({ enabled, onClick }) => (
     </StyledNextButton>
 )
 
-const DotButton = ({ selected, onClick, isMarkets }) =>
-    isMarkets ? (
+const DotButton = ({ selected, onClick, is_markets }) =>
+    is_markets ? (
         <StyledDots selected={selected} type="button" onClick={onClick} primary aria-label="dots" />
     ) : (
         <StyledDots selected={selected} type="button" onClick={onClick} aria-label="dots" />

@@ -26,10 +26,6 @@ export const StyledDots = styled.button`
 export const DotsWrapper = styled(Flex)`
     margin-top: 25px;
     justify-content: center;
-
-    @media ${device.tablet} {
-        display: none;
-    }
 `
 
 export const SecondaryDotsWrapper = styled(Flex)`
@@ -49,6 +45,14 @@ export const SecondaryDotsWrapper = styled(Flex)`
 
 export const ViewPort = styled.div`
     overflow: hidden;
+
+    &.is-draggable {
+        cursor: move;
+        cursor: grab;
+    }
+    &.is-dragging {
+        cursor: grabbing;
+    }
 `
 
 export const ViewPortWrapper = styled.div`
@@ -65,7 +69,6 @@ export const Slide = styled.div`
 `
 
 export const StyledPrevButton = styled.button`
-    display: none;
     position: absolute;
     left: 80px;
     top: 17%;

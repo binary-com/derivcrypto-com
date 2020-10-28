@@ -126,13 +126,9 @@ export const TradeBenefitsImgMobile = styled.div`
     @media ${device.laptop} {
         grid-template-columns: repeat(3, 300px);
     }
-    @media ${device.desktopL} {
-        display: none;
-    }
 `
 
 export const TradeBenefitsImgDesktop = styled.div`
-    display: none;
     grid-template-columns: repeat(5, 240px);
     grid-gap: 32px;
     justify-content: center;
@@ -228,14 +224,9 @@ export const TradeMarketsMobile = styled(TradeMarkets)`
     align-items: center;
     margin-top: 25px;
     overflow: hidden;
-
-    @media ${device.desktop} {
-        display: none;
-    }
 `
 
 export const TradeMarketsDesktop = styled(TradeMarkets)`
-    display: none;
     grid-template-columns: repeat(4, 282px);
     grid-gap: 24px;
     margin-top: 40px;
