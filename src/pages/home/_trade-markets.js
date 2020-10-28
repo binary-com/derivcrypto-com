@@ -10,6 +10,7 @@ import {
 } from './_home-style'
 import { Flex, SectionContainer, Carousel, WhiteText } from 'components/elements'
 import { Localize, localize } from 'components/localization'
+import { Media } from 'themes'
 import CommoditiesLogo from 'images/svg/home/commodities.svg'
 import ForexLogo from 'images/svg/home/forex.svg'
 import SyntheticIndicesLogo from 'images/svg/home/synthetic-indices.svg'
@@ -69,48 +70,54 @@ export const TradeMarkets = () => {
                 <WhiteText as="h3" textAlign="center" fontSize={{ _: 'xl', xxl: '4xl' }}>
                     {localize('Markets to trade')}
                 </WhiteText>
-                <TradeMarketsMobile>
-                    <Carousel isMarkets={true} options={{ axis: 'x' }}>
-                        {markets.map((market, idx) => (
-                            <Carousel.Item key={idx}>
-                                <Card
-                                    key={market.title}
-                                    title={market.title}
-                                    content={market.content}
-                                    image={market.image}
-                                />
-                            </Carousel.Item>
-                        ))}
-                    </Carousel>
-                </TradeMarketsMobile>
-                <TradeMarketsDesktop>
-                    <Card
-                        title={localize('Forex')}
-                        content={localize(
-                            'Trade the world’s largest financial market with popular and exotic forex pairs.',
-                        )}
-                        image={ForexLogo}
-                    ></Card>
-                    <Card
-                        title={localize('Synthetic indices')}
-                        content={localize(
-                            'Trade synthetic markets that simulate real-world market movements.',
-                        )}
-                        image={SyntheticIndicesLogo}
-                    ></Card>
-                    <Card
-                        title={localize('Commodities')}
-                        content={localize(
-                            'Trade natural resources that are central to the world’s economy.',
-                        )}
-                        image={CommoditiesLogo}
-                    ></Card>
-                    <Card
-                        title={localize('Stock indices')}
-                        content={localize('Trade on border market trends and diversify your risk.')}
-                        image={StockIndicesLogo}
-                    ></Card>
-                </TradeMarketsDesktop>
+                <Media lessThan="desktop">
+                    <TradeMarketsMobile>
+                        <Carousel is_markets={true} options={{ axis: 'x' }}>
+                            {markets.map((market, idx) => (
+                                <Carousel.Item key={idx}>
+                                    <Card
+                                        key={market.title}
+                                        title={market.title}
+                                        content={market.content}
+                                        image={market.image}
+                                    />
+                                </Carousel.Item>
+                            ))}
+                        </Carousel>
+                    </TradeMarketsMobile>
+                </Media>
+                <Media greaterThanOrEqual="desktop">
+                    <TradeMarketsDesktop>
+                        <Card
+                            title={localize('Forex')}
+                            content={localize(
+                                'Trade the world’s largest financial market with popular and exotic forex pairs.',
+                            )}
+                            image={ForexLogo}
+                        ></Card>
+                        <Card
+                            title={localize('Synthetic indices')}
+                            content={localize(
+                                'Trade synthetic markets that simulate real-world market movements.',
+                            )}
+                            image={SyntheticIndicesLogo}
+                        ></Card>
+                        <Card
+                            title={localize('Commodities')}
+                            content={localize(
+                                'Trade natural resources that are central to the world’s economy.',
+                            )}
+                            image={CommoditiesLogo}
+                        ></Card>
+                        <Card
+                            title={localize('Stock indices')}
+                            content={localize(
+                                'Trade on border market trends and diversify your risk.',
+                            )}
+                            image={StockIndicesLogo}
+                        ></Card>
+                    </TradeMarketsDesktop>
+                </Media>
             </MarketsPartitionContainer>
         </SectionContainer>
     )

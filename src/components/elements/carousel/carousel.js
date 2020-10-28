@@ -10,6 +10,7 @@ import {
     Container,
     Slide,
 } from './carousel-style'
+import { Media } from 'themes'
 import PrevButtonImage from 'images/svg/carousel/arrow-left.svg'
 import NextButtonImage from 'images/svg/carousel/arrow-right.svg'
 
@@ -25,14 +26,14 @@ export const NextButton = ({ enabled, onClick }) => (
     </StyledNextButton>
 )
 
-const DotButton = ({ selected, onClick, isMarkets }) =>
-    isMarkets ? (
+const DotButton = ({ selected, onClick, is_markets }) =>
+    is_markets ? (
         <StyledDots selected={selected} type="button" onClick={onClick} primary aria-label="dots" />
     ) : (
         <StyledDots selected={selected} type="button" onClick={onClick} aria-label="dots" />
     )
 
-export const Carousel = ({ children, options, isMarkets }) => {
+export const Carousel = ({ children, options, is_markets }) => {
     const [emblaRef, embla] = useEmblaCarousel(options)
     const [selectedIndex, setSelectedIndex] = useState(0)
     const [scrollSnaps, setScrollSnaps] = useState([])
@@ -63,7 +64,7 @@ export const Carousel = ({ children, options, isMarkets }) => {
                 <ViewPort ref={emblaRef}>
                     <Container>
                         {children.map((child, idx) =>
-                            isMarkets ? (
+                            is_markets ? (
                                 <div key={idx}>{child}</div>
                             ) : (
                                 <Slide key={idx}>{child}</Slide>
@@ -71,19 +72,25 @@ export const Carousel = ({ children, options, isMarkets }) => {
                         )}
                     </Container>
                 </ViewPort>
-                <PrevButton onClick={scrollPrev} enabled={prevBtnEnabled} />
-                <NextButton onClick={scrollNext} enabled={nextBtnEnabled} />
+                {!is_markets && (
+                    <Media greaterThanOrEqual="tablet">
+                        <PrevButton onClick={scrollPrev} enabled={prevBtnEnabled} />
+                        <NextButton onClick={scrollNext} enabled={nextBtnEnabled} />
+                    </Media>
+                )}
             </ViewPortWrapper>
-            <DotsWrapper>
-                {scrollSnaps.map((_, index) => (
-                    <DotButton
-                        key={index}
-                        selected={index === selectedIndex}
-                        onClick={() => scrollTo(index)}
-                        isMarkets={isMarkets}
-                    />
-                ))}
-            </DotsWrapper>
+            <Media lessThan="tablet">
+                <DotsWrapper>
+                    {scrollSnaps.map((_, index) => (
+                        <DotButton
+                            key={index}
+                            selected={index === selectedIndex}
+                            onClick={() => scrollTo(index)}
+                            is_markets={is_markets}
+                        />
+                    ))}
+                </DotsWrapper>
+            </Media>
         </div>
     )
 }

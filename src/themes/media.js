@@ -9,6 +9,7 @@ const AppMedia = createMedia({
         tablet: size.tablet,
         laptop: size.laptop,
         desktop: size.desktop,
+        desktopL: size.desktopL,
     },
 })
 
