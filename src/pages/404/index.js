@@ -5,7 +5,7 @@ import { localize, WithIntl } from 'components/localization'
 
 const PageNotFound = () => {
     return (
-        <Layout is_dark_background={true}>
+        <Layout is_dark_logo={true}>
             <SEO
                 title={localize('404 - Page not found')}
                 description={localize('The page you are looking for does not exist.')}

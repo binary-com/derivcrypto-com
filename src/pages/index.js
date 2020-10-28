@@ -9,7 +9,7 @@ import { Layout, SEO, Footer } from 'components/page-elements'
 
 const Home = () => {
     return (
-        <Layout is_dark_background={true}>
+        <Layout is_dark_logo={true}>
             <SEO
                 title={localize('Derivcrypto')}
                 description={localize(
