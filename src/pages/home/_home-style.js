@@ -239,3 +239,9 @@ export const TradeMarketsDesktop = styled(TradeMarkets)`
 export const CenterText = styled(Text)`
     text-align: center;
 `
+
+export const ShadowImage = styled(Image)`
+    @media ${device.mobileS} {
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.08), 0 6px 20px 0 rgba(0, 0, 0, 0.08);
+    }
+`

@@ -74,7 +74,7 @@ export const Reviews = () => {
                 >
                     {localize('More than a million traders from around the globe have trusted us.')}
                 </Text>
-                <Carousel options={{ loop: true }}>
+                <Carousel primary options={{ loop: true }}>
                     {clients.map((client, idx) => (
                         <Carousel.Item key={idx}>
                             <Card

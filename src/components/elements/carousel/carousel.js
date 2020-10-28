@@ -1,28 +1,34 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { useEmblaCarousel } from 'embla-carousel/react'
 import {
-    DotsWrapper,
     StyledDots,
+    DotsWrapper,
+    SecondaryDotsWrapper,
     StyledPrevButton,
     StyledNextButton,
     ViewPort,
     ViewPortWrapper,
     Container,
     Slide,
+    CardContent,
+    BottomCard,
+    LearnMore,
 } from './carousel-style'
+import { VFlex, Flex, Text } from 'components/elements'
+import { localize } from 'components/localization'
 import { Media } from 'themes'
 import PrevButtonImage from 'images/svg/carousel/arrow-left.svg'
 import NextButtonImage from 'images/svg/carousel/arrow-right.svg'
 
 export const PrevButton = ({ enabled, onClick }) => (
     <StyledPrevButton onClick={onClick} disabled={!enabled} aria-label="previous button">
-        <img src={PrevButtonImage} alt="Google" />
+        <img src={PrevButtonImage} alt="Prev Button" />
     </StyledPrevButton>
 )
 
 export const NextButton = ({ enabled, onClick }) => (
     <StyledNextButton onClick={onClick} disabled={!enabled} aria-label="next button">
-        <img src={NextButtonImage} alt="Google" />
+        <img src={NextButtonImage} alt="Next Button" />
     </StyledNextButton>
 )
 
@@ -33,7 +39,16 @@ const DotButton = ({ selected, onClick, is_markets }) =>
         <StyledDots selected={selected} type="button" onClick={onClick} aria-label="dots" />
     )
 
-export const Carousel = ({ children, options, is_markets }) => {
+export const Carousel = ({
+    children,
+    options,
+    primary,
+    secondary,
+    bottomcard_title,
+    bottomcardsdata,
+    activecardindexes,
+    isMarkets,
+}) => {
     const [emblaRef, embla] = useEmblaCarousel(options)
     const [selectedIndex, setSelectedIndex] = useState(0)
     const [scrollSnaps, setScrollSnaps] = useState([])
@@ -60,37 +75,106 @@ export const Carousel = ({ children, options, is_markets }) => {
 
     return (
         <div>
-            <ViewPortWrapper>
-                <ViewPort ref={emblaRef}>
-                    <Container>
-                        {children.map((child, idx) =>
-                            is_markets ? (
-                                <div key={idx}>{child}</div>
-                            ) : (
-                                <Slide key={idx}>{child}</Slide>
-                            ),
-                        )}
-                    </Container>
-                </ViewPort>
-                {!is_markets && (
-                    <Media greaterThanOrEqual="tablet">
+            {primary && (
+                <div>
+                    <ViewPortWrapper>
+                        <ViewPort ref={emblaRef}>
+                            <Container>
+                                {children.map((child, idx) =>
+                                    isMarkets ? (
+                                        <div key={idx}>{child}</div>
+                                    ) : (
+                                        <Slide key={idx}>{child}</Slide>
+                                    ),
+                                )}
+                            </Container>
+                        </ViewPort>
                         <PrevButton onClick={scrollPrev} enabled={prevBtnEnabled} />
                         <NextButton onClick={scrollNext} enabled={nextBtnEnabled} />
-                    </Media>
-                )}
-            </ViewPortWrapper>
-            <Media lessThan="tablet">
-                <DotsWrapper>
-                    {scrollSnaps.map((_, index) => (
-                        <DotButton
-                            key={index}
-                            selected={index === selectedIndex}
-                            onClick={() => scrollTo(index)}
-                            is_markets={is_markets}
-                        />
-                    ))}
-                </DotsWrapper>
-            </Media>
+                    </ViewPortWrapper>
+                    <DotsWrapper>
+                        {scrollSnaps.map((_, index) => (
+                            <DotButton
+                                key={index}
+                                selected={index === selectedIndex}
+                                onClick={() => scrollTo(index)}
+                                isMarkets={isMarkets}
+                            />
+                        ))}
+                    </DotsWrapper>
+                </div>
+            )}
+            {secondary && (
+                <div>
+                    <div>
+                        <ViewPortWrapper>
+                            <ViewPort ref={emblaRef}>
+                                <Container>
+                                    {children.map((child, idx) => (
+                                        <Slide key={idx}>{child}</Slide>
+                                    ))}
+                                </Container>
+                            </ViewPort>
+                        </ViewPortWrapper>
+                        <Media greaterThanOrEqual="tablet">
+                            <SecondaryDotsWrapper>
+                                {scrollSnaps.map((_, index) => (
+                                    <DotButton
+                                        key={index}
+                                        selected={index === selectedIndex}
+                                        onClick={() => scrollTo(index)}
+                                    />
+                                ))}
+                            </SecondaryDotsWrapper>
+                        </Media>
+                    </div>
+                    <div>
+                        <VFlex>
+                            <Text
+                                fontSize={'s'}
+                                fontWeight={'bold'}
+                                textAlign={'center'}
+                                mt={{ md: '5xl' }}
+                                mb={'m'}
+                                ml={{ xl: '25%' }}
+                            >
+                                {bottomcard_title[selectedIndex]}
+                            </Text>
+                            <Flex justifyContent={'center'} ml={{ xl: '25%' }}>
+                                {bottomcardsdata &&
+                                    bottomcardsdata.map((data, index) => (
+                                        <BottomCard
+                                            selected={activecardindexes[selectedIndex].includes(
+                                                index,
+                                            )}
+                                        >
+                                            <Text
+                                                fontSize={{ _: 'm', xl: 'xl' }}
+                                                fontWeight={'bold'}
+                                                mt={{ md: '2xl' }}
+                                                mb={{ _: 's', md: 'unset' }}
+                                            >
+                                                {data.header}
+                                            </Text>
+                                            <CardContent mb={{ md: 'auto' }}>
+                                                {data.content}
+                                            </CardContent>
+
+                                            <LearnMore
+                                                selected={activecardindexes[selectedIndex].includes(
+                                                    index,
+                                                )}
+                                                href={data.url}
+                                            >
+                                                {localize('Learn more >')}
+                                            </LearnMore>
+                                        </BottomCard>
+                                    ))}
+                            </Flex>
+                        </VFlex>
+                    </div>
+                </div>
+            )}
         </div>
     )
 }

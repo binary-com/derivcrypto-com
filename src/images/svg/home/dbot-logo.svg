@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewBox="0 0 64 64">
+    <defs>
+        <filter id="uu4tmknhea" width="256.2%" height="256.2%" x="-78.1%" y="-62.5%" filterUnits="objectBoundingBox">
+            <feOffset dy="10" in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="15"/>
+            <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0.929411765 0 0 0 0 0.929411765 0 0 0 0 0.929411765 0 0 0 1 0"/>
+        </filter>
+        <circle id="21oskx917b" cx="32" cy="32" r="32"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g transform="translate(-15 -3273) translate(0 3158) translate(15 115)">
+                        <use fill="#000" filter="url(#uu4tmknhea)" xlink:href="#21oskx917b"/>
+                        <use fill="#FFF" xlink:href="#21oskx917b"/>
+                    </g>
+                    <g>
+                        <path d="M12.473 12.055c.424 0 .768-.344.768-.769 0-.424-.344-.768-.768-.768-.425 0-.768.344-.768.768 0 .204.08.4.225.544.144.144.339.225.543.225z" transform="translate(-15 -3273) translate(0 3158) translate(15 115) translate(17.455 17.455)"/>
+                        <path fill="#FF6544" d="M23.636 0c3.013 0 5.455 2.442 5.455 5.455v18.181c0 3.013-2.442 5.455-5.455 5.455H5.455C2.442 29.091 0 26.649 0 23.636V5.455C0 2.442 2.442 0 5.455 0h18.181z" transform="translate(-15 -3273) translate(0 3158) translate(15 115) translate(17.455 17.455)"/>
+                        <path fill="#FFF" fill-rule="nonzero" d="M22.964 14.027V9.845c-.005-2.423-1.968-4.385-4.391-4.39h-3.51v8.572h7.9zM15.064 23.636h3.509c2.423-.005 4.386-1.968 4.39-4.39v-4.182h-7.9v8.572zM10.723 12.636c-1.356.002-2.48-1.05-2.567-2.402-.087-1.353.892-2.54 2.237-2.713 1.344-.172 2.591.73 2.848 2.06h.786V5.456h-3.509c-2.423.005-4.386 1.967-4.39 4.39v9.4c.004 2.423 1.967 4.386 4.39 4.391h3.51V10.55h-.787c-.231 1.21-1.287 2.084-2.518 2.086z" transform="translate(-15 -3273) translate(0 3158) translate(15 115) translate(17.455 17.455)"/>
+                        <path d="M0 0H29.091V29.091H0z" transform="translate(-15 -3273) translate(0 3158) translate(15 115) translate(17.455 17.455)"/>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
