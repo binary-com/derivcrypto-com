@@ -1,7 +1,8 @@
 import React from 'react'
 import { Formik, Form } from 'formik'
-import { StyledGridContainer, StyledLeftImage, StyledRightImage } from '../_oauth-style'
+import { StyledLeftImage, StyledRightImage } from '../_oauth-style'
 import {
+    GridContainer,
     StyledContainer,
     InputGroup,
     InputWrapper,
@@ -9,6 +10,8 @@ import {
     ButtonWrapper,
     ReturnWrapper,
     TextWrapper,
+    SuccessTextWrapper,
+    SuccessText,
     RedirectWrapper,
 } from './_reset-password-style'
 import { Layout, SEO } from 'components/page-elements'
@@ -66,29 +69,32 @@ const ResetPassword = () => (
             )}
             no_index
         />
-        <StyledGridContainer>
-            <StyledLeftImage>
-                <img src={CoinIcon} alt="coins icon" />
-            </StyledLeftImage>
-            <StyledContainer>
-                <Text
-                    color="text_primary"
-                    as="h2"
-                    textAlign="center"
-                    fontSize={{ _: 'xl', xxl: '2xl' }}
-                >
-                    {localize('Reset password')}
-                </Text>
-                <Text color="text_primary" textAlign="center" fontSize="m">
-                    {localize("We'll email you instructions to reset your password.")}
-                </Text>
-                <Formik
-                    initialValues={{ email: '' }}
-                    initialStatus={{}}
-                    validate={resetValidation}
-                    onSubmit={resetSubmission}
-                >
-                    {({ values, errors, handleChange, handleBlur, resetForm, status }) => (
+        <Formik
+            initialValues={{ email: '' }}
+            initialStatus={{}}
+            validate={resetValidation}
+            onSubmit={resetSubmission}
+        >
+            {({ values, errors, handleChange, handleBlur, resetForm, status }) => (
+                <GridContainer>
+                    <SuccessTextWrapper status={status.success}>
+                        <SuccessText>{status.success && status.success}</SuccessText>
+                    </SuccessTextWrapper>
+                    <StyledLeftImage>
+                        <img src={CoinIcon} alt="coins icon" />
+                    </StyledLeftImage>
+                    <StyledContainer>
+                        <Text
+                            color="text_primary"
+                            as="h2"
+                            textAlign="center"
+                            fontSize={{ _: 'xl', xxl: '2xl' }}
+                        >
+                            {localize('Reset password')}
+                        </Text>
+                        <Text color="text_primary" textAlign="center" fontSize="m">
+                            {localize("We'll email you instructions to reset your password.")}
+                        </Text>
                         <Form noValidate>
                             <InputGroup>
                                 <InputWrapper
@@ -111,28 +117,25 @@ const ResetPassword = () => (
                             <Text align="center" color="red">
                                 {status.error && status.error}
                             </Text>
-                            <Text align="center" color="green">
-                                {status.success && status.success}
-                            </Text>
                             <ButtonContainer>
                                 <ButtonWrapper primary disabled={!values.email} type="submit">
                                     {localize('Reset my password')}
                                 </ButtonWrapper>
                             </ButtonContainer>
                         </Form>
-                    )}
-                </Formik>
-                <ReturnWrapper>
-                    <TextWrapper fontSize="m">{localize('Return to')}</TextWrapper>
-                    <RedirectWrapper onClick={Login.redirectToLogin}>
-                        &nbsp;{localize('log in page')}
-                    </RedirectWrapper>
-                </ReturnWrapper>
-            </StyledContainer>
-            <StyledRightImage>
-                <img src={CoinIcon} alt="coins icon" />
-            </StyledRightImage>
-        </StyledGridContainer>
+                        <ReturnWrapper>
+                            <TextWrapper fontSize="m">{localize('Return to')}</TextWrapper>
+                            <RedirectWrapper onClick={Login.redirectToLogin}>
+                                &nbsp;{localize('log in page')}
+                            </RedirectWrapper>
+                        </ReturnWrapper>
+                    </StyledContainer>
+                    <StyledRightImage>
+                        <img src={CoinIcon} alt="coins icon" />
+                    </StyledRightImage>
+                </GridContainer>
+            )}
+        </Formik>
     </Layout>
 )
 
