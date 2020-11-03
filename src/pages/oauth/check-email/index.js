@@ -1,9 +1,15 @@
 import React from 'react'
-import { StyledGrid, StyledImageLeft, StyledImageRight, ButtonWrapper } from './_check-email-style'
+import {
+    StyledGrid,
+    StyledImageLeft,
+    StyledImageRight,
+    StyledTitleText,
+    ButtonWrapper,
+} from './_check-email-style'
 import { IconGrid } from './_icon-grid'
 import { GridContainer } from './_check-email-style'
 import { Layout, SEO } from 'components/page-elements'
-import { Text, LinkButton } from 'components/elements'
+import { LinkButton } from 'components/elements'
 import { SectionContainer } from 'components/elements'
 import { localize, WithIntl } from 'components/localization'
 import CoinIcon from 'images/svg/oauth/coins-icons.svg'
@@ -25,7 +31,7 @@ const CheckEmail = () => {
                 </StyledImageLeft>
                 <SectionContainer>
                     <GridContainer>
-                        <Text
+                        <StyledTitleText
                             color="text_primary"
                             as="h2"
                             textAlign="center"
@@ -34,7 +40,7 @@ const CheckEmail = () => {
                             {localize(
                                 "If you don't see an email from us within a few minutes, a few things could have happened:",
                             )}
-                        </Text>
+                        </StyledTitleText>
                         <IconGrid />
                         <ButtonWrapper>
                             <LinkButton primary to="/">

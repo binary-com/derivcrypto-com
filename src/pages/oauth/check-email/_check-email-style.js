@@ -4,7 +4,8 @@ import { Container, VFlex, Text } from 'components/elements'
 import { device } from 'themes/device'
 
 export const GridContainer = styled(Container)`
-    display: block;
+    display: grid;
+    grid-template-areas: 'title' 'content' 'redirect-button';
     position: relative;
     width: 328px;
     grid-area: main;
@@ -16,12 +17,11 @@ export const GridContainer = styled(Container)`
 
 export const FlexBox = styled(VFlex)`
     max-width: 400px;
-    max-height: 74px;
     margin: 0 auto;
+    grid-area: content;
 
     @media ${device.desktop} {
         max-width: 589px;
-        max-height: 96px;
     }
 `
 export const FlexRow = styled.article`
@@ -55,16 +55,18 @@ export const StyledText = styled(Text)`
     }
 `
 
+export const StyledTitleText = styled(Text)`
+    grid-area: title;
+`
+
 export const ButtonWrapper = styled.div`
     width: 100%;
     text-align: center;
     font-size: 14px;
     position: relative;
-    top: 470px;
+    grid-area: redirect-button;
+    margin-top: 24px;
 
-    @media ${device.tablet} {
-        top: 450px;
-    }
     @media ${device.desktop} {
         padding-bottom: 94px;
     }
@@ -81,7 +83,6 @@ export const StyledGrid = styled(StyledGridContainer)`
 export const StyledImageLeft = styled(StyledLeftImage)`
     float: none;
     position: relative;
-    bottom: -460px;
     grid-area: left-image;
     margin: 0 auto;
 
