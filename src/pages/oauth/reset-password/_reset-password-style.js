@@ -1,7 +1,7 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { StyledGridContainer } from '../_oauth-style'
 import { Button, Container, Input, Text } from 'components/elements'
-import { device } from 'themes'
+import { device, Media } from 'themes'
 
 export const GridContainer = styled(StyledGridContainer)`
     grid-template-areas: 'success-text' 'left-image' 'main' 'right-image';
@@ -44,24 +44,19 @@ export const TextWrapper = styled(Text)`
     display: inline-block;
 `
 
+export const StyledMediaImage = styled(Media)`
+    grid-area: left-image;
+`
+
 export const SuccessTextWrapper = styled.div`
     background-color: ${({ theme }) => theme.colors.background_section};
     width: 322px;
     grid-area: success-text;
     margin: 0 auto;
     z-index: 1;
-    left: 15px;
-    ${props => {
-        if (props.status) {
-            return css`
-                display: block;
-                position: absolute;
-            `
-        }
-        return css`
-            display: none;
-        `
-    }}
+    opacity: ${props => (props.display ? 1 : 0)};
+    transition: opacity 1.25s ease-in;
+    transform: translateY(0);
 
     @media ${device.mobile} {
         width: 370px;

@@ -19,6 +19,9 @@ export const StyledLeftImage = styled.div`
     max-height: 81px;
     float: left;
     grid-area: left-image;
+    opacity: ${props => (props.display ? 1 : 0)};
+    transition: opacity 2s ease-in-out;
+    transform: translateX(0);
 `
 
 export const StyledRightImage = styled.div`
