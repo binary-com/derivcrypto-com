@@ -1,11 +1,25 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { Container } from 'components/elements'
 import { device } from 'themes/device'
 
 export const StyledNav = styled.nav`
     display: flex;
-    background: ${({ has_scrolled, theme }) =>
-        has_scrolled ? theme.colors.background_dark : 'transparent'};
+    ${({ has_shadow, has_scrolled }) => {
+        if (has_scrolled) {
+            if (has_shadow) {
+                return css`
+                    background: ${({ theme }) => theme.colors.background_default};
+                    box-shadow: 0 4px 8px 0 rgba(14, 14, 14, 0.04);
+                `
+            }
+            return css`
+                background: ${({ theme }) => theme.colors.background_dark};
+            `
+        }
+        return css`
+            background: 'transparent';
+        `
+    }}
     position: fixed;
     width: 100%;
     padding: 16px 0;

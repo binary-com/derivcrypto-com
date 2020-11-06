@@ -20,6 +20,5 @@ export const GlobalStyle = createGlobalStyle`
         font-family: 'IBM Plex Sans', sans-serif;
         line-height: 1.5;
         letter-spacing: 0;
-        background: ${({ theme }) => theme.colors.background_dark};
     }
 `
