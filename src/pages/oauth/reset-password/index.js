@@ -86,7 +86,7 @@ const ResetPassword = () => (
             onSubmit={resetSubmission}
         >
             {({ values, errors, handleChange, handleBlur, resetForm, status }) => (
-                <GridContainer>
+                <GridContainer display={!!status.success}>
                     <SuccessTextWrapper display={!!status.success}>
                         <SuccessText>{status.success && status.success}</SuccessText>
                     </SuccessTextWrapper>
