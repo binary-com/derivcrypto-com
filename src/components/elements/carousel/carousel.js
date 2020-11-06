@@ -47,7 +47,7 @@ export const Carousel = ({
     bottomcard_title,
     bottomcardsdata,
     activecardindexes,
-    isMarkets,
+    is_markets,
 }) => {
     const [emblaRef, embla] = useEmblaCarousel(options)
     const [selectedIndex, setSelectedIndex] = useState(0)
@@ -81,7 +81,7 @@ export const Carousel = ({
                         <ViewPort ref={emblaRef}>
                             <Container>
                                 {children.map((child, idx) =>
-                                    isMarkets ? (
+                                    is_markets ? (
                                         <div key={idx}>{child}</div>
                                     ) : (
                                         <Slide key={idx}>{child}</Slide>
@@ -89,8 +89,10 @@ export const Carousel = ({
                                 )}
                             </Container>
                         </ViewPort>
-                        <PrevButton onClick={scrollPrev} enabled={prevBtnEnabled} />
-                        <NextButton onClick={scrollNext} enabled={nextBtnEnabled} />
+                        <Media greaterThanOrEqual="tablet">
+                            <PrevButton onClick={scrollPrev} enabled={prevBtnEnabled} />
+                            <NextButton onClick={scrollNext} enabled={nextBtnEnabled} />
+                        </Media>
                     </ViewPortWrapper>
                     <DotsWrapper>
                         {scrollSnaps.map((_, index) => (
@@ -98,7 +100,7 @@ export const Carousel = ({
                                 key={index}
                                 selected={index === selectedIndex}
                                 onClick={() => scrollTo(index)}
-                                isMarkets={isMarkets}
+                                is_markets={is_markets}
                             />
                         ))}
                     </DotsWrapper>

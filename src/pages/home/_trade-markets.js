@@ -72,7 +72,7 @@ export const TradeMarkets = () => {
                 </WhiteText>
                 <Media lessThan="desktop">
                     <TradeMarketsMobile>
-                        <Carousel is_markets={true} options={{ axis: 'x' }}>
+                        <Carousel primary is_markets={true} options={{ axis: 'x' }}>
                             {markets.map((market, idx) => (
                                 <Carousel.Item key={idx}>
                                     <Card
