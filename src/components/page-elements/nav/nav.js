@@ -7,7 +7,7 @@ import { localize } from 'components/localization'
 import CryptoLogo from 'images/svg/nav/crypto-logo.svg'
 import DarkCryptoLogo from 'images/svg/nav/dark-crypto-logo.svg'
 
-export const Nav = ({ is_dark_logo }) => {
+export const Nav = ({ is_dark_logo, has_shadow }) => {
     const [has_scrolled, setHasScrolled] = React.useState(false)
     const navRef = React.useRef()
     const minimum_scroll_height = 50
@@ -31,11 +31,15 @@ export const Nav = ({ is_dark_logo }) => {
     }
 
     return (
-        <StyledNav has_scrolled={has_scrolled}>
+        <StyledNav has_scrolled={has_scrolled} has_shadow={has_shadow}>
             <StyledContainer>
                 <Link to="/">
                     <CryptoIcon
-                        src={is_dark_logo && !has_scrolled ? DarkCryptoLogo : CryptoLogo}
+                        src={
+                            (is_dark_logo && !has_scrolled) || (has_scrolled && has_shadow)
+                                ? DarkCryptoLogo
+                                : CryptoLogo
+                        }
                         alt="Deriv Crypto Logo"
                     />
                 </Link>

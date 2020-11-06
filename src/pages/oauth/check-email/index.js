@@ -17,7 +17,7 @@ import { Media } from 'themes/media'
 
 const CheckEmail = () => {
     return (
-        <Layout>
+        <Layout has_shadow={true}>
             <SEO
                 title={localize('Check your email')}
                 description={localize(

@@ -61,7 +61,7 @@ const resetSubmission = (values, actions) => {
 }
 
 const ResetPassword = () => (
-    <Layout>
+    <Layout has_shadow={true}>
         <SEO
             title={localize('Reset password | Deriv Crypto')}
             description={localize(
