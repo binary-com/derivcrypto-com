@@ -10,6 +10,7 @@ import {
     ButtonWrapper,
     ReturnWrapper,
     TextWrapper,
+    StyledMediaImage,
     SuccessTextWrapper,
     SuccessText,
     RedirectWrapper,
@@ -20,6 +21,7 @@ import { Text } from 'components/elements'
 import validation from 'common/validation'
 import { BinarySocketBase } from 'websocket/socket_base'
 import Login from 'common/login'
+import { Media } from 'themes'
 import CoinIcon from 'images/svg/oauth/coins-icons.svg'
 
 const resetValidation = values => {
@@ -50,12 +52,20 @@ const resetSubmission = (values, actions) => {
             return
         }
 
-        actions.resetForm({ email: '' })
+        actions.resetForm({})
         actions.setStatus({
             success: localize(
                 'Please check your email and click on the link provided to reset your password.',
             ),
         })
+
+        setTimeout(
+            () => {
+                actions.setStatus({})
+            },
+            4000,
+            actions,
+        )
         binary_socket.close()
     }
 }
@@ -77,12 +87,21 @@ const ResetPassword = () => (
         >
             {({ values, errors, handleChange, handleBlur, resetForm, status }) => (
                 <GridContainer>
-                    <SuccessTextWrapper status={status.success}>
+                    <SuccessTextWrapper display={!!status.success}>
                         <SuccessText>{status.success && status.success}</SuccessText>
                     </SuccessTextWrapper>
-                    <StyledLeftImage>
-                        <img src={CoinIcon} alt="coins icon" />
-                    </StyledLeftImage>
+                    <StyledMediaImage greaterThanOrEqual="desktop">
+                        <StyledLeftImage display={true}>
+                            <img src={CoinIcon} alt="coins icon" />
+                        </StyledLeftImage>
+                    </StyledMediaImage>
+                    {!status.success && (
+                        <Media lessThan="desktop">
+                            <StyledLeftImage display={!status.success}>
+                                <img src={CoinIcon} alt="coins icon" />
+                            </StyledLeftImage>
+                        </Media>
+                    )}
                     <StyledContainer>
                         <Text
                             color="text_primary"
