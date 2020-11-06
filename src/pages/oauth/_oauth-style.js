@@ -20,7 +20,7 @@ export const StyledLeftImage = styled.div`
     float: left;
     grid-area: left-image;
     opacity: ${props => (props.display ? 1 : 0)};
-    transition: opacity 2s ease-in-out;
+    transition: opacity 0.5s ease-in-out 0.1;
     transform: translateX(0);
 `
 

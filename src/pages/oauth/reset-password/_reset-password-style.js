@@ -5,9 +5,11 @@ import { device, Media } from 'themes'
 
 export const GridContainer = styled(StyledGridContainer)`
     grid-template-areas: 'success-text' 'left-image' 'main' 'right-image';
+    grid-template-rows: ${props => (props.display ? '81px 0' : '0 81px')};
 
     @media ${device.desktop} {
         grid-template-areas: 'success-text success-text success-text' 'left-image main right-image';
+        grid-template-rows: 80px;
     }
 `
 
@@ -55,8 +57,8 @@ export const SuccessTextWrapper = styled.div`
     margin: 0 auto;
     z-index: 1;
     opacity: ${props => (props.display ? 1 : 0)};
-    transition: opacity 1.25s ease-in;
-    transform: translateY(0);
+    transition: opacity 0.5s ease-in-out 0.1s;
+    transform: translateX(0);
 
     @media ${device.mobile} {
         width: 370px;
