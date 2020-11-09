@@ -46,14 +46,15 @@ export const LogoWrapper = styled(Flex)`
     margin-left: 8px;
 `
 
-export const StyledImage = styled(Image)`
+export const StyledImage = styled.img`
+    @media (min-width: 1px) {
+        width: 288px;
+    }
     @media ${device.mobileS} {
         width: 329px;
-        height: 181px;
     }
     @media ${device.mobile} {
         width: 510px;
-        height: 278px;
     }
 `
 
