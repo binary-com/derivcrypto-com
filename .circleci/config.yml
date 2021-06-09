@@ -93,30 +93,19 @@ commands:
   docker_build:
     description: 'Build Docker image'
     parameters:
+      docker_latest_image_tag:
+        type: string
+        default: "latest-staging"
       docker_image_tag:
         type: string
-        default: 'latest-staging'
+        default: ${CIRCLE_SHA1}
     steps:
       - setup_remote_docker:
           docker_layer_caching: true
       - run:
           name: Building docker image
           command: |
-            docker build -t ${DOCKHUB_ORGANISATION}/derivcrypto-com:${CIRCLE_TAG} -t ${DOCKHUB_ORGANISATION}/derivcrypto-com:<< parameters.docker_image_tag >> .
-
-  docker_build_staging:
-    description: 'Build Docker image'
-    parameters:
-      docker_image_tag:
-        type: string
-        default: 'latest-staging'
-    steps:
-      - setup_remote_docker:
-          docker_layer_caching: true
-      - run:
-          name: Building docker image
-          command: |
-            docker build -t ${DOCKHUB_ORGANISATION}/derivcrypto-com:${CIRCLE_SHA1} -t ${DOCKHUB_ORGANISATION}/derivcrypto-com:<< parameters.docker_image_tag >> .
+            docker build -t ${DOCKHUB_ORGANISATION}/derivcrypto-com:<< parameters.docker_image_tag >> -t ${DOCKHUB_ORGANISATION}/derivcrypto-com:<< parameters.docker_latest_image_tag >> .
 
   docker_push:
     description: 'Push image to docker hub'
@@ -133,13 +122,16 @@ commands:
       k8s_svc_name:
         type: string
         default: 'staging-derivcrypto-com'
-      k8s_image_name:
+      k8s_version:
         type: string
-        default: 'derivcrypto-com'
+        default: ${CIRCLE_SHA1}
+      k8s_namespace:
+        type: string
+        default: "derivcrypto-com-staging"
     steps:
       - k8s/install-kubectl
       - run:
-          name: Deploying to k8s cluster for service deriv-crypto
+          name: Deploying to k8s cluster for service << parameters.k8s_namespace >>
           command: |
             TAG=${CIRCLE_TAG:-$CIRCLE_SHA1}
             for SERVER_ID in {1..5}
@@ -154,9 +146,15 @@ commands:
                   KUBE_SERVER="${!KUBE_SERVER_REF}"
                   SERVICEACCOUNT_TOKEN="${!SERVICEACCOUNT_TOKEN_REF}"
                   echo $CA_CRT | base64 --decode > ca.crt
-                  kubectl --server=${KUBE_SERVER} --certificate-authority=ca.crt --token=$SERVICEACCOUNT_TOKEN set image deployment/<< parameters.k8s_svc_name >> << parameters.k8s_svc_name >>=${DOCKHUB_ORGANISATION}/<< parameters.k8s_image_name >>:${TAG}
+                  kubectl --server=${KUBE_SERVER} --certificate-authority=ca.crt --token=$SERVICEACCOUNT_TOKEN set image deployment/<< parameters.k8s_svc_name >> << parameters.k8s_svc_name >>=${DOCKHUB_ORGANISATION}/derivcrypto-com:${TAG}
                 fi
               done
+
+            export NAMESPACE=<< parameters.k8s_namespace >>
+            git clone https://github.com/binary-com/devops-ci-scripts
+            cd devops-ci-scripts/k8s-build_tools
+            echo $CA_CRT | base64 --decode > ca.crt
+            ./release.sh derivcrypto-com << parameters.k8s_version >>
 
 jobs:
   test:
@@ -182,11 +180,9 @@ jobs:
       - build
       - deploy:
           target_branch: 'staging'
-      - docker_build_staging
+      - docker_build
       - docker_push
-      - k8s_deploy:
-          k8s_svc_name: staging-derivcrypto-com
-          k8s_image_name: derivcrypto-com
+      - k8s_deploy
       - notify_slack
 
   release_production:
@@ -202,11 +198,13 @@ jobs:
       - deploy:
           target_branch: 'production'
       - docker_build:
-          docker_image_tag: latest
+          docker_latest_image_tag: latest
+          docker_image_tag: ${CIRCLE_TAG}
       - docker_push
       - k8s_deploy:
           k8s_svc_name: production-derivcrypto-com
-          k8s_image_name: derivcrypto-com
+          k8s_namespace: "derivcrypto-com-production"
+          k8s_version: ${CIRCLE_TAG}
       - notify_slack
 
 workflows:
