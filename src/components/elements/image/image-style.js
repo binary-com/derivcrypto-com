@@ -9,4 +9,8 @@ export const ImageWrapper = styled.div`
         width: 100%;
         height: 100%;
     }
+    & .gatsby-image {
+        width: 100%;
+        height: 100%;
+    }
 `
