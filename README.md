@@ -12,7 +12,7 @@
 
 ## Pre-installation
 
-Before running or contribute to this project, you need to have the following packages setup in your environment
+Before running or contributing to this project, you need to have the following packages setup in your environment
 
 -   node
 -   npm
